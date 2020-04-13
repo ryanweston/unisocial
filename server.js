@@ -1,11 +1,20 @@
-var express = require('express');
-var app = express();
+const connectDB = require('./config/db');
+const express = require('express');
 
-app.get('/', (req, res)=>{ 
-    res.send('hello user!');
-});
+const app = express();
 
-//Listening for requests on port 3000
-app.listen(3000, ()=> {
-    console.log('Server listening on port 3000');
+// Connect Database
+connectDB();
+
+//Define Routes
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/reviews', require('./routes/api/reviews'));
+
+const PORT = process.env.PORT || 3000;
+
+// Listening for requests on port variable
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
