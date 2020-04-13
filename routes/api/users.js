@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -19,8 +20,9 @@ router.post(
       'password',
       'Please enter a password with 7 or more characters'
     ).isLength({ min: 6 }),
+    // check('university', 'Please include your university').not().isEmpty(),
   ],
-  (req, res) => {
+  async (req, res) => {
     //lists errors from validation paramater above
     const errors = validationResult(req);
 
@@ -29,13 +31,37 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    // See if user exists
+    const { name, email, password, university } = req.body;
 
-    //Encrypt Password
+    try {
+      let user = await User.findOne({ email });
 
-    //Return web token
+      if (user) {
+        // Uses errors to maintain consistancy in error messaging with validation checks
+        res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+      }
 
-    res.send('User route');
+      user = new User({
+        name,
+        email,
+        password,
+        university,
+      });
+
+      const salt = await bcrypt.genSalt(10);
+
+      user.password = await bcrypt.hash(password, salt);
+
+      await user.save();
+
+      //Return web token
+
+      res.send('User registered');
+    } catch (err) {
+      //Error will be server issue if caught
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
 );
 
