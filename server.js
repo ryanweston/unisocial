@@ -6,12 +6,16 @@ const app = express();
 // Connect Database
 connectDB();
 
-//Define Routes
+// init Middleware (express-validator)
+app.use(express.json({ extended: false }));
+
+//Define Routes, allows cleaner infrastructure of files & relative schemas
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/reviews', require('./routes/api/reviews'));
 
+//3000 is dev port, process.env.port is used by heroku for deployment
 const PORT = process.env.PORT || 3000;
 
 // Listening for requests on port variable
