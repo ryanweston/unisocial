@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
 
 // @route    GET api/auth
 // @desc     Test route
