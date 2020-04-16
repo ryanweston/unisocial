@@ -12,13 +12,5 @@ const UniversitySchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-    average_scores: { 
-        internet_score: {
-            type: String,
-        },
-        hospitality_score: {
-            type: String,
-        }
-    }
 });
 module.exports = University = mongoose.model('university', UniversitySchema);
