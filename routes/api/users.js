@@ -22,6 +22,7 @@ router.post(
       'password',
       'Please enter a password with 7 or more characters'
     ).isLength({ min: 6 }),
+    check('university', 'Please select your university').not().isEmpty(),
     // check('university', 'Please include your university').not().isEmpty(),
   ],
   async (req, res) => {
