@@ -21,7 +21,7 @@ module.exports = function (req, res, next) {
       }
     });
   } catch (err) {
-    console.error('Middleware failure')
+    console.error('Middleware failure');
     res.status(500).json({ msg: 'Server Error' });
   }
 };
