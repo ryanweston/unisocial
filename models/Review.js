@@ -2,23 +2,32 @@ const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
   university_id: {
-      type: String,
-      required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'university',
+    required: true,
   },
   user_id: {
-      type: String, 
-      required: true,
-  }, 
-  internet_score: {
-      type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
   },
-  hospitality_score: {
-    type: String,
-  },
+  scores: [
+    {
+      internet: {
+        type: String,
+      },
+      happiness: {
+        type: String,
+      },
+      nightlife: {
+        type: String,
+      },
+    },
+  ],
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = Review = mongoose.model('review', ReviewSchema);

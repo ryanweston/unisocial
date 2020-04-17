@@ -1,16 +1,30 @@
 const mongoose = require('mongoose');
 
-const UniversitySchema = new mongoose.Schema ({ 
-    name: { 
+const UniversitySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  domain: {
+    type: String,
+  },
+  country: {
+    type: String,
+    required: true,
+  },
+  average_scores: [
+    {
+      internet: {
         type: String,
-        required: true
-    },
-    domain: { 
-        type: String, 
-    },
-    country: { 
+      },
+      happiness: {
         type: String,
-        required: true
+      },
+      nightlife: {
+        type: String,
+      },
     },
+  ],
 });
+
 module.exports = University = mongoose.model('university', UniversitySchema);

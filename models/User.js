@@ -15,7 +15,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   university: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'university',
     required: true,
   },
   date: {
