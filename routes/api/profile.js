@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const profile = require('../../models/Profile');
-const user = require('../../models/User');
-const university = require('../../models/University');
+const Profile = require('../../models/Profile');
+const User = require('../../models/User');
+const University = require('../../models/University');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
