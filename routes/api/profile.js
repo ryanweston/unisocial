@@ -5,10 +5,10 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const University = require('../../models/University');
 
-// @route    GET api/profile/me
+// @route    GET api/profile/dashboard
 // @desc     Get current users profile
 // @access   Private
-router.get('/me', auth, async (req, res) => {
+router.get('/dashboard', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
