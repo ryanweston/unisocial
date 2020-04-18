@@ -10,7 +10,7 @@ const universityList = require('../../universities.json');
 
 router.post('/', async (req, res) => { 
     try {
-        for (i = 0; i < 2; i++){
+        for (i = 0; i < universityList.length; i++){
            let obj = universityList[i]; 
 
            let name = obj.name.split(',', 1)[0];
