@@ -51,11 +51,21 @@ router.get('/', auth, async (req, res) => {
     let user = await User.findById(req.user.id, '_id university');
 
     //Aggregate reviews, work out average scores and save in variable
-    const newAverages = await Review.aggregate([
+    const scores = await Review.aggregate([
       { $match: { university: user.university } },
+      { $unwind: '$scores' },
+      {
+        $group: {
+          _id: '$university',
+          internet: { $avg: '$scores.internet' },
+          happiness: { $avg: '$scores.happiness' },
+          nightlife: { $avg: '$scores.nightlife' },
+        },
+      },
+      // { $project: { _id: 0, scores: 1 } },
     ]);
 
-    console.log(newAverages);
+    res.json({ scores });
 
     //Save average scores in relevant university document
     //  University.findOneAndUpdate(
