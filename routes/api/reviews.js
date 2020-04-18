@@ -15,13 +15,13 @@ router.post('/', auth, async (req, res) => {
 
     // Check if user already has a saved review.
     // find() returns array as opposed to findOne which returns a string, hence .length check
-    const reviewStatus = await Review.find({ user_id: user.id });
+    // const reviewStatus = await Review.find({ user_id: user.id });
 
-    if (reviewStatus.length) {
-      return res
-        .status(400)
-        .json({ errors: [{ msg: 'You have already submitted a review' }] });
-    }
+    // if (reviewStatus.length) {
+    //   return res
+    //     .status(400)
+    //     .json({ errors: [{ msg: 'You have already submitted a review' }] });
+    // }
 
     const review = new Review({
       university: user.university,
@@ -39,19 +39,6 @@ router.post('/', auth, async (req, res) => {
     res.json({ review });
 
     //After review is submitted update university with average scores
-
-    //Aggregate reviews, work out average scores and save in variable
-    //  const newAverages = await Review.aggregate(
-    //   [ { $match : { university_id : req.university_id } } ]
-    //  );
-
-    //  console.log(newAverages);
-
-    //Save average scores in relevant university document
-    //  University.findOneAndUpdate(
-    //    { "university_id": university_id },
-    //    { $average }
-    //  )
   } catch (err) {
     //Error will be server issue if caught
     console.error(err.message);
@@ -59,12 +46,23 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// router.get('/', async (req, res) => {
-//   try {
+router.get('/', auth, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id, '_id university');
 
-//   } catch(err) {
+    //Aggregate reviews, work out average scores and save in variable
+    const newAverages = await Review.aggregate([
+      { $group: { university: user.university } },
+    ]);
 
-//   }
-// });
+    console.log(newAverages);
+
+    //Save average scores in relevant university document
+    //  University.findOneAndUpdate(
+    //    { "university_id": university_id },
+    //    { $average }
+    //  )
+  } catch (err) {}
+});
 
 module.exports = router;
