@@ -15,13 +15,13 @@ const UniversitySchema = new mongoose.Schema({
   average_scores: [
     {
       internet: {
-        type: String,
+        type: Number,
       },
       happiness: {
-        type: String,
+        type: Number,
       },
       nightlife: {
-        type: String,
+        type: Number,
       },
     },
   ],

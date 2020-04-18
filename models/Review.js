@@ -14,15 +14,15 @@ const ReviewSchema = new mongoose.Schema({
   scores: [
     {
       internet: {
-        type: String,
+        type: Number,
       },
       happiness: {
-        type: String,
+        type: Number,
       },
       nightlife: {
-        type: String,
-      }
-    }
+        type: Number,
+      },
+    },
   ],
   date: {
     type: Date,
