@@ -52,7 +52,7 @@ router.get('/', auth, async (req, res) => {
 
     //Aggregate reviews, work out average scores and save in variable
     const newAverages = await Review.aggregate([
-      { $group: { university: user.university } },
+      { $match: { university: user.university } },
     ]);
 
     console.log(newAverages);
