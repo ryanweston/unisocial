@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-  university_id: {
+  university: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'university',
     required: true,
@@ -21,8 +21,8 @@ const ReviewSchema = new mongoose.Schema({
       },
       nightlife: {
         type: String,
-      },
-    },
+      }
+    }
   ],
   date: {
     type: Date,
