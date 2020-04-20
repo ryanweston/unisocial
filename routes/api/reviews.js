@@ -51,7 +51,7 @@ router.get('/', auth, async (req, res) => {
     let user = await User.findById(req.user.id, '_id university');
 
     //Aggregate reviews, work out average scores and save in variable
-    const scores = await Review.aggregate([
+    const averageScores = await Review.aggregate([
       { $match: { university: user.university } },
       { $unwind: '$scores' },
       {
@@ -62,17 +62,38 @@ router.get('/', auth, async (req, res) => {
           nightlife: { $avg: '$scores.nightlife' },
         },
       },
-      // { $project: { _id: 0, scores: 1 } },
+      { $set: { lastUpdated: '$$NOW' } },
+      {
+        $project: {
+          scores: [{
+            internet: '$internet',
+            happiness: '$happiness',
+            nightlife: '$nightlife',
+          }],
+          lastUpdated: true,
+        }
+      },
+      {
+        $merge: {
+          into: 'universities',
+          on: '_id',
+          whenMatched: 'merge',
+          whenNotMatched: 'insert',
+        },
+      },
     ]);
 
-    res.json({ scores });
+    res.json({ averageScores });
 
     //Save average scores in relevant university document
     //  University.findOneAndUpdate(
     //    { "university_id": university_id },
     //    { $average }
     //  )
-  } catch (err) {}
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 module.exports = router;
