@@ -6,8 +6,8 @@ const Review = require('../../models/Review');
 const User = require('../../models/User');
 const University = require('../../models/University');
 
-// @route    GET api/reviews
-// @desc     Test route
+// @route    POST api/reviews
+// @desc     Save user's review
 // @access   Public
 router.post('/', auth, async (req, res) => {
   try {
@@ -46,11 +46,15 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
+
+// @route    GET api/reviews
+// @desc     Temp. route to test data aggregation + merging 
+// @access   Private
 router.get('/', auth, async (req, res) => {
   try {
     let user = await User.findById(req.user.id, '_id university');
 
-    //Aggregate reviews, work out average scores and save in variable
+    //Aggregate reviews, calculating average and replacing previous averages in the relative university document
     const averageScores = await Review.aggregate([
       { $match: { university: user.university } },
       { $unwind: '$scores' },
@@ -69,6 +73,7 @@ router.get('/', auth, async (req, res) => {
             internet: '$internet',
             happiness: '$happiness',
             nightlife: '$nightlife',
+            total: { $avg: ['$internet', '$happiness', '$nightlife'] },
           }],
           lastUpdated: true,
         }
@@ -83,7 +88,8 @@ router.get('/', auth, async (req, res) => {
       },
     ]);
 
-    res.json({ averageScores });
+
+    res.json({ msg: 'Review submitted' });
 
     //Save average scores in relevant university document
     //  University.findOneAndUpdate(
