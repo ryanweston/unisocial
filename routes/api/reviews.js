@@ -12,6 +12,7 @@ const University = require('../../models/University');
 router.post('/', auth, async (req, res) => {
   try {
     let user = await User.findById(req.user.id, '_id university');
+    const universityName = await University.findById(user.university, 'name');
 
     // Check if user already has a saved review.
     // find() returns array as opposed to findOne which returns a string, hence .length check
@@ -36,26 +37,11 @@ router.post('/', auth, async (req, res) => {
     });
 
     await review.save();
-    res.json({ review });
+    // res.json({ review });
 
     //After review is submitted update university with average scores
-  } catch (err) {
-    //Error will be server issue if caught
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
-
-
-// @route    GET api/reviews
-// @desc     Temp. route to test data aggregation + merging 
-// @access   Private
-router.get('/', auth, async (req, res) => {
-  try {
-    let user = await User.findById(req.user.id, '_id university');
-
     //Aggregate reviews, calculating average and replacing previous averages in the relative university document
-    const averageScores = await Review.aggregate([
+    await Review.aggregate([
       { $match: { university: user.university } },
       { $unwind: '$scores' },
       {
@@ -88,14 +74,22 @@ router.get('/', auth, async (req, res) => {
       },
     ]);
 
+    res.json(universityName.name + ' review submitted and aggregated');
 
-    res.json({ msg: 'Review submitted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
-    //Save average scores in relevant university document
-    //  University.findOneAndUpdate(
-    //    { "university_id": university_id },
-    //    { $average }
-    //  )
+
+// @route    GET api/reviews
+// @desc     Retrieves all universities and orders by total score
+// @access   Public
+router.get('/', auth, async (req, res) => {
+  try {
+    const reviews = await University.find().sort({ "scores.total": -1 });
+    res.json({ reviews });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
