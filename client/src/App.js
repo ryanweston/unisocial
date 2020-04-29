@@ -4,6 +4,7 @@ import Nav from './components/template/Nav';
 import Landpage from './components/template/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import UniversityList from './components/auth/UniversityList';
 import './App.css';
 
 
@@ -17,8 +18,9 @@ const App = () => (
       <section className="container">
         <Switch>
           <Route exact path="/" component={Landpage} />
-          <Router exact path="/register" component={Register} />
-          <Router exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/test" component={UniversityList} />
         </Switch>
       </section>
     </Fragment>
