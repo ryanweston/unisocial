@@ -17,7 +17,7 @@ app.use('/api/reviews', require('./routes/api/reviews'));
 app.use('/api/university', require('./routes/api/university'));
 
 //3000 is dev port, process.env.port is used by heroku for deployment
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 // Listening for requests on port variable
 app.listen(PORT, () => {
