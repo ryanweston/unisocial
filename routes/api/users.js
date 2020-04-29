@@ -21,9 +21,8 @@ router.post(
     check(
       'password',
       'Please enter a password with 7 or more characters'
-    ).isLength({ min: 6 }),
-    check('university', 'Please select your university').not().isEmpty(),
-    // check('university', 'Please include your university').not().isEmpty(),
+    ).isLength({ min: 3 }),
+    // check('university', 'Please select your university').not().isEmpty(),
   ],
   async (req, res) => {
     //lists errors from validation paramater above
@@ -34,7 +33,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, university } = req.body;
+    //add university
+    const { name, email, password, } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -50,7 +50,7 @@ router.post(
         name,
         email,
         password,
-        university,
+        // university,
       });
 
       const salt = await bcrypt.genSalt(10);
