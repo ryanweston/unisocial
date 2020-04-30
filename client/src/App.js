@@ -20,7 +20,6 @@ const App = () => (
           <Route exact path="/" component={Landpage} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/test" component={UniversityList} />
         </Switch>
       </section>
     </Fragment>
