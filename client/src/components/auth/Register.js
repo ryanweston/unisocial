@@ -5,7 +5,6 @@ import UniversityList from './UniversityList';
 const Register = () => {
 
     // use state initialises objects default format. hook runs function on the given object
-
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -19,6 +18,7 @@ const Register = () => {
     // ... operator preserves previous data from form, only changing states of given input
     const formChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+
     const formSubmit = async e => {
         //Prevents default HTML handling, in this instance causing the page to refresh.
         e.preventDefault();
@@ -26,9 +26,9 @@ const Register = () => {
         if (password !== passwordConfirm) {
             console.log('Passwords do not match');
         } else {
+
             console.log(formData);
-
-
+            //Creates object using variable that stored the form data
             const registerUser = {
                 name,
                 email,
@@ -92,6 +92,7 @@ const Register = () => {
                 />
                 <input type="submit" />
             </form>
+            <UniversityList />
         </Fragment>
     );
 };
