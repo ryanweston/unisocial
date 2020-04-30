@@ -86,7 +86,7 @@ router.post('/', auth, async (req, res) => {
 // @route    GET api/reviews
 // @desc     Retrieves all universities and orders by total score
 // @access   Public
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const reviews = await University.find().sort({ "scores.total": -1 });
     res.json({ reviews });
