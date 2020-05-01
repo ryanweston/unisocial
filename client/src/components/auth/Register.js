@@ -41,6 +41,12 @@ const Register = () => {
         fetchList();
     }, []);
 
+    useEffect(() => {
+        return () => {
+            console.log("cleaned up");
+        };
+    }, []);
+
     const universityCheck = [];
     function universityChecker() {
         for (var i = 0; i < dropdown.options.length; i++) {
