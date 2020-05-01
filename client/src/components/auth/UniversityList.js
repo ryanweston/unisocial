@@ -1,5 +1,5 @@
-import React from 'react';
-// import axios from 'axios';
+import React, { Fragment } from 'react';
+
 
 // Move data fetching to parent component and pass data down through the use of props
 // Research into redux store for state management
@@ -32,23 +32,21 @@ class UniversityList extends React.Component {
         // }
         return (
 
-            <div>
+            <Fragment>
                 {this.props.state.loading || !this.props.state.options ? (
                     <div>loading...</div>
                 ) : (<div>
                     <label>University</label>
                     <select onChange={e => this.props.onValueChange(e)}>{
                         // map takes in the recieved university data, for each producing an option for the dropdown
-                        this.props.state.options.map((obj) => {
-                            return <option value={obj._id}>{obj.name}</option>
+                        this.props.state.options.map((obj, index) => {
+                            return <option key={index} value={obj._id}> {obj.name}</option>
                         }
                         )
                     }</select>
                 </div>)
                 }
-
-
-            </div >
+            </Fragment>
         )
     }
 }
