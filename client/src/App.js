@@ -4,7 +4,6 @@ import Nav from './components/template/Nav';
 import Landpage from './components/template/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import UniversityList from './components/auth/UniversityList';
 import './App.css';
 
 
