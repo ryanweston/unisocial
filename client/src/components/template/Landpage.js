@@ -1,10 +1,23 @@
-import React from 'react'
+import React from 'react';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import universityView from './universityView';
 
 class Landpage extends React.Component {
 
     state = {
-        universities: []
+        universities: [],
+        modalOpen: false
+    }
+
+    handleModalOpen = () => {
+        this.setState((prevState) => {
+            return {
+                modalOpen: !prevState.modalOpen
+
+            }
+        })
+        console.log(this.state.modalOpen);
     }
 
     async componentDidMount() {
@@ -12,27 +25,25 @@ class Landpage extends React.Component {
         const string = JSON.stringify(res.data.reviews);
         const reviews = JSON.parse(string);
         this.setState({ universities: reviews });
-        console.log(this.state.universities[1].scores);
     }
 
     render() {
         return (
-            <section className="landing">
-
-                {this.state.universities.map((obj) => {
-                    return <div>
-                        <div>{obj.name}</div>
-
-                        {obj.scores.map((points) => {
-                            return <div>
-                                <div> {points.total} </div>
+            <div className="container">
+                <section key={this.state.universities} className="landing">
+                    {this.state.universities.map((obj, index) => {
+                        return <button key={index} onClick={this.handleModalOpen}>
+                            <div className="university" key={index}>
+                                <div className="name" key={obj.id}>{obj.name}</div>
+                                {obj.scores.map((points) => {
+                                    return <div className="points" key={index}> {points.total} </div>
+                                }
+                                )}
                             </div>
-                        }
-                        )}
-                    </div>
-                })}
-
-            </section>
+                        </button>
+                    })}
+                </section>
+            </div>
         )
     }
 }
