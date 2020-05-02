@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
-import UniversityView from './universityView';
+import UniversityView from './UniversityView';
 
 
 class Landpage extends React.Component {
@@ -9,21 +9,7 @@ class Landpage extends React.Component {
     state = {
         universities: [],
         modalOpen: false,
-        selectedUni: null
-    }
-
-    handleModalOpen = (e) => {
-        const selected = e.currentTarget.value;
-        // this.setState((e) => {
-        //     return { selectedUni: e.currentTarget.value }
-        // })
-        this.setState((prevState) => {
-            return {
-                modalOpen: !prevState.modalOpen,
-                selectedUni: selected
-            }
-        })
-        console.log(this.state)
+        details: null
     }
 
     async componentDidMount() {
@@ -33,18 +19,42 @@ class Landpage extends React.Component {
         this.setState({ universities: reviews });
     }
 
+    openSelection = (e) => {
+        const selected = e.currentTarget.value;
+        const data = this.state.universities.find(x => x._id === selected);
+        this.setState({details: data});
+        this.handleModalOpen();
+    }
+
+    clearSelected = () => {
+        this.setState({details: null})
+    }
+
+    handleModalOpen = () => {
+        this.setState((prevState) => {
+            return {
+                modalOpen: !prevState.modalOpen,
+            }
+        })
+        console.log(this.state)
+    }
+
     render() {
         return (
             <Fragment>
                 <Fragment>
-                    {!this.state.modalOpen || !this.state.selectedUni ? (
-                        <p>Nothing loaded</p>) :
-                        (<UniversityView currentState={this.state}> </UniversityView >)}
+                        <UniversityView
+                        details={this.state.details}
+                        // selected={this.state.selectedUni}
+                        currentState={this.state.modalOpen} 
+                        handleModalOpen={this.handleModalOpen}
+                        clearSelected={this.clearSelected}> 
+                        </UniversityView >
                 </Fragment>
                 <div className="container">
                     <section key={this.state.universities} className="landing">
                         {this.state.universities.map((obj, index) => {
-                            return <button key={index} value={obj._id} onClick={e => this.handleModalOpen(e)}>
+                            return <button key={index} value={obj._id} onClick={e => {this.openSelection(e)}}>
                                 <div className="university" key={index}>
                                     <div className="name" key={obj._id}>{obj.name}</div>
                                     {obj.scores.map((points) => {
