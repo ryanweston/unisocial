@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react';
 // import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import PropTypes from 'prop-types'
 import UniversityView from './UniversityView';
+import { connect } from 'react-redux';
+import { fetchUni } from '../../actions/university';
+
 
 
 class Landpage extends React.Component {
@@ -12,22 +16,19 @@ class Landpage extends React.Component {
         details: null
     }
 
-    async componentDidMount() {
-        const res = await axios.get('api/reviews');
-        const string = JSON.stringify(res.data.reviews);
-        const reviews = JSON.parse(string);
-        this.setState({ universities: reviews });
+    componentDidMount() {
+        this.props.dispatch(fetchUni());
     }
 
     openSelection = (e) => {
         const selected = e.currentTarget.value;
         const data = this.state.universities.find(x => x._id === selected);
-        this.setState({details: data});
+        this.setState({ details: data });
         this.handleModalOpen();
     }
 
     clearSelected = () => {
-        this.setState({details: null})
+        this.setState({ details: null })
     }
 
     handleModalOpen = () => {
@@ -40,21 +41,22 @@ class Landpage extends React.Component {
     }
 
     render() {
+        // console.log(universities);
         return (
             <Fragment>
-                <Fragment>
-                        <UniversityView
+                {/* <Fragment>
+                    <UniversityView
                         details={this.state.details}
                         // selected={this.state.selectedUni}
-                        currentState={this.state.modalOpen} 
+                        currentState={this.state.modalOpen}
                         handleModalOpen={this.handleModalOpen}
-                        clearSelected={this.clearSelected}> 
-                        </UniversityView >
-                </Fragment>
+                        clearSelected={this.clearSelected}>
+                    </UniversityView >
+                </Fragment> */}
                 <div className="container">
-                    <section key={this.state.universities} className="landing">
+                    {/* <section key={this.state.universities} className="landing">
                         {this.state.universities.map((obj, index) => {
-                            return <button key={index} value={obj._id} onClick={e => {this.openSelection(e)}}>
+                            return <button key={index} value={obj._id} onClick={e => { this.openSelection(e) }}>
                                 <div className="university" key={index}>
                                     <div className="name" key={obj._id}>{obj.name}</div>
                                     {obj.scores.map((points) => {
@@ -64,11 +66,32 @@ class Landpage extends React.Component {
                                 </div>
                             </button>
                         })}
-                    </section>
+                    </section> */}
                 </div>
             </Fragment>
         )
     }
 }
 
-export default Landpage;
+Landpage.protoTypes = {
+    fetchUni: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => {
+    console.log(state);
+    return {
+        loading: state.fetchUniversity,
+        error: state.fetchUniversity
+    }
+}
+
+// const mapDispatchToProps = dispatch => {
+//     // console.log(disp);
+//     return {
+//         fetchUni
+//         // fetchUniBegin,
+//         // fetchUniFailure,
+//     }
+// }
+
+export default connect(mapStateToProps)(Landpage);

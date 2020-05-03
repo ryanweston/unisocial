@@ -15,9 +15,7 @@ const Login = () => {
     async function loginSubmit(e) {
         e.preventDefault();
         const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            withCredentials: true
         }
         const body = {
             email,

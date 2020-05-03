@@ -9,15 +9,14 @@ class UniversityView extends React.Component {
 
     render() {
         return (
-            (!this.props.currentState ? (<div></div>):(<Fragment>
+            (!this.props.currentState ? (<div></div>) : (<Fragment>
                 <div className="overlay">
                     <button onClick={this.close}>X</button>
-                    <h1>cool</h1>
                     <h1>{this.props.details.name}</h1>
                     <p>{this.props.details.scores[0].total}</p>
                 </div>
             </Fragment>))
-            )
+        )
     }
 }
 

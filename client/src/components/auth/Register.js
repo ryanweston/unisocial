@@ -1,8 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import UniversityList from './UniversityList';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
     // use state initialises objects default format. hook runs function on the given object
     const [formData, setFormData] = useState({
         name: '',
@@ -11,17 +14,14 @@ const Register = () => {
         passwordConfirm: ''
     });
 
-    // state = {
-    //     loading: true,
-    //     options: [null],
-    //     selected: ''
-    // }
-
     const [dropdown, setDropdown] = useState({
         loading: true,
         options: [null],
         selected: ''
     })
+
+    const formChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const dropdownChange = e => setDropdown({ ...dropdown, selected: e.target.value });
 
     //Will run error declaring missing dependacy, however I only want the function to run once after render,
     //so warning should be ignored.
@@ -68,19 +68,19 @@ const Register = () => {
 
     // function runs from event, changing relevant form data for each input by selected name and it's corresponding value
     // ... operator preserves previous data from form, only changing states of given input
-    const formChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const dropdownChange = e => setDropdown({ ...dropdown, selected: e.target.value });
 
-    const formSubmit = async e => {
+    const onSubmit = async e => {
         //Prevents default HTML handling, in this instance causing the page to refresh.
         e.preventDefault();
+
+        console.log('cool');
 
         universityChecker();
 
         if (password !== passwordConfirm) {
-            console.log('Passwords do not match');
+            setAlert('Passwords do not match', 'danger');
         } else if (universityCheck.indexOf(university) === -1) {
-            console.log('Select your university' + universityCheck);
+            setAlert('Select your university', 'danger');
         } else {
             //Creates object using variable that stored the form data
             const registerUser = {
@@ -113,7 +113,7 @@ const Register = () => {
         <Fragment>
 
             <h1>Sign Up</h1>
-            <form onSubmit={e => formSubmit(e)}>
+            <form onSubmit={e => onSubmit(e)}>
                 <label>Name:</label>
                 <input
                     type="text"
@@ -153,4 +153,8 @@ const Register = () => {
     );
 };
 
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setAlert })(Register);

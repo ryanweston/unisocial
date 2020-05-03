@@ -1,0 +1,5 @@
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const FETCH_UNI_BEGIN = 'FETCH_UNI_BEGIN';
+export const FETCH_UNI_SUCCESS = 'FETCH_UNI_SUCCESS';
+export const FETCH_UNI_FAILURE = 'FETCH_UNI_FAILURE';
