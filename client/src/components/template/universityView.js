@@ -3,8 +3,7 @@ import React, { Fragment } from 'react';
 class UniversityView extends React.Component {
 
     close = () => {
-        this.props.handleModalOpen();
-        this.props.clearSelected();
+        this.props.handleModalOpen(null);
     }
 
     render() {

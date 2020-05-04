@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { FETCH_UNI_BEGIN, FETCH_UNI_SUCCESS, FETCH_UNI_FAILURE } from './types';
 
-export function fetchUni() {
+export const fetchUni = dispatch => {
     return dispatch => {
 
         dispatch(fetchUniBegin());
 
         return axios.get('api/reviews')
             .then(res => {
-                console.log(res.data);
-                dispatch(fetchUniSuccess(res.data));
+                dispatch(fetchUniSuccess(res.data.reviews));
                 console.log('success');
             })
             .catch(error => console.log(error));
