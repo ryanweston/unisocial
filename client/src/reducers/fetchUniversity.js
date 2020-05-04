@@ -2,7 +2,7 @@ import { FETCH_UNI_BEGIN, FETCH_UNI_SUCCESS, FETCH_UNI_FAILURE } from '../action
 
 const initialState = {
     universities: [],
-    loading: false,
+    loading: true,
     error: null
 };
 
