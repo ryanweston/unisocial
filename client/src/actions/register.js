@@ -1,15 +1,17 @@
 import { REGISTER_SUCCESS, REGISTER_FAILURE } from './types';
 import axios from 'axios';
 
-export const register = async (formData) => {
+export const register = (formData) => async dispatch => {
     const body = JSON.stringify(formData);
+
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
+
     try {
-        const res = await axios.post('api/user', config, body);
+        const res = await axios.post('api/users', body, config);
         console.log(res.data)
         dispatch(registerSuccess(res.data));
     }
@@ -19,12 +21,18 @@ export const register = async (formData) => {
     }
 }
 
-export const registerSuccess = (user) => ({
+export const registerSuccess = (token) => ({
     type: REGISTER_SUCCESS,
-    payload: { user }
+    payload: token
 })
 
 export const registerFailure = (error) => ({
     type: REGISTER_FAILURE,
-    payload: { error }
+    payload: error
 })
+
+export const loginUser = (userDetails) => {
+
+}
+
+// export const getUser = 

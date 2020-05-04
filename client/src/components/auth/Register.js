@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import UniversityList from './UniversityList';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/register';
