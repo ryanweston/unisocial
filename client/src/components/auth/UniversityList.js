@@ -27,25 +27,19 @@ class UniversityList extends React.Component {
 
 
     render() {
-        // if (this.props.state.loading === false) {
-        //     console.log(this.props.state);
-        // }
         return (
 
             <Fragment>
-                {this.props.state.loading || !this.props.state.options ? (
-                    <div>loading...</div>
-                ) : (<div>
+                <div>
                     <label>University</label>
                     <select onChange={e => this.props.onValueChange(e)}>{
                         // map takes in the recieved university data, for each producing an option for the dropdown
-                        this.props.state.options.map((obj, index) => {
+                        this.props.options.map((obj, index) => {
                             return <option key={index} value={obj._id}> {obj.name}</option>
                         }
                         )
                     }</select>
-                </div>)
-                }
+                </div>
             </Fragment>
         )
     }
