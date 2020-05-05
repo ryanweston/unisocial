@@ -9,7 +9,7 @@ export const fetchUni = dispatch => {
         return axios.get('api/reviews')
             .then(res => {
                 dispatch(fetchUniSuccess(res.data.reviews));
-                console.log('success');
+                console.log('Successfully fetched reviews.');
             })
             .catch(error => console.log(error));
 

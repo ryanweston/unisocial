@@ -1,7 +1,4 @@
 import React, { Fragment, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
-import PropTypes from 'prop-types'
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
 
@@ -65,9 +62,6 @@ const Landpage = (props) => {
     )
 }
 
-Landpage.protoTypes = {
-    fetchUni: PropTypes.func.isRequired,
-}
 
 const mapStateToProps = state => {
     return {
