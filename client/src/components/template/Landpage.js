@@ -32,27 +32,30 @@ const Landpage = (props) => {
     console.log(modalInfo);
 
     return (
+
+        //Renders landpage after app level state fetch has been returned
         (!props.loading ? (
             < Fragment >
                 <Fragment>
                     <UniversityView
                         details={modalInfo.details}
-                        // selected={this.state.selectedUni}
                         currentState={modalInfo.modalOpen}
                         handleModalOpen={handleModalOpen}>
                     </UniversityView >
                 </Fragment>
-                < div className="container" >
+                <div className="header">
+                    <h1>FIND YOUR UNIVERSITY BASED ON SOCIAL SCORES
+& QUALITY OF LIFE FEEDBACK FROM REAL STUDENTS</h1>
+                </div>
+                < div className="gridContainer" >
                     <section className="landing">
                         {props.universities[0].map((obj, index) => {
-                            return <button key={index} value={obj._id} onClick={e => { openSelection(e) }}>
-                                <div className="university" key={index}>
-                                    <div className="name" key={obj._id}>{obj.name}</div>
-                                    {obj.scores.map((points) => {
-                                        return <div className="points" key={index}> {points.total} </div>
-                                    }
-                                    )}
-                                </div>
+                            return <button className="universityContainer" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                                <div className="name" key={obj._id}>{obj.name}</div>
+                                {obj.scores.map((points) => {
+                                    return <div className="points" key={index}> {points.total} </div>
+                                }
+                                )}
                             </button>
                         })}
                     </section>
@@ -61,7 +64,6 @@ const Landpage = (props) => {
         ) : (<div><h1>LOADING</h1></div>))
     )
 }
-
 
 Landpage.protoTypes = {
     fetchUni: PropTypes.func.isRequired,
