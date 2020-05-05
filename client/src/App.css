@@ -5,34 +5,67 @@ body { margin: 0; padding:0; overflow-x:hidden}
   left:10%;
   top:10%;
   margin:0;
-  background-color:#FFFFFF;
+  background-color:#DDDDDD;
   width:80%;
+  border-radius:30px;
   height:80%;
   z-index:1000;
   text-align:center;
+  padding:20px;
 }
 
 .overlay button { float:right}
 
 .container { 
-  margin: 0 auto;
-  background-color: aquamarine;
+  /* padding-left:10%;
+  padding-right: 10%; */
+  /* background-color: aquamarine; */
   height:100%;
-  width:100%;
+  width: 100%;
 }
+
+
+.header { 
+  margin:0 auto;
+  width:60%;
+  text-align: center; 
+  height:150px;
+  padding-top:5%;
+}
+
+
+.gridContainer { 
+  width:70%;
+  margin:0 auto;
+}
+
 
 .university { 
   margin:0 auto;
   width:100%;
-  padding:30px;
+  height:100%;
+  padding-top:20px;
+  vertical-align: center;
   text-align:center;
   background-color: purple;
+  position: relative;
 }
+
+.universityContainer { 
+  /* position: absolute; */
+  height:50px;
+  border:0;
+  height:100%;
+  padding:30px;
+  border-radius:20px;
+} 
+
 
 section .landing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 20px; 
+    grid-column-gap: 20px; 
 }
 
 section .login { 
