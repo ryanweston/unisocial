@@ -1,24 +1,23 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER } from './types';
 import axios from 'axios';
 
-export const login = ({ email, password }) => async dispatch => {
-    const body = {
-        email,
-        password,
-    }
-
+export const login = (loginInfo) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
+    console.log('Request made');
 
     try {
-        const res = await axios.post('/api/auth', body, config);
+        console.log('Login info before send' + loginInfo)
+        const res = await axios.post('/api/auth', loginInfo, config);
         const returned = res.data;
+        console.log('Login successful')
         dispatch(loginSuccess(returned));
+        dispatch(getUser());
     } catch (err) {
-        console.log(err);
+        dispatch(loginFailure(err));
     }
 }
 
@@ -31,3 +30,35 @@ export const loginFailure = (error) => ({
     type: LOGIN_FAILURE,
     payload: error
 })
+
+
+//Sent to recieve the users information, token is sent through headers attached by functon
+//that runs constantly during the application session, checking against the token from local storage
+//and appending it to every header request to API. 
+// @ return -> users: name, email, university
+export const getUser = () => async dispatch => {
+    try {
+        console.log('Getting user')
+        const res = await axios.get('/api/auth');
+        dispatch({
+            type: GET_USER,
+            payload: res.data
+        })
+    } catch (err) {
+        console.log(err.response.data)
+    }
+}
+
+
+//Sets authentication token pushed into state through login/register (occurs in store) to headers, 
+//enabling requests to private routes with auth middleware
+export const setHeader = (token) => {
+    if (token) {
+        console.log('Header set with: ' + token);
+        axios.defaults.headers.common['x-auth-token'] = token;
+        localStorage.setItem('token', token);
+    } else if (!token) {
+        delete axios.defaults.headers.common['x-auth-token'];
+        localStorage.removeItem('token');
+    }
+}

@@ -1,5 +1,6 @@
 import { REGISTER_SUCCESS, REGISTER_FAILURE } from './types';
 import axios from 'axios';
+import { getUser } from './login';
 
 export const register = (formData) => async dispatch => {
     const body = JSON.stringify(formData);
@@ -14,6 +15,7 @@ export const register = (formData) => async dispatch => {
         const res = await axios.post('api/users', body, config);
         console.log(res.data)
         dispatch(registerSuccess(res.data));
+        dispatch(getUser(res.data));
     }
     catch (err) {
         console.log(err.response.data)
@@ -31,8 +33,3 @@ export const registerFailure = (error) => ({
     payload: error
 })
 
-export const loginUser = (userDetails) => {
-
-}
-
-// export const getUser = 

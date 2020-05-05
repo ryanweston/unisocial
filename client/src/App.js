@@ -9,15 +9,22 @@ import Alert from './components/template/Alert';
 import { Provider } from 'react-redux';
 import store from './store';
 import { fetchUni } from './actions/university';
+import { setHeader, getUser } from './actions/login';
 import './App.css';
-
-
-
 
 const App = () => {
   //Runs university fetch on app initialisation
   //Prevents the request being made repeatedly due to other state changes within Landpage
-  useEffect(() => { store.dispatch(fetchUni()); console.log('run') }, []);
+  useEffect(() => {
+    store.dispatch(fetchUni());
+    console.log('App component rendered.');
+    //Sets headers for request, enables ability to fetch user
+    setHeader(localStorage.getItem('token'));
+    store.dispatch(getUser()).then(
+    )
+  }, []);
+
+
   return (<Provider store={store}>
     <Router>
       <Fragment>

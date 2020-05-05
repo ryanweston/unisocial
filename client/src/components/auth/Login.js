@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+import { connect } from 'react-redux'
+import { login } from '../../actions/login';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ login }) => {
+
+    console.log(localStorage);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -14,18 +18,11 @@ const Login = () => {
 
     async function loginSubmit(e) {
         e.preventDefault();
-        const config = {
-            withCredentials: true
-        }
-        const body = {
+        const loginUser = {
             email,
             password
         }
-        console.log(body);
-        try {
-            const res = await axios.post('api/auth', body, config);
-            console.log(res.data);
-        } catch (err) { }
+        login(loginUser);
     }
 
     return (
@@ -41,4 +38,8 @@ const Login = () => {
     )
 }
 
-export default Login;
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+}
+
+export default connect(null, { login })(Login);
