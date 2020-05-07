@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 const config = require('config');
+//Secret site key to acces google API for captcha
+const captchaKey = config.get('captchaKey');
 const { check, validationResult } = require('express-validator');
 
 const user = require('../../models/User');
@@ -43,9 +45,30 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+
+    const { email, password, captcha } = req.body;
 
     try {
+
+      console.log
+      if (captcha === undefined ||
+        captcha === '' ||
+        captcha === null) {
+        return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
+      }
+
+      const googleApi = `https://www.google.com/recaptcha/api/siteverify?secret=${captchaKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
+
+      request(googleApi, (err, response, body) => {
+        body = JSON.parse(body);
+        console.log('google api request recieved:' + body);
+
+        if (!body.success) {
+          return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
+        }
+      });
+
+
       let user = await User.findOne({ email });
 
       if (!user) {

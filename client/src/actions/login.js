@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER, LOGOUT_USER } from './types';
 import axios from 'axios';
 
 export const login = (loginInfo) => async dispatch => {
@@ -10,12 +10,14 @@ export const login = (loginInfo) => async dispatch => {
     console.log('Request made');
 
     try {
-        console.log('Login info before send' + loginInfo)
+        console.log('Login info before send' + loginInfo);
         const res = await axios.post('/api/auth', loginInfo, config);
         const returned = res.data;
-        console.log('Login successful')
-        dispatch(loginSuccess(returned));
-        dispatch(getUser());
+        console.log(returned);
+        if (returned.success) {
+            dispatch(loginSuccess(returned));
+            dispatch(getUser());
+        }
     } catch (err) {
         dispatch(loginFailure(err));
     }
@@ -62,3 +64,12 @@ export const setHeader = (token) => {
         localStorage.removeItem('token');
     }
 }
+
+export const logout = () => dispatch => {
+    dispatch(logoutUser());
+    console.log('initiating dispatch');
+}
+
+export const logoutUser = () => ({
+    type: LOGOUT_USER
+})

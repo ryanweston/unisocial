@@ -8,3 +8,4 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const GET_USER = 'GET_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
