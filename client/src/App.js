@@ -4,6 +4,7 @@ import Nav from './components/template/Nav';
 import Landpage from './components/template/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from './components/auth/Dashboard';
 import Alert from './components/template/Alert';
 //Redux imports
 import { Provider } from 'react-redux';
@@ -20,8 +21,7 @@ const App = () => {
     console.log('App component rendered.');
     //Sets headers for request, enables ability to fetch user
     setHeader(localStorage.getItem('token'));
-    store.dispatch(getUser()).then(
-    )
+    store.dispatch(getUser())
   }, []);
 
 
@@ -36,6 +36,7 @@ const App = () => {
             <Route exact path="/" component={Landpage} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </section>
       </Fragment>

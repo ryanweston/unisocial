@@ -14,7 +14,7 @@ const Nav = (props) => {
                 <li><Link to='/'>Home</Link></li>
                 {(!props.loading && props.isAuthenticated ? (
                     <Fragment>
-                        <li><Link to='/profile'>Profile</Link></li>
+                        <li><Link to='/dashboard'>Profile</Link></li>
                         <li><Link to='/' onClick={props.logout}>Logout</Link></li>
                     </Fragment>
                 ) : (
@@ -36,10 +36,8 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps =
-
-    Nav.protoType = {
-        logout: PropTypes.func.isRequired
-    }
+Nav.protoType = {
+    logout: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, { logout })(Nav); 

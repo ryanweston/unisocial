@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 //Define Routes, allows cleaner infrastructure of files & relative schemas
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/dashboard', require('./routes/api/dashboard'));
 app.use('/api/reviews', require('./routes/api/reviews'));
 app.use('/api/university', require('./routes/api/university'));
 
