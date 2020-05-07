@@ -16,11 +16,14 @@ const Login = ({ login }) => {
 
     const changeState = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
+    const captcha = document.querySelector('#g-recaptcha-response').value;
+
     async function loginSubmit(e) {
         e.preventDefault();
         const loginUser = {
             email,
-            password
+            password,
+            captcha
         }
         login(loginUser);
     }
@@ -32,6 +35,7 @@ const Login = ({ login }) => {
                 <input name="email" type="email" onChange={(e) => changeState(e)} />
                 <label>Password</label>
                 <input name="password" type="password" onChange={(e) => changeState(e)} />
+                <div className="g-recaptcha" data-sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"></div>
                 <input type="submit" />
             </form>
         </section>

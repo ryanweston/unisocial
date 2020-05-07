@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout } from '../../actions/login';
+import PropTypes from 'prop-types';
 
 
 const Nav = (props) => {
@@ -10,10 +12,10 @@ const Nav = (props) => {
             <ul>
 
                 <li><Link to='/'>Home</Link></li>
-                {(!props.loading || props.isAuthenticated ? (
+                {(!props.loading && props.isAuthenticated ? (
                     <Fragment>
                         <li><Link to='/profile'>Profile</Link></li>
-                        <li><Link to='/logout'>Logout</Link></li>
+                        <li><Link to='/' onClick={props.logout}>Logout</Link></li>
                     </Fragment>
                 ) : (
                         <Fragment>
@@ -33,4 +35,11 @@ const mapStateToProps = state => {
         isAuthenticated: state.register.isAuthenticated
     }
 }
-export default connect(mapStateToProps)(Nav); 
+
+const mapDispatchToProps =
+
+    Nav.protoType = {
+        logout: PropTypes.func.isRequired
+    }
+
+export default connect(mapStateToProps, { logout })(Nav); 
