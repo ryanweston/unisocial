@@ -1,16 +1,15 @@
 const connectDB = require('./config/db');
 const express = require('express');
-const cookieParser = require('cookie-parser');
-
 const app = express();
 
 // Connect Database
 connectDB();
 
-// init Middleware (express-validator)
-app.use(express.json({ extended: false }));
-app.use(cookieParser());
-
+// Middleware (body-parser packaged in express), that formats req.body from post requests to json
+// .JSON(): Parses incoming request object as JSON
+app.use(express.json());
+// .URLENCODED: If strings or arrays as request object, parses them
+app.use(express.urlencoded({ extended: false }));
 
 //Define Routes, allows cleaner infrastructure of files & relative schemas
 app.use('/api/users', require('./routes/api/users'));
@@ -19,7 +18,7 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/reviews', require('./routes/api/reviews'));
 app.use('/api/university', require('./routes/api/university'));
 
-//3000 is dev port, process.env.port is used by heroku for deployment
+//5000 is dev port, process.env.port is used by heroku for deployment
 const PORT = process.env.PORT || 5000;
 
 // Listening for requests on port variable
