@@ -48,9 +48,11 @@ const Landpage = (props) => {
                     <section className="landing">
                         {props.universities[0].map((obj, index) => {
                             return <button className="universityContainer" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
-                                <div className="name" key={obj._id}>{obj.name}</div>
+                                <div className="name" key={obj._id}>
+                                    <p>{obj.name}</p>
+                                </div>
                                 {obj.scores.map((points) => {
-                                    return <div className="points" key={index}> {points.total} </div>
+                                    return <div className="points" key={index}> <b>{points.total.toFixed(2)}</b> </div>
                                 }
                                 )}
                             </button>

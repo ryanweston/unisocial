@@ -11,16 +11,16 @@ const Nav = (props) => {
         <nav className="navbar">
             <ul>
 
-                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/'>HOME</Link></li>
                 {(!props.loading && props.isAuthenticated ? (
                     <Fragment>
-                        <li><Link to='/dashboard'>Profile</Link></li>
-                        <li><Link to='/' onClick={props.logout}>Logout</Link></li>
+                        <li><Link to='/dashboard'>DASHBOARD</Link></li>
+                        <li><Link to='/' onClick={props.logout}>LOGOUT</Link></li>
                     </Fragment>
                 ) : (
                         <Fragment>
-                            <li><Link to='/register'>Register</Link></li>
-                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/register'>REGISTER</Link></li>
+                            <li><Link to='/login'>LOGIN</Link></li>
                         </Fragment>
                     ))}
             </ul>
