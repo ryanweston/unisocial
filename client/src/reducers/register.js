@@ -3,7 +3,8 @@ import {
     REGISTER_FAILURE,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    GET_USER
+    GET_USER,
+    LOGOUT_USER
 } from '../actions/types';
 
 //Fetches token to mainatain session, store.js deals with issue of having no token and will check 
@@ -40,8 +41,8 @@ export default function (state = initialState, actions) {
             return {
                 ...state,
                 ...payload,
-                isAuthenticated: true,
-                loading: false
+                isAuthenticated: false,
+                loading: true,
             }
         case LOGIN_FAILURE:
             localStorage.removeItem('token');
@@ -61,6 +62,16 @@ export default function (state = initialState, actions) {
                     id: payload._id,
                     name: payload.name,
                 }
+            }
+
+        case LOGOUT_USER:
+            localStorage.removeItem('token');
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                user: {}
             }
         default:
             return state;
