@@ -4,9 +4,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 const config = require('config');
+const request = require('request');
+var rp = require('request-promise');
 //Secret site key to acces google API for captcha
 const captchaKey = config.get('captchaKey');
+// var Recaptcha = require('express-recaptcha').RecaptchaV2;
 const { check, validationResult } = require('express-validator');
+
 
 const user = require('../../models/User');
 
@@ -47,10 +51,10 @@ router.post(
 
 
     const { email, password, captcha } = req.body;
+    var captchaSuccess = false;
 
     try {
-
-      console.log
+      //If response is empty, means captcha wasn't complete
       if (captcha === undefined ||
         captcha === '' ||
         captcha === null) {
@@ -59,14 +63,28 @@ router.post(
 
       const googleApi = `https://www.google.com/recaptcha/api/siteverify?secret=${captchaKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
 
-      request(googleApi, (err, response, body) => {
-        body = JSON.parse(body);
-        console.log('google api request recieved:' + body);
+      var options = {
+        method: 'POST',
+        uri: googleApi,
+        json: true // Automatically stringifies the body to JSON
+      };
 
-        if (!body.success) {
-          return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
-        }
-      });
+      // request(googleApi, (err, response, body) => {
+      //   body = JSON.parse(body);
+      //   console.log(body);
+
+      //   if (!body.success) {
+      //     return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
+      //   } else {
+
+      //     captchaSuccess = true;
+      //     console.log(captchaSuccess);
+      //   }
+      // }
+
+      const googleReq = await rp(options);
+
+      console.log(googleReq);
 
 
       let user = await User.findOne({ email });
@@ -98,7 +116,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json([{ token }, { 'success': googleReq.success }]);
         }
       );
     } catch (err) {

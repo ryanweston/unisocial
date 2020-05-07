@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, onChange } from 'react'
 import { connect } from 'react-redux'
 import { login } from '../../actions/login';
 import PropTypes from 'prop-types';
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Login = ({ login }) => {
 
@@ -16,10 +17,15 @@ const Login = ({ login }) => {
 
     const changeState = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
-    const captcha = document.querySelector('#g-recaptcha-response').value;
+    // const captcha = document.querySelector('#g-recaptcha-response').value;
+    const recaptchaRef = React.createRef();
 
     async function loginSubmit(e) {
         e.preventDefault();
+
+        const captcha = recaptchaRef.current.getValue();
+        console.log(captcha);
+
         const loginUser = {
             email,
             password,
@@ -35,7 +41,11 @@ const Login = ({ login }) => {
                 <input name="email" type="email" onChange={(e) => changeState(e)} />
                 <label>Password</label>
                 <input name="password" type="password" onChange={(e) => changeState(e)} />
-                <div className="g-recaptcha" data-sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"></div>
+                <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"
+                    onChange={onChange}
+                />
                 <input type="submit" />
             </form>
         </section>

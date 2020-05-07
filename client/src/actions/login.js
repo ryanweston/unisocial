@@ -14,8 +14,8 @@ export const login = (loginInfo) => async dispatch => {
         const res = await axios.post('/api/auth', loginInfo, config);
         const returned = res.data;
         console.log(returned);
-        if (returned.success) {
-            dispatch(loginSuccess(returned));
+        if (returned[1].success) {
+            dispatch(loginSuccess(returned[0]));
             dispatch(getUser());
         }
     } catch (err) {

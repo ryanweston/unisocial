@@ -20,7 +20,6 @@ export default function (state = initialState, actions) {
 
     switch (type) {
         case REGISTER_FAILURE:
-            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
@@ -28,16 +27,14 @@ export default function (state = initialState, actions) {
                 loading: false,
             }
         case REGISTER_SUCCESS:
-            console.log(payload.token);
-            localStorage.setItem('token', payload.token);
             return {
                 ...state,
-                ...payload,
+                ...payload.token,
                 isAuthenticated: true,
                 loading: false,
             }
         case LOGIN_SUCCESS:
-            localStorage.setItem('token', payload.token)
+
             return {
                 ...state,
                 ...payload,
@@ -45,7 +42,6 @@ export default function (state = initialState, actions) {
                 loading: true,
             }
         case LOGIN_FAILURE:
-            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
@@ -65,7 +61,6 @@ export default function (state = initialState, actions) {
             }
 
         case LOGOUT_USER:
-            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
