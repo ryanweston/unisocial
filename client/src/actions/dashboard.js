@@ -1,4 +1,4 @@
-import { GET_USER_INFO, POST_SUCCESS, POST_FAILURE, POST_BEGIN } from './types';
+import { GET_USER_INFO, POST_SUCCESS, POST_FAILURE, POST_BEGIN, DELETE_REVIEW } from './types';
 import axios from 'axios';
 
 export const getUserInfo = () => async dispatch => {
@@ -27,7 +27,7 @@ export const postReview = (scores) => async dispatch => {
         console.log(res.data);
         dispatch(postSuccess(res.data));
     } catch (err) {
-        console.log(err.response.data.errors)
+        console.log(err.response.data.errors);
         dispatch(postFailure(err.response.data.errors));
     }
 }
@@ -45,3 +45,16 @@ export const postFailure = (error) => ({
     type: POST_FAILURE,
     payload: error
 })
+
+
+export const deleteReview = () => async dispatch => {
+    try {
+        const res = await axios.delete('/api/reviews');
+        dispatch({
+            type: DELETE_REVIEW,
+        });
+        console.log('Review deleted');
+    } catch (err) {
+        console.log(err.response.data.errors);
+    }
+}

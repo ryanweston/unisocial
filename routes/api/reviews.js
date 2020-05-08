@@ -72,7 +72,7 @@ router.post('/', auth, async (req, res) => {
       },
     ]);
 
-    res.json(universityName.name + ' review submitted and aggregated');
+    return res.json(universityName.name + ' review submitted and aggregated');
 
   } catch (err) {
     console.error(err.message);
@@ -87,11 +87,29 @@ router.post('/', auth, async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const reviews = await University.find().sort({ "scores.total": -1 });
-    res.json({ reviews });
+    return res.json({ reviews });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
+
+router.delete('/', auth, async (req, res) => {
+  try {
+    console.log(req.user.id);
+    const userReview = await Review.findOne({ user_id: req.user.id });
+
+    if (!userReview) {
+      return res.status(400).json({ msg: 'You do not have a review to delete.' })
+    }
+
+    await Review.findOneAndDelete(userReview.id)
+
+    return res.json({ msg: 'Review deleted.' })
+
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
+})
 
 module.exports = router;

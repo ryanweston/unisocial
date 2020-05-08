@@ -11,14 +11,17 @@ const University = require('../../models/University');
 router.get('/', auth, async (req, res) => {
   try {
     console.log('Running dashboard');
+    // Fetches user information
     const userRequest = await User.findById(req.user.id);
+    // Fetches university information based on user's university
     const uniName = await University.findById(userRequest.university).select('name');
 
-    console.log(uniName);
-
+    // console.log(uniName);
+    // Finds the user's review for their university, simple findOne as user is only
+    // permitted to one review
     let userReview = await Review.findOne({ user_id: req.user.id });
 
-
+    //Sets review to false if no review to adjust display on frontend
     if (!userReview) {
       userReview = false;
     }
@@ -33,7 +36,7 @@ router.get('/', auth, async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(400)
-      .json({ errors: [{ msg: err }] });
+      .json({ errors: [{ msg: 'Server error, possibly invalid session' }] });
   }
 });
 

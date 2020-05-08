@@ -1,9 +1,8 @@
 import React, { useEffect, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/dashboard';
 import PropTypes from 'prop-types';
-import Review from './Review';
+import ViewReview from './ViewReview';
 
 const Dashboard = ({ getUserInfo, user, auth }) => {
 
@@ -12,40 +11,21 @@ const Dashboard = ({ getUserInfo, user, auth }) => {
         if (auth.loading === false) {
             getUserInfo()
         }
-    }, [getUserInfo, auth.loading])
-
-    // console.log(user.review.scores.internet);
+    }, [getUserInfo, auth.loading]);
 
     return (
         <Fragment>
             {(user.loading && auth.loading ? (<div>
                 <h1>LOADING...</h1>
-            </div>
-            ) : (<div>
+            </div>) : (<div>
                 <h1>Profile Information:</h1>
                 <p>{auth.user.name}</p>
                 <p>{user.email}</p>
                 <p>{user.university}</p>
-            </div>
-                ))}
+                <ViewReview review={user.review} />
+            </div>))}
             <br />
-            {(!user.review ? (<Link to="/submit">
-                <button><h1>Submit a review</h1></button>
-            </Link>) : (<Fragment>
-
-                <h1>Your current review:</h1>
-                <Review scores={user.review.scores} />
-                <Link to="/submit">
-                    <button><h1>Edit review</h1></button>
-                </Link>
-                <br />
-                <Link to="/submit">
-                    <button><h1>Delete Review</h1></button>
-                </Link>
-            </Fragment>))}
-
         </Fragment>
-
     )
 }
 
@@ -60,6 +40,7 @@ const mapStateToProps = state => {
 
 Dashboard.propTypes = {
     getUserInfo: PropTypes.func.isRequired,
+    // deleteReview: PropTypes.func.isRequired,
 }
 
 
