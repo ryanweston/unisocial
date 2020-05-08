@@ -52,7 +52,7 @@ const Landpage = (props) => {
                                     <p>{obj.name}</p>
                                 </div>
                                 {obj.scores.map((points) => {
-                                    return <div className="points" key={index}> <b>{points.total.toFixed(2)}</b> </div>
+                                    return <div className="points" key={index}> <b>{points.total.toFixed(2)} / 5</b> </div>
                                 }
                                 )}
                             </button>
