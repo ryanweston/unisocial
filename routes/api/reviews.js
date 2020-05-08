@@ -16,24 +16,22 @@ router.post('/', auth, async (req, res) => {
 
     // Check if user already has a saved review.
     // find() returns array as opposed to findOne which returns a string, hence .length check
-    // const reviewStatus = await Review.find({ user_id: user.id });
+    const reviewStatus = await Review.find({ user_id: user.id });
 
-    // if (reviewStatus.length) {
-    //   return res
-    //     .status(400)
-    //     .json({ errors: [{ msg: 'You have already submitted a review' }] });
-    // }
+    if (reviewStatus.length) {
+      return res.status(400)
+        .json({ errors: [{ msg: 'You have already submitted a review' }] });
+    }
 
     const review = new Review({
       university: user.university,
       user_id: user.id,
-      scores: [
-        {
-          internet: req.body.scores.internet,
-          happiness: req.body.scores.happiness,
-          nightlife: req.body.scores.nightlife,
-        },
-      ],
+      scores:
+      {
+        internet: req.body.scores.internet,
+        happiness: req.body.scores.happiness,
+        nightlife: req.body.scores.nightlife,
+      },
     });
 
     await review.save();

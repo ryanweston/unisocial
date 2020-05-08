@@ -12,14 +12,6 @@ export const fetchUni = dispatch => {
                 console.log('Successfully fetched reviews.');
             })
             .catch(error => console.log(error));
-
-        // const string = JSON.stringify(res.data.reviews);
-        //     const reviews = JSON.parse(string);
-        //     dispatch(fetchUniSuccess(reviews));
-        //     console.log('success');
-        // } catch (err) {
-        //     dispatch(fetchUniFailure(err));
-        // }
     };
 }
 

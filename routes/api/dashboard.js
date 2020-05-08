@@ -16,8 +16,12 @@ router.get('/', auth, async (req, res) => {
 
     console.log(uniName);
 
-    const userReview = await Review.findOne({ user_id: req.user.id });
-    console.log('User review: ' + userReview);
+    let userReview = await Review.findOne({ user_id: req.user.id });
+
+
+    if (!userReview) {
+      userReview = false;
+    }
 
     const user = {
       email: userRequest.email,
@@ -27,7 +31,9 @@ router.get('/', auth, async (req, res) => {
 
     res.json({ user });
   } catch (err) {
-    res.json({ msg: err });
+    console.log(err);
+    return res.status(400)
+      .json({ errors: [{ msg: err }] });
   }
 });
 

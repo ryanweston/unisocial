@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { postReview } from '../../actions/dashboard';
+import { Redirect } from 'react-router-dom';
 
-const SubmitReview = () => {
+const SubmitReview = ({ postReview, submission }) => {
 
     const [formData, setFormData] = useState({
         internet: null,
@@ -20,20 +23,41 @@ const SubmitReview = () => {
             e.target.className = 'green'
         }
     }
-    console.log(formData.nightlife);
+
+    console.log(formData);
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        const data = formData;
+        postReview(formData);
+    }
 
     return (
-        <form>
-            <label>🌎 Internet:</label>
-            <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-            <label>🍻 Nightlife:</label>
-            <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-            <label>😆 Happiness</label>
-            <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-            <br />
-            <input type="submit" />
-        </form>
+        <Fragment>
+            {(submission.success ? (<Fragment>
+                <h1>Submission Successful</h1>
+
+            </Fragment>) : (<div>
+                <form onSubmit={e => onSubmit(e)}>
+                    <label>🌎 Internet:</label>
+                    <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                    <label>🍻 Nightlife:</label>
+                    <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                    <label>😆 Happiness</label>
+                    <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                    <br />
+                    <input type="submit" />
+                </form>
+            </div>))}
+        </Fragment>
     )
 }
 
-export default SubmitReview;
+const mapStateToProps = state => {
+    return {
+        submission: state.dashboard.submission
+    }
+}
+
+export default connect(mapStateToProps, { postReview })(SubmitReview);

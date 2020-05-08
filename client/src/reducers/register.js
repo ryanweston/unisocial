@@ -29,7 +29,7 @@ export default function (state = initialState, actions) {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                ...payload.token,
+                ...payload,
                 isAuthenticated: true,
                 loading: false,
             }
@@ -66,7 +66,7 @@ export default function (state = initialState, actions) {
                 token: null,
                 isAuthenticated: false,
                 loading: false,
-                user: {}
+                user: null,
             }
         default:
             return state;

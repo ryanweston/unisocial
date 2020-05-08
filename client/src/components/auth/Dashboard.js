@@ -14,7 +14,7 @@ const Dashboard = ({ getUserInfo, user, auth }) => {
         }
     }, [getUserInfo, auth.loading])
 
-    // console.log(props.userReview);
+    // console.log(user.review.scores.internet);
 
     return (
         <Fragment>
@@ -26,14 +26,24 @@ const Dashboard = ({ getUserInfo, user, auth }) => {
                 <p>{auth.user.name}</p>
                 <p>{user.email}</p>
                 <p>{user.university}</p>
-                <h1>Your current review:</h1>
-                <Review scores={user.review} />
             </div>
                 ))}
             <br />
-            <Link to="/submit">
+            {(!user.review ? (<Link to="/submit">
                 <button><h1>Submit a review</h1></button>
-            </Link>
+            </Link>) : (<Fragment>
+
+                <h1>Your current review:</h1>
+                <Review scores={user.review.scores} />
+                <Link to="/submit">
+                    <button><h1>Edit review</h1></button>
+                </Link>
+                <br />
+                <Link to="/submit">
+                    <button><h1>Delete Review</h1></button>
+                </Link>
+            </Fragment>))}
+
         </Fragment>
 
     )

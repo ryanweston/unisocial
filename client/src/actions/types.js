@@ -10,3 +10,6 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_USER = 'GET_USER';
 export const GET_USER_INFO = 'GET_USER_INFO';
+export const POST_BEGIN = 'POST_BEGIN';
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const POST_FAILURE = 'POST_FAILURE';

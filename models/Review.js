@@ -11,19 +11,17 @@ const ReviewSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  scores: [
-    {
-      internet: {
-        type: Number,
-      },
-      happiness: {
-        type: Number,
-      },
-      nightlife: {
-        type: Number,
-      },
+  scores: {
+    internet: {
+      type: Number,
     },
-  ],
+    happiness: {
+      type: Number,
+    },
+    nightlife: {
+      type: Number,
+    },
+  },
   date: {
     type: Date,
     default: Date.now,
