@@ -4,6 +4,29 @@ body { font-family:urbane-rounded,sans-serif;margin: 0; padding:0; overflow-x:hi
   color: #17c37b;
 }
 
+.default { 
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  background: grey;
+}
+
+.green { 
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: green;
+}
+
+.orange { 
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  background: orange;
+}
+
+.red { 
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  background: red;
+}
 
 .overlay {  
   position:fixed;

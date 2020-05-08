@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/dashboard';
 import PropTypes from 'prop-types';
@@ -30,7 +31,9 @@ const Dashboard = ({ getUserInfo, user, auth }) => {
             </div>
                 ))}
             <br />
-            <button><h1>Submit a review</h1></button>
+            <Link to="/submit">
+                <button><h1>Submit a review</h1></button>
+            </Link>
         </Fragment>
 
     )
