@@ -6,6 +6,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const University = require('../../models/University');
 
 // @route    POST api/users
 // @desc     Register User
@@ -44,6 +45,31 @@ router.post(
         return res
           .status(400)
           .json({ errors: [{ msg: 'User already exists' }] });
+      }
+
+      let uniFind = await University.findById(university).select('domain');
+      uniFind = uniFind.domain;
+
+      const emailVerify = (email, domain) => {
+        //Removes "http://www." from the beginning of stored domain name string
+        const regex = /^(https?|ftp):\/\/www./;
+        const removeHeaders = domain.replace(regex, '');
+        //Removes "/" from the end of the string
+        const uniDomain = removeHeaders.substring(0, removeHeaders.length - 1);
+        console.log(uniDomain);
+        return email.endsWith(uniDomain);
+      }
+
+      const validStudent = emailVerify(email, uniFind);
+
+      console.log(validStudent);
+
+
+      if (validStudent === false) {
+        console.log(validStudent + ':' + ' Not correct email for university');
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Please enter your student email' }] });
       }
 
       user = new User({
