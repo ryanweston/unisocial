@@ -20,10 +20,10 @@ const user = require('../../models/User');
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
-    res.json(user);
+    return res.json(user);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('Server Error');
+    return res.status(500).json({ msg: 'Account is not authenticated' })
   }
 });
 
@@ -69,22 +69,13 @@ router.post(
         json: true // Automatically stringifies the body to JSON
       };
 
-      // request(googleApi, (err, response, body) => {
-      //   body = JSON.parse(body);
-      //   console.log(body);
-
-      //   if (!body.success) {
-      //     return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
-      //   } else {
-
-      //     captchaSuccess = true;
-      //     console.log(captchaSuccess);
-      //   }
-      // }
-
       const googleReq = await rp(options);
 
-      console.log(googleReq);
+      if (googleReq.success === false) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Captcha failed, refresh page and try again' }] });
+      }
 
 
       let user = await User.findOne({ email });
@@ -93,7 +84,7 @@ router.post(
         // Uses errors to maintain consistancy in error messaging with validation checks
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid credentials' }] });
+          .json({ errors: [{ msg: 'No user exists with this email' }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -122,9 +113,18 @@ router.post(
     } catch (err) {
       //Error will be server issue if caught
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).json({})
     }
   }
 );
+
+router.delete('/', auth, async (req, res) => {
+  try {
+    await User.findOneAndDelete(req.user.id);
+    return res.json({ msg: 'Account successfully deleted' });
+  } catch (err) {
+    return res.status(400).json({ msg: 'Error in deleting your account' });
+  }
+})
 
 module.exports = router;

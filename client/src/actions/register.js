@@ -1,6 +1,7 @@
 import { REGISTER_SUCCESS, REGISTER_FAILURE } from './types';
 import axios from 'axios';
 import { getUser } from './login';
+import { setAlert } from './alert';
 
 export const register = (formData) => async dispatch => {
     const body = JSON.stringify(formData);
@@ -18,7 +19,12 @@ export const register = (formData) => async dispatch => {
         dispatch(getUser(res.data));
     }
     catch (err) {
-        console.log(err.response.data)
+        const errorArray = err.response.data.errors;
+
+        if (errorArray) {
+            errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
+        }
+
         dispatch(registerFailure(err.response.data))
     }
 }

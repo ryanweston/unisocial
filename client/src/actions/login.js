@@ -1,4 +1,6 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER, LOGOUT_USER } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER, LOGOUT_USER, DELETE_USER } from './types';
+import { deleteReview } from './dashboard';
+import { setAlert } from './alert';
 import axios from 'axios';
 
 export const login = (loginInfo) => async dispatch => {
@@ -19,7 +21,12 @@ export const login = (loginInfo) => async dispatch => {
             dispatch(getUser());
         }
     } catch (err) {
-        dispatch(loginFailure(err));
+        const errorArray = err.response.data.errors;
+
+        if (errorArray) {
+            errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
+        }
+        // dispatch(loginFailure(err));
     }
 }
 
@@ -33,6 +40,21 @@ export const loginFailure = (error) => ({
     payload: error
 })
 
+export const deleteUser = (option) => async dispatch => {
+    try {
+        if (option === true) {
+            dispatch(deleteReview());
+        }
+        const res = axios.delete('/api/auth');
+        dispatch(logout());
+        dispatch({
+            type: DELETE_USER
+        })
+    } catch (err) {
+        console.log(err.response.data);
+    }
+}
+
 
 //Sent to recieve the users information, token is sent through headers attached by functon
 //that runs constantly during the application session, checking against the token from local storage
@@ -40,17 +62,27 @@ export const loginFailure = (error) => ({
 // @ return -> users: name, email, university
 export const getUser = () => async dispatch => {
     try {
-        console.log('Getting user')
+        console.log('Getting user');
         const res = await axios.get('/api/auth');
         dispatch({
             type: GET_USER,
             payload: res.data
         })
     } catch (err) {
-        console.log(err.response.data)
+        //Logs user out if user returns as having no authentication or if account no longer
+        //exits, account deletion is example.
+        dispatch(logout());
     }
 }
 
+export const logout = () => dispatch => {
+    dispatch(logoutUser());
+    console.log('initiating dispatch');
+}
+
+export const logoutUser = () => ({
+    type: LOGOUT_USER
+})
 
 //Sets authentication token pushed into state through login/register (occurs in store) to headers, 
 //enabling requests to private routes with auth middleware
@@ -64,12 +96,3 @@ export const setHeader = (token) => {
         localStorage.removeItem('token');
     }
 }
-
-export const logout = () => dispatch => {
-    dispatch(logoutUser());
-    console.log('initiating dispatch');
-}
-
-export const logoutUser = () => ({
-    type: LOGOUT_USER
-})

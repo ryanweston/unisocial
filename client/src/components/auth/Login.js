@@ -1,4 +1,5 @@
 import React, { useState, onChange, Fragment } from 'react'
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { login } from '../../actions/login';
 import PropTypes from 'prop-types';
@@ -38,6 +39,7 @@ const Login = ({ login, auth, loading }) => {
         <Fragment>
             {(auth && !loading ? (<div>
                 <h1>You're already logged in!</h1>
+                <Redirect to='/dashboard' />
             </div>) : (<section className="login" onSubmit={e => loginSubmit(e)}>
                 <form>
                     <label>Email</label>

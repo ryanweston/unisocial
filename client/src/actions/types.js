@@ -14,3 +14,4 @@ export const POST_BEGIN = 'POST_BEGIN';
 export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_FAILURE = 'POST_FAILURE';
 export const DELETE_REVIEW = 'DELETE_REVIEW';
+export const DELETE_USER = 'DELETE_USER';

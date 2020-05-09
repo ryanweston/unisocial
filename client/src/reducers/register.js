@@ -4,7 +4,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     GET_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    DELETE_USER
 } from '../actions/types';
 
 //Fetches token to mainatain session, store.js deals with issue of having no token and will check 
@@ -59,7 +60,7 @@ export default function (state = initialState, actions) {
                     name: payload.name,
                 }
             }
-
+        case DELETE_USER:
         case LOGOUT_USER:
             return {
                 ...state,

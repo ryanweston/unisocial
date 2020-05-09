@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import UniversityList from './UniversityList';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/register';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, universities, loading, register }) => {
+const Register = ({ setAlert, universities, loading, register, auth }) => {
     // use state initialises objects default format. hook runs function on the given object
     const [formData, setFormData] = useState({
         name: '',
@@ -62,47 +63,49 @@ const Register = ({ setAlert, universities, loading, register }) => {
 
     return (
         <Fragment>
-
-            <h1>Sign Up</h1>
-            <form onSubmit={e => onSubmit(e)}>
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={e => formChange(e)}
-                />
-                <label>Email</label>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={e => formChange(e)}
-                />
-                <label>Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={e => formChange(e)}
-                />
-                <label>Verify Password</label>
-                <input
-                    type="password"
-                    name="passwordConfirm"
-                    placeholder="Verify Password"
-                    value={passwordConfirm}
-                    onChange={e => formChange(e)}
-                />
-                <input type="submit" />
-            </form>
-            {loading || !universities ? (<div>loading...</div>) : (<div>
-                <UniversityList onValueChange={dropdownChange} options={universities[0]} />
-            </div>)
-            }
+            {(auth && !loading ? (<div> <h1>You're already logged in!</h1>
+                <Redirect to='/' /></div>) : (<Fragment>
+                    <h1>Sign Up</h1>
+                    <form onSubmit={e => onSubmit(e)}>
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            value={name}
+                            onChange={e => formChange(e)}
+                        />
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            value={email}
+                            onChange={e => formChange(e)}
+                        />
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={e => formChange(e)}
+                        />
+                        <label>Verify Password</label>
+                        <input
+                            type="password"
+                            name="passwordConfirm"
+                            placeholder="Verify Password"
+                            value={passwordConfirm}
+                            onChange={e => formChange(e)}
+                        />
+                        <input type="submit" />
+                    </form>
+                    {loading || !universities ? (<div>loading...</div>) : (<div>
+                        <UniversityList onValueChange={dropdownChange} options={universities[0]} />
+                    </div>)}
+                </Fragment>
+                ))}
         </Fragment>
     );
 };
@@ -114,6 +117,7 @@ Register.propTypes = {
 
 const mapStatesToProps = state => {
     return {
+        auth: state.register.isAuthenticated,
         universities: state.uniFetch.universities,
         loading: state.uniFetch.loading
     }
