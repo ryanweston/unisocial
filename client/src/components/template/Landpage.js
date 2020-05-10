@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
+import images from './images.js';
 
 
 const Landpage = (props) => {
@@ -28,25 +29,20 @@ const Landpage = (props) => {
 
     console.log(modalInfo);
 
-    // if (!props.loading) {
-    //     const universityCheck = [];
-    //     function universityChecker() {
-    //         for (var i = 0; i < props.universities[0].length; i++) {
-    //             var obj = props.universities[0][i];
-    //             universityCheck.push(obj);
-    //         }
-    //     }
+    if (!props.loading) {
+        const universityCheck = [];
+        function universityChecker() {
+            for (var i = 0; i < props.universities[0].length; i++) {
+                var obj = props.universities[0][i];
+                universityCheck.push(obj);
+            }
+        }
 
-    //     universityChecker();
-    //     if (universityCheck[1]) {
-    //         console.log(universityCheck.sort((a, b) => (a.scores[0].nightlife > b.scores[0].nightlife) ? -1 : 1))
-    //     }
-    //     // console.log(props.universities.sort(compare()))
-    //     // const newData = universityCheck.sort((a, b) => (a.scores[0].nightlife > b.scores[0].nightlife) ? -1 : 1);
-    //     // console.log(universityCheck[0].scores[0].nightlife);
-    //     // universitySort();
-    //     // console.log(universitySort);
-    // }
+        universityChecker();
+        if (universityCheck[1]) {
+            console.log(universityCheck.sort((a, b) => (a.scores.nightlife > b.scores.nightlife) ? -1 : 1))
+        }
+    }
 
 
 
@@ -64,13 +60,15 @@ const Landpage = (props) => {
                     </UniversityView >
                 </Fragment>
                 <div className="header">
-                    <h1>FIND YOUR UNIVERSITY BASED ON SOCIAL SCORES
-& QUALITY OF LIFE FEEDBACK FROM REAL STUDENTS</h1>
+                    <h1>FIND YOUR UNIVERSITY BASED ON SOCIAL SCORE & QUALITY OF LIFE FEEDBACK FROM REAL STUDENTS</h1>
                 </div>
                 < div className="gridContainer" >
                     <section className="landing">
                         {props.universities[0].map((obj, index) => {
+                            const uniImage = images.filter(images => images.id === obj.img);
+                            console.log(uniImage[0].src);
                             return <button className="universityContainer" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                                <img src={uniImage[0].src}></img>
                                 <div className="name" key={obj._id}>
                                     <p>#{index + 1}  {obj.name}</p>
                                 </div>
