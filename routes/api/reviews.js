@@ -53,12 +53,12 @@ router.post('/', auth, async (req, res) => {
       { $set: { lastUpdated: '$$NOW' } },
       {
         $project: {
-          scores: [{
+          scores: {
             internet: '$internet',
             happiness: '$happiness',
             nightlife: '$nightlife',
             total: { $avg: ['$internet', '$happiness', '$nightlife'] },
-          }],
+          },
           lastUpdated: true,
         }
       },

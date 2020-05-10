@@ -15,19 +15,26 @@ const UniversitySchema = new mongoose.Schema({
   lastUpdated: {
     type: Date,
   },
-  scores: [
-    {
-      internet: {
-        type: Number,
-      },
-      happiness: {
-        type: Number,
-      },
-      nightlife: {
-        type: Number,
-      },
+  img: {
+    type: String,
+  },
+  scores: {
+    internet: {
+      type: Number,
+
     },
-  ],
+    happiness: {
+      type: Number,
+
+    },
+    nightlife: {
+      type: Number,
+
+    },
+    total: {
+      type: Number,
+    }
+  },
 });
 
 module.exports = University = mongoose.model('university', UniversitySchema);

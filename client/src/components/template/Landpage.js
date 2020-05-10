@@ -28,6 +28,29 @@ const Landpage = (props) => {
 
     console.log(modalInfo);
 
+    // if (!props.loading) {
+    //     const universityCheck = [];
+    //     function universityChecker() {
+    //         for (var i = 0; i < props.universities[0].length; i++) {
+    //             var obj = props.universities[0][i];
+    //             universityCheck.push(obj);
+    //         }
+    //     }
+
+    //     universityChecker();
+    //     if (universityCheck[1]) {
+    //         console.log(universityCheck.sort((a, b) => (a.scores[0].nightlife > b.scores[0].nightlife) ? -1 : 1))
+    //     }
+    //     // console.log(props.universities.sort(compare()))
+    //     // const newData = universityCheck.sort((a, b) => (a.scores[0].nightlife > b.scores[0].nightlife) ? -1 : 1);
+    //     // console.log(universityCheck[0].scores[0].nightlife);
+    //     // universitySort();
+    //     // console.log(universitySort);
+    // }
+
+
+
+
     return (
 
         //Renders landpage after app level state fetch has been returned
@@ -49,12 +72,9 @@ const Landpage = (props) => {
                         {props.universities[0].map((obj, index) => {
                             return <button className="universityContainer" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
                                 <div className="name" key={obj._id}>
-                                    <p>{obj.name}</p>
+                                    <p>#{index + 1}  {obj.name}</p>
                                 </div>
-                                {obj.scores.map((points) => {
-                                    return <div className="points" key={index}> <b>{points.total.toFixed(2)} / 5</b> </div>
-                                }
-                                )}
+                                <div className="points" key={index}> <b>{obj.scores.total.toFixed(2)} / 5</b> </div>
                             </button>
                         })}
                     </section>

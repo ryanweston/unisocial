@@ -15,14 +15,14 @@ class UniversityView extends React.Component {
                     <h1>{this.props.details.name}</h1>
                     <br />
                     <label>📈 <b>Total:</b></label>
-                    <p>{this.props.details.scores[0].total.toFixed(2)} / 5</p>
+                    <p>{this.props.details.scores.total.toFixed(2)} / 5</p>
                     <div>
                         <label>🍻 Nightlife:</label>
-                        <p>{this.props.details.scores[0].nightlife.toFixed(2)} / 5</p>
+                        <p>{this.props.details.scores.nightlife.toFixed(2)} / 5</p>
                         <label>😆 Happiness</label>
-                        <p>{this.props.details.scores[0].happiness.toFixed(2)} / 5</p>
+                        <p>{this.props.details.scores.happiness.toFixed(2)} / 5</p>
                         <label>🌎 Internet:</label>
-                        <p>{this.props.details.scores[0].internet.toFixed(2)} / 5</p>
+                        <p>{this.props.details.scores.internet.toFixed(2)} / 5</p>
                     </div>
                 </div>
             </Fragment>))

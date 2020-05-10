@@ -13,16 +13,30 @@ router.post('/', async (req, res) => {
         for (i = 0; i < universityList.length; i++) {
             let obj = universityList[i];
 
-            let name = obj.name.split(',', 1)[0];
-            let domain = obj.web_pages[0];
-            let country = obj.country;
+            let name1 = obj.name.split(',', 1)[0];
+            let domain1 = obj.web_pages[0];
+            let country1 = obj.country;
+            // const { internet1, happiness1, nightlife1 } = '1';
+            const internet1 = '0';
+            const happiness1 = '0';
+            const nightlife1 = '0';
+            const total1 = '0';
+            let img1 = "default";
 
             const university = new University({
-                name,
-                domain,
-                country,
-            })
-
+                name: name1,
+                domain: domain1,
+                country: country1,
+                img: img1,
+                scores:
+                {
+                    internet: internet1,
+                    happiness: happiness1,
+                    nightlife: nightlife1,
+                    total: total1,
+                },
+            });
+            university.markModified('scores');
             await university.save();
         }
 
