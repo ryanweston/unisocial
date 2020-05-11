@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
 import images from './images.js';
+import emojis from './emojis.js';
 import SortDropdown from './SortDropdown';
 
 const Landpage = (props) => {
@@ -13,14 +14,14 @@ const Landpage = (props) => {
     })
 
     const [sort, sortSelect] = useState({
-        type: 'total'
+        type: 'total',
+        emoji: '⭐'
     });
 
     const openSelection = (e) => {
         const selected = e.currentTarget.value;
         const data = universityCheck.find(x => x._id === selected);
         handleModalOpen(data);
-        // modalChange({ ...modalInfo, details: data })
     }
 
     const handleModalOpen = (data) => {
@@ -29,10 +30,12 @@ const Landpage = (props) => {
                 modalOpen: !prevState.modalOpen,
                 details: data
             }
+
         })
     }
 
-    const changeSort = (e) => sortSelect({ type: e.target.value })
+    const changeSort = (e) => sortSelect({ type: e.target.value, emoji: e.target.emoji });
+
 
     console.log(modalInfo);
     const universityCheck = [];
@@ -50,13 +53,10 @@ const Landpage = (props) => {
             }
         }
         universityChecker();
-
-
         universityCheck.sort(sortBy(sort.type));
-
     }
 
-    console.log(sort.type);
+    // console.log(modalInfo.modelOpen);
 
     return (
         //Renders landpage after app level state fetch has been returned
@@ -76,21 +76,32 @@ const Landpage = (props) => {
                 <div>
 
                 </div>
-                < div className="gridContainer" >
-                    <section className="landing">
 
-                        {universityCheck.map((obj, index) => {
-                            const uniImage = images.filter(images => images.id === obj.img);
-                            return <button className="universityContainer" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
-                                <img src={uniImage[0].src}></img>
-                                <div className="name" key={obj._id}>
-                                    <p>#{index + 1}  {obj.name}</p>
-                                </div>
-                                <div className="points" key={index}> <b> {sort.type}: {obj.scores.total.toFixed(2)} / 5</b> </div>
-                            </button>
-                        })}
-                    </section>
-                </div >
+                <section className="landing">
+
+                    {universityCheck.map((obj, index) => {
+                        //Returns key and value from images array that matches img id in database
+                        const uniImage = images.filter(images => images.id === obj.img);
+                        //Returns emoji value from array depending on the sort type
+                        const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
+                        console.log(dataEmoji[0].emoji)
+
+                        return <button className="landingButton" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                            <div className="ranking"><p>#{index + 1}</p></div>
+                            <div className="content" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
+                            </div>
+
+                            <div className="text">
+                                <div className="name"> <h1>{obj.name}</h1></div>
+                                <div className="score"><p>{dataEmoji[0].emoji} {obj.scores[sort.type].toFixed(2)} / 5</p></div>
+                            </div>
+
+
+                        </button>
+
+                    })}
+                </section>
+
             </Fragment >
         ) : (<div><h1>LOADING</h1></div>))
     )
