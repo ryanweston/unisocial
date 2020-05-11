@@ -7,11 +7,18 @@ import PropTypes from 'prop-types';
 
 const Nav = (props) => {
     console.log(props);
-    return (
+    return (<Fragment>
+
         <nav className="navbar">
+            <div className="logoWrapper">
+                <div className="logoContainer">
+                    <h1 className="logo">UNI.SOCIAL</h1>
+                </div>
+            </div>
             <ul>
 
                 <li><Link to='/'>HOME</Link></li>
+
                 {(!props.loading && props.isAuthenticated ? (
                     <Fragment>
                         <li><Link to='/dashboard'>DASHBOARD</Link></li>
@@ -25,6 +32,7 @@ const Nav = (props) => {
                     ))}
             </ul>
         </nav>
+    </Fragment>
     )
 }
 
