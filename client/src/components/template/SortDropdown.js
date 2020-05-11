@@ -1,12 +1,13 @@
 import React from 'react';
 
 const SortDropdown = (props) => {
+
     return (
         <select className="sortDropdown" onChange={e => props.sortChange(e)}>
-            <option value='total'>📃 Total</option>
-            <option value='nightlife'>🍻 Nightlife</option>
-            <option value='happiness'>😁 Happiness</option>
-            <option value='internet'>🌎 Internet </option>
+            <option value='total' emoji='⭐'>⭐ Total</option>
+            <option value='nightlife' emoji='🍻'>🍻 Nightlife</option>
+            <option value='happiness' emoji='😁'>😁 Happiness</option>
+            <option value='internet' emoji='🌎'>🌎 Internet </option>
         </select>
     )
 }

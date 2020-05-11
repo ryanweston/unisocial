@@ -8,6 +8,7 @@ class UniversityView extends React.Component {
     }
 
     render() {
+
         return (
             (!this.props.currentState ? (<div></div>) : (<Fragment>
                 <div className="overlay">
