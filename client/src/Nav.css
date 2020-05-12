@@ -3,14 +3,13 @@
    ================= */
 
    nav { 
-    position: absolute;
     overflow: hidden;
     margin:0;
-    right:0;
-    justify-self: right;
+    margin-left:auto;
+    float:right;
     padding-top:10px;
   }
-  
+
   .navbar ul { 
     list-style-type: none;
     float:right;
@@ -18,7 +17,23 @@
   
   .navbar ul li { 
     float:left;
-    padding-right: 15px;
+  }
+
+  .left {
+    margin-right:5px;
+  }
+  .right {
+    margin-right:40px;
+  }
+
+  .filled a{ 
+    background: #17c37b!important;
+    color:white!important;
+  }
+
+  .filled a:hover {
+    background: none!important;
+    color:#17c37b!important;
   }
   
   .navbar ul li a {
@@ -42,40 +57,61 @@
    ================= */
 
   .navWrapper { 
-    line-height: none;
     position:absolute;
     top:0;
     width:100%;
     text-align:center;
-    margin:0 auto;
-    /* padding-left:30%;
-    padding-right:30%; */
-    /* padding-top:30px; */
     display:flex;
     flex-direction: row;
     justify-content: center;
-    padding-top:10px;
+    padding:15px 20px 15px 20px;
+    /* background-color: red; */
   }
 
  
 
   .logoContainer{ 
+    /* display:block; */
+    overflow:hidden;
+    /* line-height: 0; */
+    /* margin-right:auto; */
+    border-radius:10px;
+    padding-left:30px;
+    padding-right:30px;
+    /* height:50%; */
+    /* padding-top:30px; */
+    padding-bottom:0!important;
+    background:#17c37b;
+    text-decoration: none;
+    color:white;
+    font-size: 1em;
+    font-weight:700;
+    margin:0; 
+ }
+
+  @media (min-width: 600px) {
+    
+  .logoContainer{ 
+    position: absolute;
+    margin:0 auto;
+    line-height:0;
     border-radius:10px;
     padding-left:50px;
     padding-right:50px;
-    padding-top:20px;
+    padding-top:5px;
     padding-bottom:20px;
     background:#17c37b;
     text-decoration: none;
     color:white;
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight:700;
     margin-top:40px;
+  }
   }
 
 
   .logoContainer:hover { 
-    background: green;
+    background: #0EA364;
   }
 
   .logo { 

@@ -31,31 +31,64 @@ p {
 
 .sortDropdown { 
   padding:10px;
+  width:40%;
   border: 2px solid #eee;
   border-radius: 10px;
   font-family: urbane-rounded;
+  margin-bottom:20px;
+}
+
+.highlight {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #87d6b4 50%);
+}
+
+span:hover { 
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #96d4ba 50%);
 }
 
 /* ======================
    GRID STYLES
    ====================== */
 
-section .landing {
-  display: grid;
+.landing-container { 
   max-width: 1200px;
-  grid-gap:1rem;
   margin:0 auto;
-  grid-template-columns: repeat(3, 1fr);
+  padding:20px;
+}
+
+section .grid {
+  display: grid;
+  grid-gap:1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  section .grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .header { 
   margin:0 auto;
+  width:80%;
+  text-align: center; 
+  height:150px;
+  padding:40px;
+  /* padding-bottom:15%; */
+}
+
+@media (min-width: 600px) {
+ .header { 
+   width:50%;
+   padding-bottom:10px;
+ }
+}
+
+/* .header { 
+  margin:0 auto;
   width:60%;
   text-align: center; 
   height:150px;
-
   padding-bottom:5%;
-}
+} */
 
 .uniItem { 
   width:100%;

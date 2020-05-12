@@ -74,38 +74,38 @@ const Landpage = (props) => {
                     </UniversityView >
                 </Fragment>
                 <div className="header">
-                    <h1>FIND YOUR UNIVERSITY BASED ON SOCIAL SCORE & QUALITY OF LIFE FEEDBACK FROM REAL STUDENTS</h1>
-                    <SortDropdown sortChange={changeSort} />
+                    <h1><span className="highlight">AUTHENTIC REVIEWS</span> FOR UNIVERSITIES BASED ON SOCIAL SCORES& QUALITY OF LIFE  FEEDBACK FROM <span className="highlight">REAL STUDENTS</span></h1>
                 </div>
                 <div>
 
                 </div>
 
-                <section className="landing">
+                <div className="landing-container">
+                    <SortDropdown sortChange={changeSort} />
+                    <section className="grid">
+                        {universityCheck.map((obj, index) => {
+                            //Returns key and value from images array that matches img id in database
+                            const uniImage = images.filter(images => images.id === obj.img);
+                            //Returns emoji value from array depending on the sort type
+                            const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
+                            console.log(dataEmoji[0].emoji)
 
-                    {universityCheck.map((obj, index) => {
-                        //Returns key and value from images array that matches img id in database
-                        const uniImage = images.filter(images => images.id === obj.img);
-                        //Returns emoji value from array depending on the sort type
-                        const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
-                        console.log(dataEmoji[0].emoji)
+                            return <button className="uniItem" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                                <div className="ranking"><p>#{index + 1}</p></div>
+                                <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
+                                </div>
 
-                        return <button className="uniItem" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
-                            <div className="ranking"><p>#{index + 1}</p></div>
-                            <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
-                            </div>
-
-                            <div className="text">
-                                <div className="name"> <h1>{obj.name}</h1></div>
-                                <div className="score"><p>{dataEmoji[0].emoji} {obj.scores[sort.type].toFixed(2)} / 5</p></div>
-                            </div>
+                                <div className="text">
+                                    <div className="name"> <h1>{obj.name}</h1></div>
+                                    <div className="score"><p>{dataEmoji[0].emoji} {obj.scores[sort.type].toFixed(2)} / 5</p></div>
+                                </div>
 
 
-                        </button>
+                            </button>
 
-                    })}
-                </section>
-
+                        })}
+                    </section>
+                </div>
             </Fragment >
         ) : (<div><h1>LOADING</h1></div>))
     )
