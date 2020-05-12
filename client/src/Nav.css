@@ -61,7 +61,10 @@
 
   .logoContainer{ 
     border-radius:10px;
-    padding:20px;
+    padding-left:50px;
+    padding-right:50px;
+    padding-top:20px;
+    padding-bottom:20px;
     background:#17c37b;
     text-decoration: none;
     color:white;
