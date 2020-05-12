@@ -1,0 +1,23 @@
+.default { 
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: grey;
+  }
+  
+.green { 
+      -webkit-appearance: none;  /* Override default CSS styles */
+      appearance: none;
+      background: green;
+}
+  
+.orange { 
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: orange;
+}
+  
+.red { 
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: red;
+}

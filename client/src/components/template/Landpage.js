@@ -1,9 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
+import SortDropdown from './SortDropdown';
+//Objects containing linked images for universities, 
+//and emojis representing datatypes
 import images from './images.js';
 import emojis from './emojis.js';
-import SortDropdown from './SortDropdown';
+
+
 
 const Landpage = (props) => {
 
@@ -86,9 +90,9 @@ const Landpage = (props) => {
                         const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
                         console.log(dataEmoji[0].emoji)
 
-                        return <button className="landingButton" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                        return <button className="uniItem" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
                             <div className="ranking"><p>#{index + 1}</p></div>
-                            <div className="content" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
+                            <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
                             </div>
 
                             <div className="text">

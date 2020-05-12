@@ -1,0 +1,33 @@
+/* ======================
+   BUTTON STYLES
+   ====================== */
+
+button { 
+       background:none;
+       padding:5px 15px 5px 15px;
+       border:2px solid #17c37b;
+       border-radius: 10px;  
+       color: #17c37b;
+       font-weight:800;
+}
+
+button:hover { 
+    background:#17c37b;
+    color: white;
+}
+
+progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    
+    /* Get rid of default border in Firefox. */
+    /* border: none; */
+    border-radius:10px;
+    
+    /* Dimensions */
+    width: 250px;
+    height: 20px;
+
+  }

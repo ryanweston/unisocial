@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/dashboard';
 import { Redirect } from 'react-router-dom';
+import '../../Reviews.css';
 
 const SubmitReview = ({ postReview, submission }) => {
 

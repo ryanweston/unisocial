@@ -1,0 +1,85 @@
+/* =================
+   NAVIGATION STYLES
+   ================= */
+
+   nav { 
+    position: absolute;
+    overflow: hidden;
+    margin:0;
+    right:0;
+    justify-self: right;
+    padding-top:10px;
+  }
+  
+  .navbar ul { 
+    list-style-type: none;
+    float:right;
+  }
+  
+  .navbar ul li { 
+    float:left;
+    padding-right: 15px;
+  }
+  
+  .navbar ul li a {
+    border:2px solid #17c37b;
+    border-radius:10px;
+    padding:5px 15px 5px 15px;
+    font-weight:600;
+    color: #17c37b;
+    text-decoration: none;
+  }
+  
+  .navbar ul li a:hover {
+    font-weight:800;
+    background:#17c37b;
+    color: #F4F9F4;
+    text-decoration: none;
+  }
+  
+/* =================
+   LOGO STYLING
+   ================= */
+
+  .navWrapper { 
+    line-height: none;
+    position:absolute;
+    top:0;
+    width:100%;
+    text-align:center;
+    margin:0 auto;
+    /* padding-left:30%;
+    padding-right:30%; */
+    /* padding-top:30px; */
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top:10px;
+  }
+
+ 
+
+  .logoContainer{ 
+    border-radius:10px;
+    padding:20px;
+    background:#17c37b;
+    text-decoration: none;
+    color:white;
+    font-size: 2.2em;
+    font-weight:700;
+    margin-top:40px;
+  }
+
+
+  .logoContainer:hover { 
+    background: green;
+  }
+
+  .logo { 
+    /* position: absolute; */
+    margin:0;
+    font-size: 1.2em;
+    color:white;
+    /* padding-top:12px; */
+    
+  }

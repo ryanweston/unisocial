@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
+import '../../Buttons.css';
 
 class UniversityView extends React.Component {
 
@@ -18,11 +19,14 @@ class UniversityView extends React.Component {
                     <label>📈 <b>Total:</b></label>
                     <p>{this.props.details.scores.total.toFixed(2)} / 5</p>
                     <div>
-                        <label>🍻 Nightlife:</label>
+                        <label>🍻 Nightlife: </label>
+                        <progress className="progress" value={this.props.details.scores.nightlife.toFixed(2)} max="5.00"> </progress>
                         <p>{this.props.details.scores.nightlife.toFixed(2)} / 5</p>
-                        <label>😆 Happiness</label>
+                        <label>😆 Happiness: </label>
+                        <progress className="progress" value={this.props.details.scores.happiness.toFixed(2)} max="5.00"> </progress>
                         <p>{this.props.details.scores.happiness.toFixed(2)} / 5</p>
-                        <label>🌎 Internet:</label>
+                        <label>🌎 Internet: </label>
+                        <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
                         <p>{this.props.details.scores.internet.toFixed(2)} / 5</p>
                     </div>
                 </div>

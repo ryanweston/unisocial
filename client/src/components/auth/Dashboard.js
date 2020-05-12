@@ -56,7 +56,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                     <ViewReview review={user.review} />
                 </div>))}
                 <br />
-                <button onClick={handleDelete}>Delete Account</button>
+                <button onClick={handleDelete}><i class="fas fa-trash-alt"></i> Delete Account</button>
                 {(deleteOption.popUp2 === false ? (<Fragment></Fragment>) : (<div>
                     <p>Do you want to delete your review also?</p>
                     <button onClick={() => {
