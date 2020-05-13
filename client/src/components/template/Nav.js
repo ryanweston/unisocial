@@ -7,6 +7,8 @@ import '../../Nav.css';
 
 
 const Nav = (props) => {
+
+    //Changes logo text dependant ons screen size.
     let logoText = "UNI.SOCIAL";
     if (window.innerWidth < 600) {
         logoText = "U."
@@ -20,8 +22,8 @@ const Nav = (props) => {
         <div className="navWrapper">
             <Link className="logoContainer" to='/'><p>{logoText}</p></Link>
             <nav className="navbar">
-
                 <ul>
+                    {/* If the user is authenticated, display a dashboard and logout button */}
                     {(!props.loading && props.isAuthenticated ? (
                         <Fragment>
                             <li className="left"><Link to='/dashboard'><i className="fas fa-user"> </i> Dashboard</Link></li>
@@ -31,7 +33,6 @@ const Nav = (props) => {
                             <Fragment>
                                 <li className="filled"><Link to='/register' className="left">Register</Link></li>
                                 <li><Link to='/login' className="right">Login</Link></li>
-
                             </Fragment>
                         ))}
                 </ul>
