@@ -42,20 +42,25 @@ const Login = ({ login, auth, loading }) => {
                 <h1>You're already logged in!</h1>
                 <Redirect to='/dashboard' />
             </div>) : (<section className="login" onSubmit={e => loginSubmit(e)}>
-                <h1>Login</h1>
+            <h1>Login</h1>
+                <div className="formContainer">
                 <form>
                     <label>Email</label>
                     <input name="email" type="email" onChange={(e) => changeState(e)} />
                     <br />
                     <label>Password</label>
                     <input name="password" type="password" onChange={(e) => changeState(e)} />
-                    <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"
-                        onChange={onChange}
-                    />
+                    <div className="captcha">
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"
+                            onChange={onChange}
+                            theme={'dark'}
+                        />
+                        </div>
                     <input type="submit" />
                 </form>
+                </div>
             </section>))}
         </Fragment>
     )

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import UniversityList from './UniversityList';
+import '../../Auth.css';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/register';
 import PropTypes from 'prop-types';
@@ -64,7 +65,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
     return (
         <Fragment>
             {(auth && !loading ? (<div> <h1>You're already logged in!</h1>
-                <Redirect to='/' /></div>) : (<Fragment>
+                <Redirect to='/' /></div>) : (<div className="register">
                     <h1>Sign Up</h1>
                     <form onSubmit={e => onSubmit(e)}>
                         <label>Name:</label>
@@ -74,7 +75,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Name"
                             value={name}
                             onChange={e => formChange(e)}
-                        />
+                        /><br/>
                         <label>Email</label>
                         <input
                             type="email"
@@ -82,7 +83,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Email Address"
                             value={email}
                             onChange={e => formChange(e)}
-                        />
+                        /><br/>
                         <label>Password</label>
                         <input
                             type="password"
@@ -90,7 +91,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Password"
                             value={password}
                             onChange={e => formChange(e)}
-                        />
+                        /><br/>
                         <label>Verify Password</label>
                         <input
                             type="password"
@@ -99,12 +100,13 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             value={passwordConfirm}
                             onChange={e => formChange(e)}
                         />
+                        {loading || !universities ? (<div>loading...</div>) : (<div>
+                        <br/><UniversityList onValueChange={dropdownChange} options={universities[0]} />
+                    </div>)}
                         <input type="submit" />
                     </form>
-                    {loading || !universities ? (<div>loading...</div>) : (<div>
-                        <UniversityList onValueChange={dropdownChange} options={universities[0]} />
-                    </div>)}
-                </Fragment>
+                    
+                </div>
                 ))}
         </Fragment>
     );
