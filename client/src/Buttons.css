@@ -16,18 +16,3 @@ button:hover {
     color: white;
 }
 
-progress[value] {
-    /* Reset the default appearance */
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    
-    /* Get rid of default border in Firefox. */
-    /* border: none; */
-    border-radius:10px;
-    
-    /* Dimensions */
-    width: 250px;
-    height: 20px;
-
-  }

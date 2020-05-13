@@ -9,9 +9,13 @@
        text-align:center;
        margin:0 auto;
        padding:20px;
-       background-color: red;
+       /* background-color: red; */
        width:auto;
-       /* width:80%; */
+       height:100%;
+   }
+
+   .login h1,.register h1 {
+      font-size:2.5em;
    }
 
    .captcha {
@@ -20,9 +24,49 @@
 
    .formContainer {
       border-radius:20px;
-      background-color: grey;
-      padding:40px;
+      /* background-color: #eeeeee; */
+      padding:30px;
+      padding-bottom:50px;
+      padding-right:30px;
+      height:100%;
    }
+   input {
+      width:100%;
+      background-color: none;
+      /* padding-left:5px; */
+      /* padding-right:5px; */
+      padding-top:10px;
+      padding-bottom:10px;
+      border:2px solid #17c37b;
+      border-radius:10px;
+   }
+
+  input[type=submit] {
+   padding-left:5px;
+   padding-right:5px;
+   padding-top:10px;
+   padding-bottom:10px;
+   margin-top:20px;
+   background:none;
+   border:2px solid #17c37b;
+   border-radius: 10px;  
+   color: #17c37b;
+   font-weight:800;
+  }
+
+  input[type=submit]:hover { 
+      background:#17c37b;
+      color: white;
+  }
+
+   label { 
+      font-size:1.2em;
+      font-weight:600;
+      float:left;
+      padding-top:20px;
+   }
+
+
 /* 
    form {
 
