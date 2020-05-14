@@ -13,8 +13,7 @@ const Landpage = (props) => {
 
     const [modalInfo, modalChange] = useState({
         modalOpen: false,
-        details: null,
-
+        details: null
     })
 
     const [sort, sortSelect] = useState({
@@ -34,7 +33,6 @@ const Landpage = (props) => {
                 modalOpen: !prevState.modalOpen,
                 details: data
             }
-
         })
     }
 
@@ -74,12 +72,8 @@ const Landpage = (props) => {
                     </UniversityView >
                 </Fragment>
                 <div className="header">
-                    <h1><span className="highlight">AUTHENTIC REVIEWS</span> FOR UNIVERSITIES BASED ON SOCIAL SCORES& QUALITY OF LIFE  FEEDBACK FROM <span className="highlight">REAL STUDENTS</span></h1>
+                    <h1><span className="highlight">AUTHENTIC REVIEWS</span> FOR UNIVERSITIES BASED ON SOCIAL SCORES & QUALITY OF LIFE  FEEDBACK FROM <span className="highlight">REAL STUDENTS</span></h1>
                 </div>
-                <div>
-
-                </div>
-
                 <div className="landing-container">
                     <SortDropdown sortChange={changeSort} />
                     <section className="grid">
@@ -88,9 +82,15 @@ const Landpage = (props) => {
                             const uniImage = images.filter(images => images.id === obj.img);
                             //Returns emoji value from array depending on the sort type
                             const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
-                            console.log(dataEmoji[0].emoji)
+                            // console.log(dataEmoji[0].emoji)
+                            let order = 'uniItem'
+                            if (index === 0) {
+                                order = 'uniItem first';
+                            } else {
+                                order = 'uniItem';
+                            }
 
-                            return <button className="uniItem" key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                            return <button id="list" className={order} key={index} value={obj._id} onClick={e => { openSelection(e) }}>
                                 <div className="ranking"><p>#{index + 1}</p></div>
                                 <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
                                 </div>
