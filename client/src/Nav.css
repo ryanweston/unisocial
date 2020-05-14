@@ -27,27 +27,27 @@
   }
 
   .filled a{ 
-    background: #17c37b!important;
+    background: black!important;
     color:white!important;
   }
 
   .filled a:hover {
     background: none!important;
-    color:#17c37b!important;
+    color:#54ADFF!important;
   }
   
   .navbar ul li a {
-    border:2px solid #17c37b;
+    border:2px solid black;
     border-radius:10px;
     padding:5px 15px 5px 15px;
     font-weight:600;
-    color: #17c37b;
+    color: black;
     text-decoration: none;
   }
   
   .navbar ul li a:hover {
     font-weight:800;
-    background:#17c37b;
+    background:black ;
     color: #F4F9F4;
     text-decoration: none;
   }
@@ -81,7 +81,7 @@
     /* height:50%; */
     /* padding-top:30px; */
     padding-bottom:0!important;
-    background:#17c37b;
+    background:#54ADFF;
     text-decoration: none;
     color:white;
     font-size: 1em;
@@ -100,7 +100,7 @@
     padding-right:50px;
     padding-top:5px;
     padding-bottom:20px;
-    background:#17c37b;
+    background:black;
     text-decoration: none;
     color:white;
     font-size: 2em;
@@ -111,7 +111,8 @@
 
 
   .logoContainer:hover { 
-    background: #0EA364;
+    opacity:0.7;
+    /* background: #0EA364; */
   }
 
   .logo { 

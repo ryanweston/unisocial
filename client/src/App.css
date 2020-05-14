@@ -11,8 +11,14 @@ h1 {
   line-height: 0;
 }
 
+h2 { 
+  font-weight:700;
+  font-size:1.2em;
+  line-height: 0;
+}
+
 p { 
-  font-weight:800;
+  font-weight:600;
   font-size:1.2em;
   font-family: urbane-rounded;
 }
@@ -20,6 +26,7 @@ p {
 .container { 
   height:100%;
   width: 100%;
+  margin:0 auto;
 }
 
 /* ======================
@@ -41,7 +48,7 @@ p {
 }
 
 .highlight {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #87d6b4 50%);
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #54ADFF 50%);
 }
 
 span:hover { 
@@ -126,15 +133,19 @@ section .grid {
 }
 
 .uniItem:hover { 
-  border: 4px solid #17c37b;
+  border: 4px solid #54ADFF;
   border-radius: 25px;
 }
 .uniItem:hover .image { 
   opacity: 0.6;
 }
 
+.first { 
+  grid-column: 1 / -2;
+}
+
 .ranking {
-  background-color:#17c37b; 
+  background-color:black; 
   padding:0px 10px 0px 10px;
   border-radius: 10px;
   position:absolute;
@@ -180,7 +191,7 @@ section .grid {
 
 .score { 
   border-radius:20px;
-  background-color:#17c37b;
+  background-color:black;
   padding-left:20px;
   padding-right:20px;
   padding-top:3px;
@@ -206,7 +217,7 @@ section .grid {
   background-color:white;
   width:80%;
   border-radius:30px;
-  border: 2px solid #17c37b;
+  border: 2px solid #54ADFF;
   height:80%;
   z-index:1000;
   text-align:center;

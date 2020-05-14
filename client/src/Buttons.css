@@ -16,3 +16,12 @@ button:hover {
     color: white;
 }
 
+.delete { 
+    border:2px solid red!important;
+    color:red!important;
+}
+
+.delete:hover { 
+    background:Red;
+    color:white!important;
+}

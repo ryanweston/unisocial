@@ -21,30 +21,17 @@ class UniversityView extends React.Component {
                     <p>{this.props.details.scores.total.toFixed(2)} / 5</p> */}
 
                     <div className="scoresContainer">
-                        {/* <ul>
-                            <li> */}
                         <div className="item">
                             <label>🍻 Nightlife: </label>
                             <progress className="progress" value={this.props.details.scores.nightlife.toFixed(2)} max="5.00"> </progress>
-                            {/* <p>{this.props.details.scores.nightlife.toFixed(2)} / 5</p> */}
-                            {/* </li>
-                            <li> */}
                         </div>
                         <div className="item">
                             <label>😆 Happiness: </label>
                             <progress className="progress" value={this.props.details.scores.happiness.toFixed(2)} max="5.00"> </progress>
-                            {/* <p>{this.props.details.scores.happiness.toFixed(2)} / 5</p> */}
                         </div>
-                        {/* </li>
-                        </ul>
-                        <ul>
-                            <li> */}
                         <div className="item">
                             <label>🌎 Internet: </label>
                             <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                            {/* <p>{this.props.details.scores.internet.toFixed(2)} / 5</p> */}
-                            {/* </li>
-                        </ul> */}
                         </div>
                     </div>
                 </div>
