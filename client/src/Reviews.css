@@ -1,15 +1,92 @@
-.default { 
+/* ======================
+   GLOBAL REVIEW FORMAT
+   ====================== */
 
+.scoresContainer {
+    width:100%;
+    /* background:red; */
+    display: grid;
+    grid-gap:1rem;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.item { 
+    text-align:left;
+    /* background:yellow; */
+    /* border:1px solid black; */
+    padding:10px;
+}
+
+.full { 
+    /* border:1px dashed red; */
+    /* width:100%; */
+    float:none!important;
+    grid-column: 1/-1;
+}
+
+label { 
+  font-size:1.1em!important;
+   line-height: 0;
+   margin:0;
+   float:none!important;
+}
+
+progress {
+    border-radius: 20px; 
+    width: 60%;
+    height: 22px;
+    float:right;
+    /* margin-left:-11.5%; */
+}
+
+progress::-webkit-progress-bar {
+   background-color: #eeeeee;
+    border-radius: 20px;
+}
+progress::-webkit-progress-value {
+     border-radius: 20px; 
+  }
+progress::-moz-progress-bar {
+    border-radius: 20px;
+}
+
+  @media (min-width: 600px) {
+   .scoresContainer { width:100%; grid-template-columns: repeat(2, 0.5fr); grid-row-gap: 0px;grid-column-gap: 0px; }
+ }
+
+
+/* ======================
+   SUBMISSION SPECIFIC
+   ====================== */
+    
+.submission {
+        margin-top:4%;
+        padding:20px;
+        border-radius:20px;
+        width:80%;
+        background:#f4f9f3;
+        display: grid;
+    }
+
+
+@media (min-width: 600px) {
+       .submission { width:60%;}
+      } 
+
+/* ======================
+   SLIDER STYLES
+   ====================== */
+
+.default { 
     background-color: #eeeeee;
-   
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
   }
   
 .green { 
-      -webkit-appearance: none;  /* Override default CSS styles */
-      appearance: none;
-      background: green;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: green;
 
 }
   
@@ -26,15 +103,32 @@
     background: red;
 }
 
+.submission input[type=range] { 
+    float:right;
+    height:0px;
+    width:30%;
+    border-radius: 10px;
+}
+
+.submission input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 16px;
+    border-radius: 30px;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  }
+
+/* ======================
+   DASHBOARD STYLES
+   ====================== */
+
 .dashboard {
-    /* display:flex;
-    flex-direction: column;
-    align-items: center;
-    text-align:center; */
+    margin-top:4%!important;
     margin:0 auto;
     padding:20px;
-    /* background-color: red; */
-    width:70%;
+    width:80%;
     height:100%;
 }
 
@@ -47,37 +141,17 @@
     display:inline;
 }
 
+@media (min-width: 600px) {
+    .submission { width:60%;}
+   } 
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 30px;
-    width: 16px;
-    border-radius: 30px;
-    background: #ffffff;
-    cursor: pointer;
-    margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  }
 
-.review {
-    width:60%;
-    background:#eeeeee;
-    display: grid;
-    grid-gap:1rem;
-    grid-template-columns: repeat(2, 0.5fr);
-    grid-row-gap: 0px;grid-column-gap: 0px;
-}
-
-.review .item { 
-/* border:1px solid black; */
-}
-
-.review label { 
-    float:left!important;
-}
-
-.review input { 
-    float:right;
-    height:10px;
-    width:30%;
-    border-radius: 10px;
+.review-section { 
+    margin-top:7%!important;
+}   
+.viewReview { 
+    width:100%;
+    padding:20px;
+    background:#f4f9f3;
+    border-radius:20px;
 }

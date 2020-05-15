@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../../Buttons.css';
-import '../../ViewReview.css';
+import '../../Reviews.css';
 
 class UniversityView extends React.Component {
 
@@ -28,6 +28,26 @@ class UniversityView extends React.Component {
                         <div className="item">
                             <label>😆 Happiness: </label>
                             <progress className="progress" value={this.props.details.scores.happiness.toFixed(2)} max="5.00"> </progress>
+                        </div>
+                        <div className="item">
+                            <label>🌎 Internet: </label>
+                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
+                        </div>
+                        <div className="item">
+                            <label>🌎 Internet: </label>
+                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
+                        </div>
+                        <div className="item">
+                            <label>🌎 Internet: </label>
+                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
+                        </div>
+                        <div className="item">
+                            <label>🌎 Internet: </label>
+                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
+                        </div>
+                        <div className="item">
+                            <label>🌎 Internet: </label>
+                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
                         </div>
                         <div className="item">
                             <label>🌎 Internet: </label>

@@ -25,7 +25,7 @@ const ViewReview = (props) => {
         <Fragment>
             {(!props.review ? (<Link to="/submit">
                 <button>Submit a review <i class="fas fa-long-arrow-alt-right"></i></button>
-            </Link>) : (<Fragment>
+            </Link>) : (<div className="review-section">
                 <h1>Your Review</h1>
                 <Review scores={props.review.scores} />
                 <Link to="/submit">
@@ -40,7 +40,7 @@ const ViewReview = (props) => {
                     <button onClick={() => { handleDelete(); props.deleteReview(); }}>Yes</button>
                     <button onClick={handleDelete}>No</button>
                 </div>))}
-            </Fragment>))}
+            </div>))}
         </Fragment>
     )
 }

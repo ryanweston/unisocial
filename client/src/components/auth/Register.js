@@ -65,7 +65,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
     return (
         <Fragment>
             {(auth && !loading ? (<div> <h1>You're already logged in!</h1>
-                <Redirect to='/' /></div>) : (<div className="register">
+                <Redirect to='/' /></div>) : (<div className="fullPage">
                     <h1>Sign Up</h1>
                     <form onSubmit={e => onSubmit(e)}>
                         <label>Name:</label>
@@ -75,7 +75,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Name"
                             value={name}
                             onChange={e => formChange(e)}
-                        /><br/>
+                        /><br />
                         <label>Email</label>
                         <input
                             type="email"
@@ -83,7 +83,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Email Address"
                             value={email}
                             onChange={e => formChange(e)}
-                        /><br/>
+                        /><br />
                         <label>Password</label>
                         <input
                             type="password"
@@ -91,7 +91,7 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             placeholder="Password"
                             value={password}
                             onChange={e => formChange(e)}
-                        /><br/>
+                        /><br />
                         <label>Verify Password</label>
                         <input
                             type="password"
@@ -101,11 +101,11 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             onChange={e => formChange(e)}
                         />
                         {loading || !universities ? (<div>loading...</div>) : (<div>
-                        <br/><UniversityList onValueChange={dropdownChange} options={universities[0]} />
-                    </div>)}
+                            <br /><UniversityList onValueChange={dropdownChange} options={universities[0]} />
+                        </div>)}
                         <input type="submit" />
                     </form>
-                    
+
                 </div>
                 ))}
         </Fragment>

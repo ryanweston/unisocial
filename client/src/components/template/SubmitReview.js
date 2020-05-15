@@ -39,24 +39,49 @@ const SubmitReview = ({ postReview, submission }) => {
             {(submission.success ? (<Fragment>
                 <h1>Submission Successful</h1>
 
-            </Fragment>) : (<div>
-                <form onSubmit={e => onSubmit(e)} className="review">
-                    <div className="item">
-                        <label>🌎 Internet:</label>
-                        <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                    </div>
-                    <div className="item">
-                        <label>🍻 Nightlife:</label>
-                        <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                    </div>
-                    <div className="item">
-                        <label>😆 Happiness</label>
-                        <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                    </div>
-                    <br />
-                    <input type="submit" />
-                </form>
-            </div>))
+            </Fragment>) : (
+                    <div className="fullPage">
+
+                        <form onSubmit={e => onSubmit(e)} className="scoresContainer submission">
+                            <div className="item">
+                                <label>🌎 Internet:</label>
+                                <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>🍻 Nightlife:</label>
+                                <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label>😆 Happiness</label>
+                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <br />
+                            <div className="full">
+                                <button type="submit"><i class="fas fa-check"></i> Submit</button>
+                            </div>
+
+                        </form>
+                    </div>))
             }
         </Fragment >
     )
