@@ -41,7 +41,7 @@ const Login = ({ login, auth, loading }) => {
             {(auth && !loading ? (<div>
                 <h1>You're already logged in!</h1>
                 <Redirect to='/dashboard' />
-            </div>) : (<section className="login" onSubmit={e => loginSubmit(e)}>
+            </div>) : (<section className="fullPage" onSubmit={e => loginSubmit(e)}>
                 <h1>Login</h1>
                 <div className="formContainer">
                     <form>
@@ -51,7 +51,7 @@ const Login = ({ login, auth, loading }) => {
                         <label>Password</label>
                         <input name="password" type="password" onChange={(e) => changeState(e)} />
                         <div className="captcha">
-                            <ReCAPTCHA
+                            <ReCAPTCHA className="margin"
                                 ref={recaptchaRef}
                                 sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"
                                 onChange={onChange}
