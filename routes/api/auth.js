@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 const config = require('config');
-const request = require('request');
 var rp = require('request-promise');
 //Secret site key to acces google API for captcha
 const captchaKey = config.get('captchaKey');
