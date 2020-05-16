@@ -15,7 +15,7 @@ const Review = (props) => {
                 <div className="item">
                     <label>🌎 Internet</label>
                     <progress className="progress" value={props.scores.internet.toFixed(2)} max="5.00"> </progress>
-                </div>`
+                </div>
 
             </div>
         </Fragment>

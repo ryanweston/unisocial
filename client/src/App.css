@@ -1,7 +1,7 @@
 body{ font-family:urbane-rounded,sans-serif;margin: 0; padding:0; overflow-x:hidden; filter: none; z-index:-5}
 
 /* ======================
-   DEFAULTS STYLES
+   DEFAULT FONT STYLES
    ====================== */
 
 h1 {
@@ -13,15 +13,26 @@ h1 {
 
 h2 { 
   font-weight:700;
-  font-size:1.2em;
+  font-size:1.1em;
   line-height: 0;
 }
 
 p { 
   font-weight:600;
-  font-size:1.2em;
+  font-size:1em;
   font-family: urbane-rounded;
 }
+
+@media (min-width: 600px) {
+  h1 { font-weight:700; font-size:1.5em; }
+  h2 { font-weight:700; font-size:1.2em; }
+  p  { font-weight:600; font-size:1.2em; }
+}
+
+
+/* ========================
+   DEFAULT CONTAINER STYLES
+   ======================== */
 
 .container { 
   height:100%;
@@ -29,9 +40,36 @@ p {
   margin:0 auto;
 }
 
+.fullPage { 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+  margin:0 auto;
+  /* padding:20px; */
+  /* background-color: red; */
+  width:auto;
+  height:100%;
+  margin-top:15%;
+}
+
+@media (min-width: 600px) {
+  .fullPage {margin-top: 4%}
+} 
+
 /* ======================
    LANDPAGE HEADER STYLES
    ====================== */
+
+.header { 
+  margin:0 auto;
+  width:80%;
+  text-align: center; 
+  padding:40px;
+  padding-top:70px;
+  padding-bottom:25px;
+}
+  
 
 .header h1 { 
   color: black;
@@ -55,6 +93,11 @@ span:hover {
   background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #96d4ba 50%);
 }
 
+@media (min-width: 600px) {
+  .header { width:50%; padding-bottom:10px; }
+ }
+
+
 /* ======================
    GRID STYLES
    ====================== */
@@ -74,30 +117,6 @@ section .grid {
 @media (min-width: 600px) {
   section .grid { grid-template-columns: repeat(3, 1fr); }
 }
-
-.header { 
-  margin:0 auto;
-  width:80%;
-  text-align: center; 
-  height:150px;
-  padding:40px;
-  /* padding-bottom:15%; */
-}
-
-@media (min-width: 600px) {
- .header { 
-   width:50%;
-   padding-bottom:10px;
- }
-}
-
-/* .header { 
-  margin:0 auto;
-  width:60%;
-  text-align: center; 
-  height:150px;
-  padding-bottom:5%;
-} */
 
 .uniItem { 
   width:100%;
@@ -211,11 +230,11 @@ section .grid {
 .overlay {  
   overflow-y:scroll;
   position: fixed;
-  left:10%;
-  top:7%;
+  left:2%;
+  top:2%;
   margin:0;
   background-color:white;
-  width:80%;
+  width:75%;
   border-radius:30px;
   border: 2px solid #54ADFF;
   height:80%;
@@ -226,23 +245,11 @@ section .grid {
 
 .overlay button { float:right}
 
-.fullPage { 
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  text-align:center;
-  margin:0 auto;
-  /* padding:20px; */
-  /* background-color: red; */
-  width:auto;
-  height:100%;
-  margin-top:15%;
-}
-
 .margin { 
   margin-top:20px;
 }
 
-@media (min-width: 600px) {
-        .fullPage {margin-top: 4%}
-} 
+@media (min-width:600px) {
+  .overlay {left:10%; top:7%;}
+}
+

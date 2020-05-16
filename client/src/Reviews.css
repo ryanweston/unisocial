@@ -125,10 +125,13 @@ progress::-moz-progress-bar {
    ====================== */
 
 .dashboard {
-    margin-top:4%!important;
+    margin-top:11%!important;
     margin:0 auto;
-    padding:20px;
-    width:80%;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:20px;
+    padding-bottom:20px;
+    width:90%;
     height:100%;
 }
 
@@ -141,17 +144,22 @@ progress::-moz-progress-bar {
     display:inline;
 }
 
-@media (min-width: 600px) {
-    .submission { width:60%;}
-   } 
-
-
 .review-section { 
-    margin-top:7%!important;
-}   
+    margin-top:11%!important;
+}  
+
 .viewReview { 
     width:100%;
-    padding:20px;
+    padding:0;
+    padding-top:10px;
+    padding-bottom:10px;
     background:#f4f9f3;
     border-radius:20px;
 }
+
+@media (min-width: 600px) {
+    .review-section { margin-top:7%!important;}
+    .dashboard {margin-top:4%!important; padding-left:20px; padding-right:20px;}
+    .submission { width:60%;}
+    .viewReview { padding:20px; }
+   } 
