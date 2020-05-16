@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import UniversityView from './UniversityView';
+// import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
 import SortDropdown from './SortDropdown';
 //Objects containing linked images for universities, 
@@ -18,7 +18,7 @@ const Landpage = (props) => {
 
     const [sort, sortSelect] = useState({
         type: 'total',
-        emoji: '⭐'
+        emoji: '<span role="img" aria-label="sheep">🐑</span>'
     });
 
     const openSelection = (e) => {
@@ -65,11 +65,11 @@ const Landpage = (props) => {
         (!props.loading ? (
             < Fragment >
                 <Fragment>
-                    <UniversityView
+                    {/* <UniversityView
                         details={modalInfo.details}
                         currentState={modalInfo.modalOpen}
                         handleModalOpen={handleModalOpen}>
-                    </UniversityView >
+                    </UniversityView > */}
                 </Fragment>
                 <div className="header">
                     <h1><span className="highlight">AUTHENTIC REVIEWS</span> FOR UNIVERSITIES BASED ON SOCIAL SCORES & QUALITY OF LIFE  FEEDBACK FROM <span className="highlight">REAL STUDENTS</span></h1>
