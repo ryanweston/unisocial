@@ -1,4 +1,3 @@
-import React from 'react';
 
 const emojis = [
     { type: 'total', emoji: '⭐' },

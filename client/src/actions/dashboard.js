@@ -49,7 +49,7 @@ export const postFailure = (error) => ({
 
 export const deleteReview = () => async dispatch => {
     try {
-        const res = await axios.delete('/api/reviews');
+        await axios.delete('/api/reviews');
         dispatch({
             type: DELETE_REVIEW,
         });

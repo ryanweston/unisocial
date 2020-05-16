@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
 import '../../Buttons.css';
 import '../../Reviews.css';
 
@@ -22,37 +21,18 @@ class UniversityView extends React.Component {
 
                     <div className="scoresContainer">
                         <div className="item">
-                            <label>🍻 Nightlife: </label>
+                            <label><span role="img" aria-label="sheep">🐑</span> Nightlife: </label>
                             <progress className="progress" value={this.props.details.scores.nightlife.toFixed(2)} max="5.00"> </progress>
                         </div>
                         <div className="item">
-                            <label>😆 Happiness: </label>
+                            <label><span role="img" aria-label="sheep">🐑</span> Happiness: </label>
                             <progress className="progress" value={this.props.details.scores.happiness.toFixed(2)} max="5.00"> </progress>
                         </div>
                         <div className="item">
-                            <label>🌎 Internet: </label>
+                            <label><span role="img" aria-label="sheep">🐑</span> Internet: </label>
                             <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
                         </div>
-                        <div className="item">
-                            <label>🌎 Internet: </label>
-                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                        </div>
-                        <div className="item">
-                            <label>🌎 Internet: </label>
-                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                        </div>
-                        <div className="item">
-                            <label>🌎 Internet: </label>
-                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                        </div>
-                        <div className="item">
-                            <label>🌎 Internet: </label>
-                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                        </div>
-                        <div className="item">
-                            <label>🌎 Internet: </label>
-                            <progress className="progress" value={this.props.details.scores.internet.toFixed(2)} max="5.00"> </progress>
-                        </div>
+
                     </div>
                 </div>
             </Fragment>))

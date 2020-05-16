@@ -45,7 +45,7 @@ export const deleteUser = (option) => async dispatch => {
         if (option === true) {
             dispatch(deleteReview());
         }
-        const res = axios.delete('/api/auth');
+        await axios.delete('/api/auth');
         dispatch(logout());
         dispatch({
             type: DELETE_USER

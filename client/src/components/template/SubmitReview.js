@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/dashboard';
-import { Redirect } from 'react-router-dom';
 import '../../Reviews.css';
 
 const SubmitReview = ({ postReview, submission }) => {
@@ -31,7 +30,7 @@ const SubmitReview = ({ postReview, submission }) => {
         e.preventDefault();
 
         const data = formData;
-        postReview(formData);
+        postReview(data);
     }
 
     return (
@@ -44,35 +43,19 @@ const SubmitReview = ({ postReview, submission }) => {
 
                         <form onSubmit={e => onSubmit(e)} className="scoresContainer submission">
                             <div className="item">
-                                <label>🌎 Internet:</label>
+                                <label><span role="img" aria-label="sheep">🐑</span> Internet:</label>
                                 <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label>🍻 Nightlife:</label>
+                                <label><span role="img" aria-label="sheep">🐑</span> Nightlife:</label>
                                 <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label>😆 Happiness</label>
+                                <label><span role="img" aria-label="sheep">🐑</span> Happiness</label>
                                 <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label>😆 Happiness</label>
-                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                            </div>
-                            <div className="item">
-                                <label>😆 Happiness</label>
-                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                            </div>
-                            <div className="item">
-                                <label>😆 Happiness</label>
-                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                            </div>
-                            <div className="item">
-                                <label>😆 Happiness</label>
-                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                            </div>
-                            <div className="item">
-                                <label>😆 Happiness</label>
+                                <label><span role="img" aria-label="sheep">🐑</span> Happiness</label>
                                 <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <br />

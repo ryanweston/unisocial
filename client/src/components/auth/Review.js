@@ -5,15 +5,15 @@ const Review = (props) => {
         <Fragment>
             <div className="scoresContainer viewReview">
                 <div className="item">
-                    <label>🍻 Nightlife:</label>
+                    <label><span role="img" aria-label="sheep">🐑</span> Nightlife:</label>
                     <progress className="progress" value={props.scores.nightlife.toFixed(2)} max="5.00"> </progress>
                 </div>
                 <div className="item">
-                    <label>😄 Happiness</label>
+                    <label><span role="img" aria-label="sheep">🐑</span> Happiness</label>
                     <progress className="progress" value={props.scores.happiness.toFixed(2)} max="5.00"> </progress>
                 </div>
                 <div className="item">
-                    <label>🌎 Internet</label>
+                    <label><span role="img" aria-label="sheep">🐑</span> Internet</label>
                     <progress className="progress" value={props.scores.internet.toFixed(2)} max="5.00"> </progress>
                 </div>
 
