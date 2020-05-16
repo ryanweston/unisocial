@@ -70,11 +70,11 @@ router.post(
 
       const googleReq = await rp(options);
 
-      if (googleReq.success === false) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Captcha failed, refresh page and try again' }] });
-      }
+      // if (googleReq.success === false) {
+      //   return res
+      //     .status(400)
+      //     .json({ errors: [{ msg: 'Captcha failed, refresh page and try again' }] });
+      // }
 
 
       let user = await User.findOne({ email });
