@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// Connect Database
+// Connects to the database
 connectDB();
 
 // Middleware (body-parser packaged in express), that formats req.body from post requests to json
@@ -12,7 +12,7 @@ app.use(express.json());
 // .URLENCODED: If strings or arrays as request object, parses them
 app.use(express.urlencoded({ extended: false }));
 
-//Define Routes, allows cleaner infrastructure of files & relative schemas
+//Route definition, allows cleaner infrastructure of files & relative schemas
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/dashboard', require('./routes/api/dashboard'));
@@ -27,7 +27,7 @@ app.use('/api/test', require('./routes/api/test'));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__direname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
 
