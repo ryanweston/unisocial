@@ -13,7 +13,7 @@ const Nav = (props) => {
     if (window.innerWidth < 600) {
         logoText = "U."
     } else {
-        logoText = "UNI.SOCIAL"
+        logoText = "UNI SOCIAL"
     }
     console.log(props);
 
