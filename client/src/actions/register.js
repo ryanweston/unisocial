@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getUser } from './login';
 import { setAlert } from './alert';
 
+//Sends registration data to backend
 export const register = (formData) => async dispatch => {
     const body = JSON.stringify(formData);
 

@@ -21,16 +21,23 @@ const Landpage = (props) => {
         emoji: '<span role="img" aria-label="sheep">🐑</span>'
     });
 
+    //Runs before state changes to retrieve the data for the selected uni
     const openSelection = (e) => {
         const selected = e.currentTarget.value;
         const data = universityCheck.find(x => x._id === selected);
+        //Now the data has been found and selected, popup can open
         handleModalOpen(data);
     }
 
+    //Handles opening and closing of popup
     const handleModalOpen = (data) => {
+        //Any hook function will have default parameter that
+        //takes in the previous state.
         modalChange((prevState) => {
             return {
+                //Reverses the previous state
                 modalOpen: !prevState.modalOpen,
+                //Fills details with the university data of selected
                 details: data
             }
         })
@@ -40,8 +47,16 @@ const Landpage = (props) => {
 
 
     console.log(modalInfo);
+
+    //Functions that pass the fetched university data
+    //into an array, allowing the data to be sorted with .sort
     const universityCheck = [];
+
+    //Loading will equal false when all university data has been fetched
+    //if statement is needed otherwise this will run without the state data
     if (!props.loading) {
+
+        //Pushes data into an array 
         function universityChecker() {
             for (var i = 0; i < props.universities[0].length; i++) {
                 var obj = props.universities[0][i];
@@ -49,16 +64,22 @@ const Landpage = (props) => {
             }
         }
 
+        //This is a callback function that will 
         function sortBy(type) {
+            //a and b are the first and second elements for comparison
+            //comparing each array index to each other to generate a value of -1 or 1
+            //that the sort function will read and reorder the indexs by.
             return function (a, b) {
+                //if one is greater that other (by selected type)
+                //subtract from their index and place it higher that
+                //the other index it was compared too.
                 return a.scores[type] > b.scores[type] ? -1 : 1;
             }
         }
+
         universityChecker();
         universityCheck.sort(sortBy(sort.type));
     }
-
-    // console.log(modalInfo.modelOpen);
 
     return (
         //Renders landpage after app level state fetch has been returned
@@ -82,7 +103,10 @@ const Landpage = (props) => {
                             const uniImage = images.filter(images => images.id === obj.img);
                             //Returns emoji value from array depending on the sort type
                             const dataEmoji = emojis.filter(emojis => emojis.type === sort.type);
+
                             // console.log(dataEmoji[0].emoji)
+
+                            //For the top rated university of the relevant sort, set new styles
                             let order = 'uniItem'
                             if (index === 0) {
                                 order = 'uniItem first';

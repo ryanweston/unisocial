@@ -8,8 +8,6 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 const Login = ({ login, auth, loading }) => {
 
-    console.log(localStorage);
-
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -17,11 +15,14 @@ const Login = ({ login, auth, loading }) => {
 
     const { email, password } = formData;
 
-    const changeState = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
+    //Handles form states, will take event information to set relevant 
+    //state object option to the target value.
+    const changeState = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // const captcha = document.querySelector('#g-recaptcha-response').value;
+    //Creates captcha instance following reCaptcha react library
     const recaptchaRef = React.createRef();
 
+    //Handles login submission before running login action
     async function loginSubmit(e) {
         e.preventDefault();
 

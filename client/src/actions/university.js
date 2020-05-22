@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_UNI_BEGIN, FETCH_UNI_SUCCESS, FETCH_UNI_FAILURE } from './types';
 
+//Returns all the data for universities
 export const fetchUni = dispatch => {
     return dispatch => {
 

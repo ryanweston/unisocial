@@ -8,6 +8,7 @@ import { deleteReview } from '../../actions/dashboard';
 
 const ViewReview = (props) => {
 
+    //Hook that handles state changes to check stage of deletion process
     const [deleteCheck, deleteChange] = useState({
         delete: false,
     });

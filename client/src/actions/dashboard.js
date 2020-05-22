@@ -1,6 +1,7 @@
 import { GET_USER_INFO, POST_SUCCESS, POST_FAILURE, POST_BEGIN, DELETE_REVIEW } from './types';
 import axios from 'axios';
 
+//Returns user information & review for dashboard
 export const getUserInfo = () => async dispatch => {
     try {
         console.log('Get user information dispatch initiated');
@@ -13,6 +14,7 @@ export const getUserInfo = () => async dispatch => {
     }
 }
 
+//Scores submission
 export const postReview = (scores) => async dispatch => {
     const config = {
         headers: {
@@ -46,7 +48,7 @@ export const postFailure = (error) => ({
     payload: error
 })
 
-
+//Review deletion
 export const deleteReview = () => async dispatch => {
     try {
         await axios.delete('/api/reviews');

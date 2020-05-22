@@ -94,6 +94,9 @@ router.get('/', async (req, res) => {
   }
 });
 
+// @route    DELETE api/reviews
+// @desc     Delete's the specific user's review
+// @access   Private
 router.delete('/', auth, async (req, res) => {
   try {
     console.log(req.user.id);

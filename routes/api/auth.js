@@ -62,19 +62,23 @@ router.post(
 
       const googleApi = `https://www.google.com/recaptcha/api/siteverify?secret=${captchaKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
 
+
       var options = {
         method: 'POST',
         uri: googleApi,
         json: true // Automatically stringifies the body to JSON
       };
 
+      //rp is a library that returns a promise from a request
+      //makes a request to google api
       const googleReq = await rp(options);
 
-      // if (googleReq.success === false) {
-      //   return res
-      //     .status(400)
-      //     .json({ errors: [{ msg: 'Captcha failed, refresh page and try again' }] });
-      // }
+      //Checks against google api response for failure
+      if (googleReq.success === false) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Captcha failed, refresh page and try again' }] });
+      }
 
 
       let user = await User.findOne({ email });
@@ -86,9 +90,10 @@ router.post(
           .json({ errors: [{ msg: 'No user exists with this email' }] });
       }
 
-      const isMatch = await bcrypt.compare(password, user.password);
+      //Compares stored user password to form password
+      const passwordMatch = await bcrypt.compare(password, user.password);
 
-      if (!isMatch) {
+      if (!passwordMatch) {
         return res
           .status(400)
           .json({ errors: [{ msg: 'Invalid credentials' }] });
@@ -100,6 +105,7 @@ router.post(
         },
       };
 
+      //Sets token using secret key
       jwt.sign(
         payload,
         config.get('jwtSecret'),
@@ -117,6 +123,9 @@ router.post(
   }
 );
 
+// @route    DELETE api/auth
+// @desc     Delete user's profile
+// @access   Private
 router.delete('/', auth, async (req, res) => {
   try {
     await User.findOneAndDelete(req.user.id);

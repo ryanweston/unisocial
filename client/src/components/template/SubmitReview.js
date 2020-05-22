@@ -12,6 +12,8 @@ const SubmitReview = ({ postReview, submission }) => {
     });
 
     const changeValue = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    //Sets value parameters for slider colour changes
     const changeColour = e => {
         if (e.target.value >= 0) {
             e.target.className = 'red'
@@ -28,7 +30,6 @@ const SubmitReview = ({ postReview, submission }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-
         const data = formData;
         postReview(data);
     }

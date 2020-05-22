@@ -1,3 +1,5 @@
+//Array of images with assigned id's that link to db
+//TODO: compress images for faster load time
 const images = [
     { id: "default", src: './images/universities/aberdeen.jpg' },
     { id: "aberdeen", src: './images/universities/aberdeen.jpg' },

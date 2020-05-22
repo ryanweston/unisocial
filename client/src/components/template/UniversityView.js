@@ -4,6 +4,8 @@ import '../../Reviews.css';
 
 class UniversityView extends React.Component {
 
+    //The handler is passed in as a prop to allow closing within this component
+    //it will take the value of null as a parameter to reset the university details state.
     close = () => {
         this.props.handleModalOpen(null);
     }

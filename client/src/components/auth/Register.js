@@ -16,13 +16,18 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
         passwordConfirm: ''
     });
 
+    //Hook that handles state for the selected university
     const [dropdown, setDropdown] = useState({
         selected: ''
     })
 
+    // function runs from event, changing relevant form data for each input by selected name and it's corresponding value
+    // ... operator preserves previous data from form, only changing states of given input
     const formChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const dropdownChange = e => setDropdown({ ...dropdown, selected: e.target.value });
 
+    //Pushes the university state data into an array,
+    //allows easier reformatting into dropdown
     const universityCheck = [];
     function universityChecker() {
         for (var i = 0; i < universities[0].length; i++) {
@@ -34,9 +39,6 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
     const { name, email, password, passwordConfirm } = formData;
     const university = dropdown.selected;
 
-
-    // function runs from event, changing relevant form data for each input by selected name and it's corresponding value
-    // ... operator preserves previous data from form, only changing states of given input
 
     const onSubmit = e => {
         //Prevents default HTML handling, in this instance causing the page to refresh.
@@ -101,7 +103,8 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
                             onChange={e => formChange(e)}
                         />
                         {loading || !universities ? (<div>loading...</div>) : (<div>
-                            <br /><UniversityList onValueChange={dropdownChange} options={universities[0]} />
+                            <br />
+                            <UniversityList onValueChange={dropdownChange} options={universities[0]} />
                         </div>)}
                         <input type="submit" />
                     </form>

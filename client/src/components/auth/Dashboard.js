@@ -10,10 +10,14 @@ import { Redirect } from 'react-router-dom';
 
 const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
 
+    //Popup states for review/user deletion
     const [deleteOption, optionSet] = useState({
         popUp: false,
         popUp2: false
-    })
+    });
+
+    //useEffect is similar to didComponentMount, but for non-class components
+    //will run after the component DOM has rendered.
     useEffect(() => {
         //Ensures getUser has been called first, setting loading to false to prevent race conditions
         if (auth.loading === false) {
@@ -21,6 +25,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
         }
     }, [getUserInfo, auth.loading]);
 
+    //Handles account deletion popup hook
     const handleDelete = () => optionSet(
         (prevState) => {
             return {
@@ -30,6 +35,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
         }
     )
 
+    //Handles review deletion popup hook
     const handleReview = () => optionSet(
         (prevState) => {
             return {
@@ -38,8 +44,6 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
             }
         }
     )
-
-
 
     console.log(deleteOption.popUp);
     return (
@@ -67,6 +71,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                         <button onClick={() => {
                             const option = false;
                             handleReview();
+                            //Runs delete user action
                             deleteUser(option);
                         }}>No</button>
                     </div>

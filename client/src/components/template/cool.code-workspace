@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "crudTest",
+			"path": "..\\..\\..\\.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
