@@ -34,7 +34,7 @@
 
   .filled a:hover {
     background: none!important;
-    color:#54ADFF!important;
+    color:black!important;
   }
   
   .navbar ul li a {
@@ -47,7 +47,7 @@
   }
   
   .navbar ul li a:hover {
-    font-weight:800;
+    /* font-weight:800; */
     background:black ;
     color: #F4F9F4;
     text-decoration: none;
