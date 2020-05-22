@@ -83,6 +83,7 @@ p {
   border-radius: 10px;
   font-family: urbane-rounded;
   margin-bottom:20px;
+  text-transform: capitalize;
 }
 
 .highlight {
