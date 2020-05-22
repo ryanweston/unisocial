@@ -1,13 +1,16 @@
 import React from 'react';
+import emojis from './emojis.js';
 
 const SortDropdown = (props) => {
 
+
+
     return (
         <select className="sortDropdown" onChange={e => props.sortChange(e)}>
-            <option value='total' emoji='⭐'><span role="img" aria-label="sheep">🐑</span> Total</option>
-            <option value='nightlife' emoji='🍻'><span role="img" aria-label="sheep">🐑</span> Nightlife</option>
-            <option value='happiness' emoji='😁'><span role="img" aria-label="sheep">🐑</span> Happiness</option>
-            <option value='internet' emoji='🌎'><span role="img" aria-label="sheep">🐑</span> Internet </option>
+            {emojis.map((obj, index) => {
+                //Would place emojis in a span, however only strings are permitted and span returns an error message
+                return <option value={obj.type} emoji={obj.emoji} key={obj.type}>{obj.emoji} {obj.type}</option>
+            })}
         </select>
     )
 }

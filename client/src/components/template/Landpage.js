@@ -43,6 +43,7 @@ const Landpage = (props) => {
         })
     }
 
+    //Changes sort state to relevant sort type and it's given emoji 
     const changeSort = (e) => sortSelect({ type: e.target.value, emoji: e.target.emoji });
 
 
