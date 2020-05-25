@@ -1,7 +1,7 @@
 /* =====================
    AUTHENTICATION STYLES
    ===================== */
-
+/* 
    .login, .register {
       display:flex;
       flex-direction: column;
@@ -11,19 +11,31 @@
       padding:20px;
       width:auto;
       height:100%;
+   } */
+
+   .login h1 {
+      font-size:2em!important;
+      float:left!important;
    }
 
-   .login h1,.register h1 {
-      font-size:2.5em;
+   .register h1 {
+      font-size:2em;
+      float:left!important;
    }
 
    .captcha {
-      padding-left:5px;
+      transform:scale(0.9);-webkit-transform:scale(0.9);transform-origin:0 0;-webkit-transform-origin:0 0;
+      padding-left:30px;
+   }
+
+   @media (min-width: 600px) {
+      .captcha {transform:scale(1);-webkit-transform:scale(1); padding-left:0px;}
    }
 
    .formContainer {
       border-radius:20px;
       padding:30px;
+      padding-top:0px;
       padding-bottom:50px;
       padding-right:30px;
       height:100%;
@@ -60,13 +72,14 @@
       color: #a9d6ff ;;
   }
 
-   label { 
+   .register, .login > label { 
       font-size:1.2em;
       font-weight:600;
-      padding-top:20px;
+      /* padding-top:20px; */
    }
 
    select { 
+      margin-top:10px;
       border: 2px solid #eee;
       border-radius: 10px;
       font-family: urbane-rounded;

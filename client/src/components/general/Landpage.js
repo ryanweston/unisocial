@@ -84,6 +84,7 @@ const Landpage = (props) => {
 
         universityChecker();
         universityCheck.sort(sortBy(sort.type));
+        console.log(universityCheck);
     }
 
     return (
@@ -120,8 +121,9 @@ const Landpage = (props) => {
                                 order = 'uniItem';
                             }
 
+                            let ranking = index + 1;
                             return <button id="list" className={order} key={index} value={obj._id} onClick={e => { openSelection(e, uniImage) }}>
-                                <div className="ranking"><p>#{index + 1}</p></div>
+                                <div className="ranking"><p>{(index === 0 ? ('🏆') : ("#" + ranking))}</p></div>
                                 <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
                                 </div>
 

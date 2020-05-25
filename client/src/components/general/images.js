@@ -15,7 +15,6 @@ const images = [
     { id: "bath", src: './images/universities/bath.jpg' },
     { id: "birkbeck", src: './images/universities/birkbeck.jpg' },
     { id: "bristol", src: './images/universities/bristol.jpg' },
-
 ]
 
 export default images;

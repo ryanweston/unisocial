@@ -8,9 +8,9 @@ body{font-family:urbane-rounded,sans-serif;margin: 0; padding:0; overflow-x:hidd
 
 h1 {
   font-weight:700;
-  font-size:1.5em;
+  font-size:1em;
   font-family: urbane-rounded;
-  line-height: 0;
+  line-height: normal;
 }
 
 h2 { 
@@ -43,20 +43,20 @@ p {
 }
 
 .fullPage { 
+  /* position:absolute; */
+  top:0;
   display:flex;
   flex-direction: column;
   align-items: center;
-  text-align:center;
   margin:0 auto;
-  /* padding:20px; */
-  /* background-color: red; */
-  width:auto;
-  height:100vh;
-  margin-top:15%;
+  margin-top:30%;
+  width:100%;
+  padding-bottom:5%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 600px) {
-  .fullPage {margin-top: 4%}
+  .fullPage {margin-top: 2%}
 } 
 
 /* ======================
@@ -171,8 +171,8 @@ section .grid {
   padding:0px 10px 0px 10px;
   border-radius: 10px;
   position:absolute;
-  top:5%;
-  left:5%;
+  top:15px;
+  left:15px;
   z-index:5;
   line-height:0;
 }
@@ -231,7 +231,7 @@ section .grid {
    ====================== */
 
 .overlay {  
-  /* overflow-y:scroll; */
+  overflow: hidden;
   position: fixed;
   left:0;
   top:0;
@@ -246,45 +246,91 @@ section .grid {
   padding:20px;
   box-sizing: border-box;
   box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.2);
+
 }
 
 .overlay .close { float:right; }
 
 .scoresHeader {
-
-  float:left;
-  width:20%;
-  background:#DDDDDD;
+  margin-top:50px!important;
+  width:100%;
+  background:white;
   border-radius:20px;
-  height:100%;
+  height:10%;
+  overflow: hidden;
   box-sizing: border-box;
-  margin:0;
-  padding-top:33vh;
-  opacity:0.5;
- /* vertical-align: middle; */
+  position: relative;
+  /* padding-top:33vh; */
+ /* background:none!important; */
 }
 
-.scoresHeader h1 { 
-  transform:rotate(-90deg);
-  line-height:normal;
+.scoresHeader img { 
+  position: relative;
+  transform: translateY(-25%);
+  margin:0;
+  height:auto;
+  width:100%;
+  object-fit: fill;
+  opacity:0.3;
+  z-index:15;
+}
 
-  
+.scoresHeader-content { 
+  position: absolute;
+  display:flex;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  /* width:100%;
+  height:100%; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  z-index:30;
+  padding-left:20px;
+  padding-right:20px;
+  box-sizing: border-box;
+}
+
+.scoresHeader-content h1 { 
+  color:white;
+  line-height:normal;
+  font-size: 4vw;
+  text-transform: uppercase;
+}
+
+.contentContainer { 
+  width:100%;
+  height:80%;
+  margin-top:20px;
+  float:none;
+  box-sizing: border-box;
+  overflow-y:scroll;
+  padding-bottom:40px;
 }
 
 .frontpageScores {
-width:70%;
+  width:100%;
+  float:none;
+}
+
+.total {  
+  padding-top:30px;
 }
 
 .overlayBottom { 
-  /* position:sticky;
-  bottom:1000px; */
-  float:right;
-  width:100%;
+  display:none;
+  position: absolute;
+  bottom:0;
+  padding-top:30px;
+  width:80%;
+  margin:0 auto;
 }
 .overlaySubmit { 
-  color: #54ADFF;
-  border:2px solid #54ADFF;
-  width:100%;
+  width:70%;
+  margin-top:30px;
 }
 
 .margin { 
@@ -293,6 +339,26 @@ width:70%;
 }
 
 @media (min-width:600px) {
-  .overlay {top: 10%; left: 10%; height:80%; width:80%;  border-radius:30px;}
+  .overlay { top: 10%; left: 10%; height:80%; width:80%;  border-radius:30px; }
+}
+
+@media (min-width: 1000px) {
+  .scoresHeader {float:left; width:15%; height:100%; margin:0!important;}
+  .scoresHeader img { height: 75%; width:auto; transform: translate(-25%, 0%) rotate(-90deg); }
+  .scoresHeader h1 { transform:rotate(-90deg)!important; font-size: 2.2vw;}
+  .contentContainer { 
+    position: relative;
+    width:80%; 
+    height:100%;
+    float:right;
+    margin:0;
+    overflow: hidden;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;}
+  .frontpageScores {width:90%; margin:0 auto;}
+  .overlayBottom {display:block;}
 }
 

@@ -67,9 +67,9 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
     return (
         <Fragment>
             {(auth && !loading ? (<div> <h1>You're already logged in!</h1>
-                <Redirect to='/' /></div>) : (<div className="fullPage">
+                <Redirect to='/' /></div>) : (<div className="fullPage register">
                     <h1>Sign Up</h1>
-                    <div class="formContainer">
+                    <div className="formContainer">
                         <form onSubmit={e => onSubmit(e)}>
 
                             <input

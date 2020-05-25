@@ -5,7 +5,7 @@ import { deleteUser } from '../../actions/login';
 import '../../styles/Reviews.css';
 import '../../styles/Buttons.css'
 import PropTypes from 'prop-types';
-import ViewReview from './ViewReview';
+import ViewReview from './DashReview';
 import { Redirect } from 'react-router-dom';
 
 const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
@@ -60,15 +60,15 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                     <h2>Email: </h2><p>{user.email}</p><br />
                     <h2>University: </h2><p>{user.university}</p>
                     <br />
-                    <button onClick={handleDelete} className="delete"><i className="fas fa-trash-alt"></i> Delete Account</button>
+                    <button onClick={handleDelete} className="black delete"><i className="fas fa-trash-alt"></i></button>
                     {(deleteOption.popUp2 === false ? (<Fragment></Fragment>) : (<div>
                         <p>Do you want to delete your review also?</p>
-                        <button onClick={() => {
+                        <button className="black delete" onClick={() => {
                             const option = true;
                             handleReview();
                             deleteUser(option);
                         }}>Yes</button>
-                        <button onClick={() => {
+                        <button className="black delete" onClick={() => {
                             const option = false;
                             handleReview();
                             //Runs delete user action
@@ -78,11 +78,11 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                     ))}
                     {(!deleteOption.popUp ? (<Fragment></Fragment>) : (<div>
                         <p>Are you sure you want to delete your account?</p>
-                        <button onClick={() => {
+                        <button className="black delete" onClick={() => {
                             handleDelete();
                             handleReview();
                         }}>Yes</button>
-                        <button onClick={handleDelete}>No</button>
+                        <button className="black delete" onClick={handleDelete}>No</button>
                     </div>))}
                     <ViewReview review={user.review} />
                 </div>))}

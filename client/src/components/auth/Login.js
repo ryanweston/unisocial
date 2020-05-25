@@ -42,7 +42,7 @@ const Login = ({ login, auth, loading }) => {
             {(auth && !loading ? (<div>
                 <h1>You're already logged in!</h1>
                 <Redirect to='/dashboard' />
-            </div>) : (<section className="fullPage" onSubmit={e => loginSubmit(e)}>
+            </div>) : (<section className="fullPage login" onSubmit={e => loginSubmit(e)}>
                 <h1>Login</h1>
                 <div className="formContainer">
                     <form>
@@ -54,7 +54,7 @@ const Login = ({ login, auth, loading }) => {
                                 ref={recaptchaRef}
                                 sitekey="6Le3m_MUAAAAAGGupKFXSTuNEIBjwAB486DNz6NY"
                                 onChange={onChange}
-                                theme={'dark'}
+                                theme={'light'}
                             />
                         </div>
                         <input type="submit" value="Login" />

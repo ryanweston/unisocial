@@ -2,14 +2,34 @@
    BUTTON STYLES
    ====================== */
 
-button { 
-       background:none;
-       padding:5px 15px 5px 15px;
-       border:2px solid black;
-       border-radius: 10px;  
-       font-weight:800;
+.black { 
+    background:none;
+    padding:7px 15px 7px 15px;
+    border:2px solid black;
+    border-radius: 10px;  
+    font-weight:800;
 }
 
+.black:hover { 
+    color:white;
+    cursor: pointer;
+    background:black;
+}
+
+.blue {
+    background:none;
+    padding:7px 15px 7px 15px;
+    color: #54ADFF;
+    border:2px solid #54ADFF;
+    border-radius: 10px;  
+    font-weight:800;
+}
+
+.blue:hover {
+    background: #54ADFF;
+    color:white;
+    cursor: pointer;
+}
 
 
 .delete { 
