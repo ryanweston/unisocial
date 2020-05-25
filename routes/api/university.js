@@ -17,10 +17,7 @@ router.post('/', async (req, res) => {
             let domain1 = obj.web_pages[0];
             let country1 = obj.country;
             // const { internet1, happiness1, nightlife1 } = '1';
-            const internet1 = '0';
-            const happiness1 = '0';
-            const nightlife1 = '0';
-            const total1 = '0';
+            const def = '0';
             let img1 = "default";
 
             const university = new University({
@@ -30,10 +27,24 @@ router.post('/', async (req, res) => {
                 img: img1,
                 scores:
                 {
-                    internet: internet1,
-                    happiness: happiness1,
-                    nightlife: nightlife1,
-                    total: total1,
+                    internet: def,
+                    happiness: def,
+                    nightlife: def,
+                    societies: def,
+                    sports: def,
+                    crime: def,
+                    LGBTQ_friendly: def,
+                    student_events: def,
+                    mental_health: def,
+                    diversity: def,
+                    freshers_week: def,
+                    nature: def,
+                    weather: def,
+                    cost_of_living: def,
+                    culture: def,
+                    accomodation: def,
+                    freedom_of_speech: def,
+                    total: def,
                 },
             });
             university.markModified('scores');

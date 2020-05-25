@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/dashboard';
 import '../../styles/Reviews.css';
+import '../../styles/Buttons.css';
 
 const SubmitReview = ({ postReview, submission }) => {
 
@@ -9,6 +10,19 @@ const SubmitReview = ({ postReview, submission }) => {
         internet: null,
         nightlife: null,
         happiness: null,
+        societies: null,
+        sports: null,
+        freedom_of_speech: null,
+        culture: null,
+        weather: null,
+        LGBTQ_friendly: null,
+        crime: null,
+        mental_health: null,
+        student_events: null,
+        nature: null,
+        diversity: null,
+        accomodation: null,
+        cost_of_living: null,
     });
 
     const changeValue = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,24 +58,72 @@ const SubmitReview = ({ postReview, submission }) => {
 
                         <form onSubmit={e => onSubmit(e)} className="scoresContainer submission">
                             <div className="item">
-                                <label><span role="img" aria-label="sheep">🐑</span> Internet:</label>
-                                <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
-                            </div>
-                            <div className="item">
-                                <label><span role="img" aria-label="sheep">🐑</span> Nightlife:</label>
+                                <label><span role="img" aria-label="sheep">🍻</span> Nightlife</label>
                                 <input name="nightlife" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label><span role="img" aria-label="sheep">🐑</span> Happiness</label>
+                                <label><span role="img" aria-label="sheep">😁</span> Happiness</label>
                                 <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label><span role="img" aria-label="sheep">🐑</span> Happiness</label>
-                                <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                                <label><span role="img" aria-label="sheep">😁</span> Societies</label>
+                                <input name="societies" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">⚽</span> Sports</label>
+                                <input name="sports" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🗣</span> Freedom Of Speech</label>
+                                <input name="freedom_of_speech" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🎭</span> Culture</label>
+                                <input name="culture" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">☁</span> Weather</label>
+                                <input name="weather" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🌈</span> LGBTQ+ Friendly</label>
+                                <input name="LGBTQ_friendly" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🚨</span> Crime</label>
+                                <input name="crime" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🌐</span> Internet</label>
+                                <input name="internet" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🧠</span> Mental Health</label>
+                                <input name="mental_health" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🌃</span> Student Events</label>
+                                <input name="student_events" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🌳</span> Nature</label>
+                                <input name="nature" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🌎</span> Diversity</label>
+                                <input name="diversity" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">🏠</span> Accomodation</label>
+                                <input name="accomodation" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
+                            </div>
+                            <div className="item">
+                                <label><span role="img" aria-label="sheep">💸</span> Cost Of Living</label>
+                                <input name="cost_of_living" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <br />
                             <div className="full">
-                                <button type="submit"><i class="fas fa-check"></i> Submit</button>
+                                <button className="blue" type="submit"><i className="fas fa-check"></i> Submit</button>
                             </div>
 
                         </form>
