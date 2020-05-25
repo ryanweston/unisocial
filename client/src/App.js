@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './components/template/Nav';
-import Landpage from './components/template/Landpage';
+import Nav from './components/general/Nav';
+import Landpage from './components/general/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
-import Alert from './components/template/Alert';
+import Alert from './components/general/Alert';
 import SubmitReview from './components/dashboard/SubmitReview';
 //Redux imports
 import { Provider } from 'react-redux';
