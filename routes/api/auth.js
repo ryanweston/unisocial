@@ -57,7 +57,7 @@ router.post(
       if (captcha === undefined ||
         captcha === '' ||
         captcha === null) {
-        return res.json({ errors: [{ msg: 'Please complete captcha!' }] })
+        return res.status(400).json({ errors: [{ msg: 'Please complete captcha!' }] })
       }
 
       const googleApi = `https://www.google.com/recaptcha/api/siteverify?secret=${captchaKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;

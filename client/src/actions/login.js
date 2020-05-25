@@ -22,7 +22,7 @@ export const login = (loginInfo) => async dispatch => {
         }
     } catch (err) {
         const errorArray = err.response.data.errors;
-
+        console.log(err.errors);
         if (errorArray) {
             errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
         }

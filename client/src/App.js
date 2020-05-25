@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/template/Nav';
 import Landpage from './components/template/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Dashboard from './components/auth/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import Alert from './components/template/Alert';
-import SubmitReview from './components/template/SubmitReview';
+import SubmitReview from './components/dashboard/SubmitReview';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './store';
@@ -26,11 +26,12 @@ const App = () => {
   }, []);
 
 
+
   return (<Provider store={store}>
     <Router>
       <Fragment>
-        <Nav />
         <section className="container">
+          <Nav />
           <Alert />
 
           <Switch>

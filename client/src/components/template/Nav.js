@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/login';
 import PropTypes from 'prop-types';
-import '../../Nav.css';
+import '../../styles/Nav.css';
 
 
 const Nav = (props) => {

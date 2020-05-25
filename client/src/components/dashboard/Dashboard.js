@@ -2,8 +2,8 @@ import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/dashboard';
 import { deleteUser } from '../../actions/login';
-import '../../Reviews.css';
-import '../../Buttons.css'
+import '../../styles/Reviews.css';
+import '../../styles/Buttons.css'
 import PropTypes from 'prop-types';
 import ViewReview from './ViewReview';
 import { Redirect } from 'react-router-dom';
@@ -60,7 +60,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                     <h2>Email: </h2><p>{user.email}</p><br />
                     <h2>University: </h2><p>{user.university}</p>
                     <br />
-                    <button onClick={handleDelete} className="delete"><i class="fas fa-trash-alt"></i> Delete Account</button>
+                    <button onClick={handleDelete} className="delete"><i className="fas fa-trash-alt"></i> Delete Account</button>
                     {(deleteOption.popUp2 === false ? (<Fragment></Fragment>) : (<div>
                         <p>Do you want to delete your review also?</p>
                         <button onClick={() => {

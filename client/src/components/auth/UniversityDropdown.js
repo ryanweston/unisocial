@@ -31,7 +31,6 @@ class UniversityList extends React.Component {
 
             <Fragment>
                 <div>
-                    <label>University</label>
                     <select onChange={e => this.props.onValueChange(e)}>{
                         // map takes in the recieved university data, for each producing an option for the dropdown
                         this.props.options.map((obj, index) => {

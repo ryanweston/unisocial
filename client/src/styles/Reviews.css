@@ -8,6 +8,7 @@
     display: grid;
     grid-gap:1rem;
     grid-template-columns: repeat(1, 1fr);
+    box-sizing: border-box;
 }
 
 .item { 
@@ -26,7 +27,6 @@
 
 label { 
   font-size:1.1em!important;
-   line-height: 0;
    margin:0;
    float:none!important;
 }
@@ -51,7 +51,7 @@ progress::-moz-progress-bar {
 }
 
   @media (min-width: 600px) {
-   .scoresContainer { width:100%; grid-template-columns: repeat(2, 0.5fr); grid-row-gap: 0px;grid-column-gap: 0px; }
+   .scoresContainer { float:right; width:80%; grid-template-columns: repeat(2, 0.5fr); grid-row-gap: 0px;grid-column-gap: 0px; }
  }
 
 

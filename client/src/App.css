@@ -1,4 +1,6 @@
-body{ font-family:urbane-rounded,sans-serif;margin: 0; padding:0; overflow-x:hidden; filter: none; z-index:-5}
+body{font-family:urbane-rounded,sans-serif;margin: 0; padding:0; overflow-x:hidden; height:100%;
+}
+
 
 /* ======================
    DEFAULT FONT STYLES
@@ -35,7 +37,7 @@ p {
    ======================== */
 
 .container { 
-  height:100%;
+  height:100vh;
   width: 100%;
   margin:0 auto;
 }
@@ -49,7 +51,7 @@ p {
   /* padding:20px; */
   /* background-color: red; */
   width:auto;
-  height:100%;
+  height:100vh;
   margin-top:15%;
 }
 
@@ -70,7 +72,6 @@ p {
   padding-bottom:25px;
 }
   
-
 .header h1 { 
   color: black;
   line-height: normal;
@@ -87,11 +88,11 @@ p {
 }
 
 .highlight {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #54ADFF 50%);
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #a9d6ff 50%);
 }
 
 span:hover { 
-  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #96d4ba 50%);
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #edf6ff 20%);
 }
 
 @media (min-width: 600px) {
@@ -126,7 +127,6 @@ section .grid {
   padding:0;
   border-radius: 20px;
   border: 0px;
-  /* border: 2px solid #17c37b; */
   background:white;
   z-index:0;
   position: relative;
@@ -153,9 +153,11 @@ section .grid {
 }
 
 .uniItem:hover { 
-  border: 4px solid #54ADFF;
+  /* border: 4px solid #54ADFF; */
   border-radius: 25px;
+  background:#54ADFF;
 }
+
 .uniItem:hover .image { 
   opacity: 0.6;
 }
@@ -229,28 +231,68 @@ section .grid {
    ====================== */
 
 .overlay {  
-  overflow-y:scroll;
+  /* overflow-y:scroll; */
   position: fixed;
-  left:2%;
-  top:2%;
+  left:0;
+  top:0;
   margin:0;
   background-color:white;
-  width:75%;
-  border-radius:30px;
-  border: 2px solid #54ADFF;
-  height:80%;
+  width:100%;
+  border-radius:0px;
+  /* border: 2px solid black; */
+  height:100%;
   z-index:1000;
   text-align:center;
   padding:20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.2);
 }
 
-.overlay button { float:right}
+.overlay .close { float:right; }
+
+.scoresHeader {
+
+  float:left;
+  width:20%;
+  background:#DDDDDD;
+  border-radius:20px;
+  height:100%;
+  box-sizing: border-box;
+  margin:0;
+  padding-top:33vh;
+  opacity:0.5;
+ /* vertical-align: middle; */
+}
+
+.scoresHeader h1 { 
+  transform:rotate(-90deg);
+  line-height:normal;
+
+  
+}
+
+.frontpageScores {
+width:70%;
+}
+
+.overlayBottom { 
+  /* position:sticky;
+  bottom:1000px; */
+  float:right;
+  width:100%;
+}
+.overlaySubmit { 
+  color: #54ADFF;
+  border:2px solid #54ADFF;
+  width:100%;
+}
 
 .margin { 
   margin-top:20px;
+  width:100%;
 }
 
 @media (min-width:600px) {
-  .overlay {left:10%; top:7%;}
+  .overlay {top: 10%; left: 10%; height:80%; width:80%;  border-radius:30px;}
 }
 

@@ -13,7 +13,8 @@ const Landpage = (props) => {
 
     const [modalInfo, modalChange] = useState({
         modalOpen: false,
-        details: null
+        details: null,
+        img: null,
     })
 
     const [sort, sortSelect] = useState({
@@ -22,15 +23,17 @@ const Landpage = (props) => {
     });
 
     //Runs before state changes to retrieve the data for the selected uni
-    const openSelection = (e) => {
+    const openSelection = (e, img) => {
         const selected = e.currentTarget.value;
         const data = universityCheck.find(x => x._id === selected);
+        const imgUrl = img;
         //Now the data has been found and selected, popup can open
-        handleModalOpen(data);
+        handleModalOpen(data, imgUrl);
     }
 
     //Handles opening and closing of popup
-    const handleModalOpen = (data) => {
+    const handleModalOpen = (data, imgUrl) => {
+        // document.container.classList.add('modal-open');
         //Any hook function will have default parameter that
         //takes in the previous state.
         modalChange((prevState) => {
@@ -38,7 +41,8 @@ const Landpage = (props) => {
                 //Reverses the previous state
                 modalOpen: !prevState.modalOpen,
                 //Fills details with the university data of selected
-                details: data
+                details: data,
+                img: imgUrl
             }
         })
     }
@@ -88,6 +92,7 @@ const Landpage = (props) => {
             < Fragment >
                 <Fragment>
                     <UniversityView
+                        image={modalInfo.img}
                         details={modalInfo.details}
                         currentState={modalInfo.modalOpen}
                         handleModalOpen={handleModalOpen}>
@@ -115,7 +120,7 @@ const Landpage = (props) => {
                                 order = 'uniItem';
                             }
 
-                            return <button id="list" className={order} key={index} value={obj._id} onClick={e => { openSelection(e) }}>
+                            return <button id="list" className={order} key={index} value={obj._id} onClick={e => { openSelection(e, uniImage) }}>
                                 <div className="ranking"><p>#{index + 1}</p></div>
                                 <div className="image" style={{ backgroundImage: "url(" + uniImage[0].src + ")" }}>
                                 </div>

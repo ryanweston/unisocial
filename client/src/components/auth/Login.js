@@ -2,7 +2,7 @@ import React, { useState, onChange, Fragment } from 'react'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { login } from '../../actions/login';
-import '../../Auth.css';
+import '../../styles/Auth.css';
 import PropTypes from 'prop-types';
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -46,11 +46,9 @@ const Login = ({ login, auth, loading }) => {
                 <h1>Login</h1>
                 <div className="formContainer">
                     <form>
-                        <label>Email</label>
-                        <input name="email" type="email" onChange={(e) => changeState(e)} />
+                        <input name="email" type="email" placeholder="Email Address" onChange={(e) => changeState(e)} />
                         <br />
-                        <label>Password</label>
-                        <input name="password" type="password" onChange={(e) => changeState(e)} />
+                        <input name="password" type="password" placeholder="Password" onChange={(e) => changeState(e)} />
                         <div className="captcha">
                             <ReCAPTCHA className="margin"
                                 ref={recaptchaRef}
@@ -59,7 +57,7 @@ const Login = ({ login, auth, loading }) => {
                                 theme={'dark'}
                             />
                         </div>
-                        <input type="submit" />
+                        <input type="submit" value="Login" />
                     </form>
                 </div>
             </section>))}

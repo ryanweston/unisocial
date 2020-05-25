@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/dashboard';
-import '../../Reviews.css';
+import '../../styles/Reviews.css';
 
 const SubmitReview = ({ postReview, submission }) => {
 
