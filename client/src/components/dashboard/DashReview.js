@@ -32,8 +32,6 @@ const ViewReview = (props) => {
                     <button className="black dash edit"><i className="fas fa-edit"></i> Edit</button>
                 </Link>
                 <br />
-
-                <Review scores={props.review.scores} />
                 <Link to='/dashboard'>
                     <button onClick={handleDelete} className="black delete dash"><i className="fas fa-trash-alt"></i></button>
                 </Link>
@@ -42,6 +40,8 @@ const ViewReview = (props) => {
                     <button className="black delete" onClick={() => { handleDelete(); props.deleteReview(); }}>Yes</button>
                     <button className="black delete" onClick={handleDelete}>No</button>
                 </div>))}
+                <Review scores={props.review.scores} />
+
             </div>))}
         </Fragment>
     )
