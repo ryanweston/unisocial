@@ -18,6 +18,7 @@ export const register = (formData) => async dispatch => {
         console.log(res.data)
         dispatch(registerSuccess(res.data));
         dispatch(getUser(res.data));
+        dispatch(setAlert("You're now logged in!", 'success'));
     }
     catch (err) {
         const errorArray = err.response.data.errors;
