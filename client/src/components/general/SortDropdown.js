@@ -8,8 +8,13 @@ const SortDropdown = (props) => {
     return (
         <select className="sortDropdown" onChange={e => props.sortChange(e)}>
             {emojis.map((obj, index) => {
+                //Remove underscores from types
+                let string = obj.type;
+                let newString = string.replace(/_/g, " ");
+                console.log(newString);
+
                 //Would place emojis in a span, however only strings are permitted and span returns an error message
-                return <option value={obj.type} emoji={obj.emoji} key={obj.type}>{obj.emoji} {obj.type}</option>
+                return <option value={obj.type} emoji={obj.emoji} key={index}>{obj.emoji} {newString}</option>
             })}
         </select>
     )
