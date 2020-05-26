@@ -24,7 +24,7 @@
 }
 
 label { 
-    font-size:0.9em;
+    font-size:0.8em;
     font-weight:600;
     margin:0;
     float:none!important;
@@ -96,6 +96,7 @@ progress::-moz-progress-bar {
 
 @media (min-width: 600px) {
    .scoresContainer { float:right; width:80%;}
+   .label {font-size:0.9em;}
  }
 
 @media (min-width: 1000px) {
@@ -162,7 +163,7 @@ progress::-moz-progress-bar {
 
 .submission input[type=range] { 
     float:right;
-    height:0px;
+    height:25px;
     border-radius: 10px;
 }
 

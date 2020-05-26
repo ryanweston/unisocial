@@ -51,6 +51,8 @@
       margin-top:10px;
       border-radius:10px;
       font-family: urbane-rounded;
+      -moz-appearence:none;
+      -webkit-appearence:none;
    }
 
   input[type=submit] {
@@ -65,6 +67,8 @@
       border-radius: 10px;  
       color: white ;
       font-weight:800;
+      -moz-appearence:none;
+      -webkit-appearence:none;
   }
 
   input[type=submit]:hover { 
