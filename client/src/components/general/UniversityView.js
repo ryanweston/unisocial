@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/Buttons.css';
 import '../../styles/Reviews.css';
 // import emojis from './emojis.js';
@@ -26,7 +27,7 @@ const UniversityView = (props) => {
                     <div className="scoresHeader-content">
                         <h1>{props.details.name}</h1>
                     </div>
-                    <img src={props.image[0].src}></img>
+                    <img src={props.image[0].src} alt="University campus"></img>
 
                 </div>
                 <div className="contentContainer">
@@ -103,7 +104,9 @@ const UniversityView = (props) => {
                         <h2>{props.details.scores.total.toFixed(2)}</h2>
                     </div>
                     <div className="overlayBottom">
-                        <button className="overlaySubmit blue">Are you a student here? Submit your own review. <i className="fas fa-long-arrow-alt-right"></i></button>
+                        <Link to="/register">
+                            <button className="overlaySubmit blue">Are you a student here? Submit your own review. <i className="fas fa-long-arrow-alt-right"></i></button>
+                        </Link>
                     </div>
                 </div>
 

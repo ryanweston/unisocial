@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { postReview } from '../../actions/dashboard';
 import '../../styles/Reviews.css';
 import '../../styles/Buttons.css';
+import { Redirect } from 'react-router-dom';
 
 const SubmitReview = ({ postReview, submission }) => {
 
@@ -51,11 +52,9 @@ const SubmitReview = ({ postReview, submission }) => {
     return (
         <Fragment>
             {(submission.success ? (<Fragment>
-                <h1>Submission Successful</h1>
-
+                <Redirect to='/dashboard' />
             </Fragment>) : (
-                    <div className="fullPage">
-
+                    <div className="fullPage margin-reset">
                         <form onSubmit={e => onSubmit(e)} className="scoresContainer submission">
                             <div className="item">
                                 <label><span role="img" aria-label="sheep">🍻</span> Nightlife</label>
@@ -66,7 +65,7 @@ const SubmitReview = ({ postReview, submission }) => {
                                 <input name="happiness" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
-                                <label><span role="img" aria-label="sheep">😁</span> Societies</label>
+                                <label><span role="img" aria-label="sheep">👨‍🎓</span> Societies</label>
                                 <input name="societies" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
                             <div className="item">
@@ -121,12 +120,13 @@ const SubmitReview = ({ postReview, submission }) => {
                                 <label><span role="img" aria-label="sheep">💸</span> Cost Of Living</label>
                                 <input name="cost_of_living" className='default' type="range" min="0.25" max="5" step="0.25" onChange={e => { changeValue(e); changeColour(e) }} />
                             </div>
-                            <br />
+
                             <div className="full">
-                                <button className="blue" type="submit"><i className="fas fa-check"></i> Submit</button>
+                                <button className="black top-margin" type="submit"><i className="fas fa-check"></i> Submit</button>
                             </div>
 
                         </form>
+
                     </div>))
             }
         </Fragment >

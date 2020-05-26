@@ -40,7 +40,6 @@ const Login = ({ login, auth, loading }) => {
     return (
         <Fragment>
             {(auth && !loading ? (<div>
-                <h1>You're already logged in!</h1>
                 <Redirect to='/dashboard' />
             </div>) : (<section className="fullPage login" onSubmit={e => loginSubmit(e)}>
                 <h1>Login</h1>

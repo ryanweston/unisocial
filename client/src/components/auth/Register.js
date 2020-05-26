@@ -66,53 +66,54 @@ const Register = ({ setAlert, universities, loading, register, auth }) => {
 
     return (
         <Fragment>
-            {(auth && !loading ? (<div> <h1>You're already logged in!</h1>
-                <Redirect to='/' /></div>) : (<div className="fullPage register">
-                    <h1>Sign Up</h1>
-                    <div className="formContainer">
-                        <form onSubmit={e => onSubmit(e)}>
+            {(auth && !loading ? (<div>
+                <Redirect to='/dashboard' />
+            </div>) : (<div className="fullPage register">
+                <h1>Sign Up</h1>
+                <div className="formContainer">
+                    <form onSubmit={e => onSubmit(e)}>
 
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Name"
-                                value={name}
-                                onChange={e => formChange(e)}
-                            />
-                            <br />
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            value={name}
+                            onChange={e => formChange(e)}
+                        />
+                        <br />
 
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email Address"
-                                value={email}
-                                onChange={e => formChange(e)}
-                            />
-                            <br />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            value={email}
+                            onChange={e => formChange(e)}
+                        />
+                        <br />
 
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={e => formChange(e)}
-                            />
-                            <br />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={e => formChange(e)}
+                        />
+                        <br />
 
-                            <input
-                                type="password"
-                                name="passwordConfirm"
-                                placeholder="Verify Password"
-                                value={passwordConfirm}
-                                onChange={e => formChange(e)}
-                            />
-                            {loading || !universities ? (<div>loading...</div>) : (<Fragment>
-                                <UniversityList onValueChange={dropdownChange} options={universities[0]} />
-                            </Fragment>)}
-                            <input type="submit" value="Register" />
-                        </form>
-                    </div>
+                        <input
+                            type="password"
+                            name="passwordConfirm"
+                            placeholder="Verify Password"
+                            value={passwordConfirm}
+                            onChange={e => formChange(e)}
+                        />
+                        {loading || !universities ? (<div>loading...</div>) : (<Fragment>
+                            <UniversityList onValueChange={dropdownChange} options={universities[0]} />
+                        </Fragment>)}
+                        <input type="submit" value="Register" />
+                    </form>
                 </div>
+            </div>
                 ))}
         </Fragment>
     );
