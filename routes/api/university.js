@@ -37,7 +37,6 @@ router.post('/', async (req, res) => {
                     student_events: def,
                     mental_health: def,
                     diversity: def,
-                    freshers_week: def,
                     nature: def,
                     weather: def,
                     cost_of_living: def,
