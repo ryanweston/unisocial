@@ -1,5 +1,6 @@
-import { GET_USER_INFO, POST_SUCCESS, POST_FAILURE, POST_BEGIN, DELETE_REVIEW } from './types';
+import { GET_USER_INFO, POST_SUCCESS, POST_BEGIN, DELETE_REVIEW } from './types';
 import axios from 'axios';
+import { setAlert } from './alert';
 
 //Returns user information & review for dashboard
 export const getUserInfo = () => async dispatch => {
@@ -21,16 +22,40 @@ export const postReview = (scores) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
+
     const body = { scores };
-    try {
-        dispatch(postBegin());
-        console.log(body);
-        const res = await axios.post('api/reviews', body, config);
-        console.log(res.data);
-        dispatch(postSuccess(res.data));
-    } catch (err) {
-        console.log(err.response.data.errors);
-        dispatch(postFailure(err.response.data.errors));
+
+    var status = "success";
+
+    //Checks for values of null by looping through each value, responds with alert
+    //and prevents POST method with failure variable if null is present.
+    //TODO: More secure to make use of promise alls as this method may be invoking race conditions.
+    let checkObject = body.scores;
+
+    for (var key of Object.keys(checkObject)) {
+        if (checkObject[key] === null) {
+            status = "failure";
+            dispatch(setAlert("Please fill in all values!", 'danger'));
+            console.log(checkObject[key]);
+            //Breaks for loop early
+            break;
+        }
+    }
+
+    if (status !== "failure") {
+        try {
+            dispatch(postBegin());
+            console.log(body);
+            const res = await axios.post('api/reviews', body, config);
+            console.log(res.data);
+            dispatch(postSuccess(res.data));
+            dispatch(setAlert("Review has been submitted!", 'success'));
+        } catch (err) {
+            const errorArray = err.response.data.errors;
+            if (errorArray) {
+                errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
+            }
+        }
     }
 }
 
@@ -43,10 +68,6 @@ export const postSuccess = (response) => ({
     payload: response
 })
 
-export const postFailure = (error) => ({
-    type: POST_FAILURE,
-    payload: error
-})
 
 //Review deletion
 export const deleteReview = () => async dispatch => {
@@ -55,7 +76,7 @@ export const deleteReview = () => async dispatch => {
         dispatch({
             type: DELETE_REVIEW,
         });
-        console.log('Review deleted');
+        dispatch(setAlert("Review deleted", 'success'));
     } catch (err) {
         console.log(err.response.data.errors);
     }
