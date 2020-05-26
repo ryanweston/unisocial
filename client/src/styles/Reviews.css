@@ -169,6 +169,7 @@ progress::-moz-progress-bar {
    ====================== */
 
 .dashboard {
+    position: relative;
     margin-top:11%!important;
     margin:0 auto;
     padding-left:0px;
@@ -176,6 +177,7 @@ progress::-moz-progress-bar {
     padding-top:20px;
     padding-bottom:20px;
     width:90%;
+    max-width:1200px;
     height:100%;
 }
 
@@ -189,6 +191,7 @@ progress::-moz-progress-bar {
 }
 
 .review-section { 
+  position: relative;
     margin-top:11%!important;
 }  
 

@@ -60,7 +60,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                     <h2>Email: </h2><p>{user.email}</p><br />
                     <h2>University: </h2><p>{user.university}</p>
                     <br />
-                    <button onClick={handleDelete} className="black delete"><i className="fas fa-trash-alt"></i></button>
+                    <button onClick={handleDelete} className="black delete account"><i className="fas fa-trash-alt"></i> Delete Account</button>
                     {(deleteOption.popUp2 === false ? (<Fragment></Fragment>) : (<div>
                         <p>Do you want to delete your review also?</p>
                         <button className="black delete" onClick={() => {

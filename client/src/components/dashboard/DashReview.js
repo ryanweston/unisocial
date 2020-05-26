@@ -29,19 +29,19 @@ const ViewReview = (props) => {
             </Link>) : (<div className="review-section">
                 <h1>Your Review</h1>
                 <Link to="/submit">
-                    <button className="black"><i className="fas fa-edit"></i> Edit</button>
+                    <button className="black dash edit"><i className="fas fa-edit"></i> Edit</button>
                 </Link>
                 <br />
+
+                <Review scores={props.review.scores} />
                 <Link to='/dashboard'>
-                    <button onClick={handleDelete} className="black delete"><i className="fas fa-trash-alt"></i></button>
+                    <button onClick={handleDelete} className="black delete dash"><i className="fas fa-trash-alt"></i></button>
                 </Link>
                 {(deleteCheck.delete === false ? (<Fragment></Fragment>) : (<div>
                     <p>Are you sure you want to delete?</p>
                     <button className="black delete" onClick={() => { handleDelete(); props.deleteReview(); }}>Yes</button>
                     <button className="black delete" onClick={handleDelete}>No</button>
                 </div>))}
-                <Review scores={props.review.scores} />
-
             </div>))}
         </Fragment>
     )

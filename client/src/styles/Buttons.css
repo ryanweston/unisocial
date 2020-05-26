@@ -31,6 +31,20 @@
     cursor: pointer;
 }
 
+.dash {
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.edit {
+    margin-right:50px;
+}
+
+.account { 
+    margin-top:20px;
+}
+
 
 .delete { 
     border:2px solid red!important;
