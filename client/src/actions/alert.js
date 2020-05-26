@@ -10,9 +10,9 @@ export const setAlert = (msg, alertType) => dispatch => {
         type: SET_ALERT,
         payload: { msg, alertType, id }
     })
-    //After 3 seconds run actiont to remove alert
+    //After 2 seconds run actiont to remove alert
     setTimeout(() => dispatch({
         type: REMOVE_ALERT,
         payload: id
-    }), 3000)
+    }), 2000)
 };
