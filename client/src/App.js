@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HttpsRedirect from 'react-https-redirect';
 import Nav from './components/general/Nav';
 import Landpage from './components/general/Landpage';
 import Register from './components/auth/Register';
@@ -27,24 +28,26 @@ const App = () => {
 
 
 
-  return (<Provider store={store}>
-    <Router>
-      <Fragment>
-        <section className="container">
-          <Nav />
-          <Alert />
+  return (<HttpsRedirect>
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <section className="container">
+            <Nav />
+            <Alert />
 
-          <Switch>
-            <Route exact path="/" component={Landpage} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/submit" component={SubmitReview} />
-          </Switch>
-        </section>
-      </Fragment>
-    </Router>
-  </Provider>);
+            <Switch>
+              <Route exact path="/" component={Landpage} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/submit" component={SubmitReview} />
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
+    </Provider>
+  </HttpsRedirect>);
 };
 
 
