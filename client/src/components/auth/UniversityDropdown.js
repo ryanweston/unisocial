@@ -31,13 +31,16 @@ class UniversityList extends React.Component {
 
             <Fragment>
                 <div>
-                    <select onChange={e => this.props.onValueChange(e)}>{
-                        // map takes in the recieved university data, for each producing an option for the dropdown
-                        this.props.options.map((obj, index) => {
-                            return <option key={index} value={obj._id}> {obj.name}</option>
-                        }
-                        )
-                    }</select>
+                    <select onChange={e => this.props.onValueChange(e)}>
+                        {/* Default value for dropdown */}
+                        <option value="" selected disabled hidden>Select your university</option>
+                        {
+                            // map takes in the recieved university data, for each producing an option for the dropdown
+                            this.props.options.map((obj, index) => {
+                                return <option style={{ fontFamily: "urbane-rounded" }} key={index} value={obj._id}> {obj.name}</option>
+                            }
+                            )
+                        }</select>
                 </div>
             </Fragment>
         )

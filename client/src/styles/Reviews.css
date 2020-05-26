@@ -20,7 +20,7 @@
 .full { 
     float:none!important;
     grid-column: 2 / -2;
-    transform:translateX(-60px);
+    transform:translateX(-50px);
 }
 
 label { 
@@ -33,47 +33,50 @@ label {
 
 
 progress[target=_1]::-webkit-progress-value {
-    background: red;
+    background-color: red;
   }
   
 progress[target=_1]::-moz-progress-bar {
-    background: red;
+    background-color: red;
   }
   
 progress[target=_2]::-webkit-progress-value {
-    background: red;
+    background-color: red;
   }
   
 progress[target=_2]::-moz-progress-bar {
-    background: red;
+    background-color: red;
   }
   
 progress[target=_3]::-webkit-progress-value {
-    background: orange;
+    background-color: orange;
   }
   
-progress[target=_3]::-webkit-progress-value {
-    background: orange;
+progress[target=_3]::-moz-progress-bar {
+    background-color: orange;
   }
 progress[target=_4]::-webkit-progress-value {
-    background: green;
+    background-color: green;
   }
   
-progress[target=_4]::-webkit-progress-value {
+progress[target=_4]::-moz-progress-bar {
     background: green;
   }
 progress[target=_5]::-webkit-progress-value {
-    background: green;
+    background-color: green;
   }
   
-progress[target=_5]::-webkit-progress-value {
-    background: green;
+progress[target=_5]::-moz-progress-bar{
+  background-color: green;
   }
 
 progress {
     border-radius: 20px; 
+    border:none;
     width: 50%;
     height: 22px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     float:right;
 }
@@ -87,6 +90,8 @@ progress::-webkit-progress-value {
   }
 progress::-moz-progress-bar {
     border-radius: 20px;
+    -moz-appearance:none;
+    box-shadow:none!important;
 }
 
 @media (min-width: 600px) {
@@ -128,11 +133,13 @@ progress::-moz-progress-bar {
 .default { 
     background-color: #eeeeee;
     -webkit-appearance: none;  /* Override default CSS styles */
+    -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
   }
   
 .green { 
     -webkit-appearance: none;  /* Override default CSS styles */
+    -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
     background: green;
 
@@ -140,6 +147,7 @@ progress::-moz-progress-bar {
   
 .orange { 
     -webkit-appearance: none;  /* Override default CSS styles */
+    -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
     background: orange;
 
@@ -147,6 +155,7 @@ progress::-moz-progress-bar {
   
 .red { 
     -webkit-appearance: none;  /* Override default CSS styles */
+    -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
     background: red;
 }

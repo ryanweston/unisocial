@@ -85,4 +85,11 @@
       font-family: urbane-rounded;
       padding:10px;
       width:100%;
+      -moz-appearence:none;
+      -webkit-appearence:none;
+   }
+
+   select option {
+      -moz-appearance:none;
+      font-family: urbane-rounded;
    }

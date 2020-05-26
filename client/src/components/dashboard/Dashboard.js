@@ -50,7 +50,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
 
         <Fragment>
             {(!auth.isAuthenticated ? (
-                <Redirect to='/'></Redirect>
+                <Redirect to='/register'></Redirect>
             ) : (<div className="dashboard">
                 {(user.loading && auth.loading ? (<div>
                     <h1>LOADING...</h1>

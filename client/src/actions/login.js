@@ -75,7 +75,9 @@ export const getUser = () => async dispatch => {
 
 export const logout = () => dispatch => {
     dispatch(logoutUser());
-    dispatch(setAlert("You've been logged out", 'success'))
+    // Commented out as getUser is run on page load of every route, meaning if they're
+    // not logged in on page load, it will show alert anyway
+    // dispatch(setAlert("You've been logged out", 'success'))
 }
 
 export const logoutUser = () => ({

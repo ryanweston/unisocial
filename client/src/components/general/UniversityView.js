@@ -104,7 +104,7 @@ const UniversityView = (props) => {
                         <h2>{props.details.scores.total.toFixed(2)}</h2>
                     </div>
                     <div className="overlayBottom">
-                        <Link to="/register">
+                        <Link to="/dashboard">
                             <button className="overlaySubmit blue">Are you a student here? Submit your own review. <i className="fas fa-long-arrow-alt-right"></i></button>
                         </Link>
                     </div>

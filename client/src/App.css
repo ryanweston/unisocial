@@ -16,6 +16,7 @@ h1 {
 h2 { 
   font-weight:700;
   font-size:1.1em;
+  font-family: urbane-rounded;
   line-height: 0;
 }
 
@@ -92,7 +93,7 @@ p {
 .animation:before {
   content:'🍻';
   -webkit-animation-name: animation;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 10s;
   animation-name: animation;
   animation-duration: 10s;
   animation-delay: 4s;
@@ -100,6 +101,42 @@ p {
 }
 
 @keyframes animation {
+  0% {
+      content: '🍻';
+  }
+  25% {
+      content: '👨‍🎓';
+  }
+  50% {
+      content: '⚽';
+  }
+  75% {
+      content: '🌳';
+  }
+  100% {
+      content: '🌈';
+  }
+}
+
+@-webkit-keyframes animation {
+  0% {
+      content: '🍻';
+  }
+  25% {
+      content: '👨‍🎓';
+  }
+  50% {
+      content: '⚽';
+  }
+  75% {
+      content: '🌳';
+  }
+  100% {
+      content: '🌈';
+  }
+}
+
+@-moz-keyframes animation {
   0% {
       content: '🍻';
   }
