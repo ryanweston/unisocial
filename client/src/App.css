@@ -55,8 +55,13 @@ p {
   box-sizing: border-box;
 }
 
+.margin-reset {
+  margin:0;
+}
+
 @media (min-width: 600px) {
-  .fullPage {margin-top: 2%}
+  .fullPage {margin-top: 4%};
+
 } 
 
 /* ======================
