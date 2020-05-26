@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
+import EmojiAnimation from './EmojiAnimation';
 import SortDropdown from './SortDropdown';
 //Objects containing linked images for universities, 
 //and emojis representing datatypes
@@ -19,7 +20,6 @@ const Landpage = (props) => {
 
     const [sort, sortSelect] = useState({
         type: 'total',
-        emoji: '<span role="img" aria-label="sheep">🐑</span>'
     });
 
     //Runs before state changes to retrieve the data for the selected uni
@@ -100,7 +100,10 @@ const Landpage = (props) => {
                     </UniversityView >
                 </Fragment>
                 <div className="header">
-                    <h1><span className="highlight">AUTHENTIC REVIEWS</span> FOR UNIVERSITIES BASED ON SOCIAL SCORES & QUALITY OF LIFE  FEEDBACK FROM <span className="highlight">REAL STUDENTS</span></h1>
+                    <EmojiAnimation>
+
+                    </EmojiAnimation>
+                    <h1><span className="highlight">AUTHENTIC UNIVERSITY</span> REVIEWS FOR <span className="highlight">SOCIAL SCORES</span> ON OVER A DOZEN FACTORS</h1>
                 </div>
                 <div className="landing-container">
                     <SortDropdown sortChange={changeSort} />
