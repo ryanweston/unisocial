@@ -32,7 +32,17 @@ const UniversityView = (props) => {
                 </div>
                 <div className="contentContainer">
                     <div className="scoresContainer frontpageScores">
-                        <div className="item">
+
+                        {Object.keys(props.details.scores).map(key => {
+                            return <div className="item">
+                                <label><span role="img" aria-label="sheep">🍻</span> {key}</label>
+                                <progress className="progress" target={"_" + props.details.scores[key].toFixed(0)} value={props.details.scores[key].toFixed(2)} max="5.00"> </progress>
+                            </div>
+
+
+                            console.log(key + props.details.scores[key]);
+                        })}
+                        {/* <div className="item">
                             <label><span role="img" aria-label="sheep">🍻</span> Nightlife</label>
                             <progress className="progress" target={"_" + props.details.scores.nightlife.toFixed(0)} value={props.details.scores.nightlife.toFixed(2)} max="5.00"> </progress>
                         </div>
@@ -96,7 +106,7 @@ const UniversityView = (props) => {
                         <div className="item">
                             <label><span role="img" aria-label="sheep">💸</span> Cost Of Living</label>
                             <progress className="progress" target={"_" + props.details.scores.cost_of_living.toFixed(0)} value={props.details.scores.cost_of_living.toFixed(2)} max="5.00"> </progress>
-                        </div>
+                        </div> */}
 
                     </div>
                     <div className="total">
