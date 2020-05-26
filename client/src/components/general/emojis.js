@@ -14,7 +14,6 @@ const emojis = [
     { type: 'accomodation', emoji: '🏠', label: 'accomodation' },
     { type: 'cost_of_living', emoji: '💸', label: 'cost of living' },
     { type: 'nature', emoji: '🌳', label: 'nature' },
-    { type: 'freshers_week', emoji: '🎉', label: 'freshers week' },
     { type: 'mental_health', emoji: '🧠', label: 'mental health' },
     { type: 'student_events', emoji: '🌃', label: 'student events' },
     { type: 'societies', emoji: '👨‍🎓', label: 'societies' },
