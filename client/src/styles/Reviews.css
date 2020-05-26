@@ -33,41 +33,41 @@ label {
 
 
 progress[target=_1]::-webkit-progress-value {
-    background-color: red;
+    background-color: #FF2626;
   }
   
 progress[target=_1]::-moz-progress-bar {
-    background-color: red;
+    background-color: #FF2626;
   }
   
 progress[target=_2]::-webkit-progress-value {
-    background-color: red;
+    background-color: #FF2626;
   }
   
 progress[target=_2]::-moz-progress-bar {
-    background-color: red;
+    background-color: #FF2626;
   }
   
 progress[target=_3]::-webkit-progress-value {
-    background-color: orange;
+    background-color: #FFBC48;
   }
   
 progress[target=_3]::-moz-progress-bar {
-    background-color: orange;
+    background-color: #FFBC48;
   }
 progress[target=_4]::-webkit-progress-value {
-    background-color: green;
+    background-color: #18C145;
   }
   
 progress[target=_4]::-moz-progress-bar {
-    background: green;
+    background: #18C145;
   }
 progress[target=_5]::-webkit-progress-value {
-    background-color: green;
+    background-color: #18C145;
   }
   
 progress[target=_5]::-moz-progress-bar{
-  background-color: green;
+  background-color: #18C145;
   }
 
 progress {
@@ -142,15 +142,15 @@ progress::-moz-progress-bar {
     -webkit-appearance: none;  /* Override default CSS styles */
     -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    background: green;
+    background: #18C145;
 
 }
   
-.orange { 
+.orange{ 
     -webkit-appearance: none;  /* Override default CSS styles */
     -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    background: orange;
+    background: #FFBC48;
 
 }
   
@@ -158,7 +158,7 @@ progress::-moz-progress-bar {
     -webkit-appearance: none;  /* Override default CSS styles */
     -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    background: red;
+    background: #FF2626;
 }
 
 .submission input[type=range] { 

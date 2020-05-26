@@ -47,12 +47,12 @@
 
 
 .delete { 
-    border:2px solid red!important;
-    color:red!important;
+    border:2px solid #FF2626!important;
+    color:#FF2626!important;
 }
 
 .delete:hover { 
-    background:Red;
+    background:#FF2626;
     color:white!important;
 }
 
@@ -61,19 +61,20 @@
    ====================== */
 
 .alert {
-    position:absolute;
+    position:fixed;
     top:0;
     padding:20px;
     background:grey;
     z-index:1000;
     width:100%;
     text-align:center;
+    color:white;
 }
 
 .alert-danger {
-    background-color: red;
+    background-color: #FF2626;
 }
 
 .alert-success {
-    background-color: green;
+    background-color: #18C145;
 }
