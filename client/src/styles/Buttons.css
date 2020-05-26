@@ -41,7 +41,7 @@
     margin-right:50px;
 }
 
-.account { 
+.top-margin { 
     margin-top:20px;
 }
 
@@ -54,4 +54,26 @@
 .delete:hover { 
     background:Red;
     color:white!important;
+}
+
+/* ======================
+   ALERT STYLES
+   ====================== */
+
+.alert {
+    position:absolute;
+    top:0;
+    padding:20px;
+    background:grey;
+    z-index:1000;
+    width:100%;
+    text-align:center;
+}
+
+.alert-danger {
+    background-color: red;
+}
+
+.alert-success {
+    background-color: green;
 }
