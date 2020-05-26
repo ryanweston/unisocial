@@ -9,16 +9,19 @@ export const login = (loginInfo) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
-    console.log('Request made');
+    // console.log('Request made');
 
     try {
         console.log('Login info before send' + loginInfo);
         const res = await axios.post('/api/auth', loginInfo, config);
         const returned = res.data;
-        console.log(returned);
+        console.log("Check:" + returned);
+
+        //Frontend check for captcha verification, if true, sets relevant authentication states and retrieves users information
         if (returned[1].success) {
             dispatch(loginSuccess(returned[0]));
             dispatch(getUser());
+            dispatch(setAlert("You're now logged in!", 'success'));
         }
     } catch (err) {
         const errorArray = err.response.data.errors;
@@ -26,7 +29,6 @@ export const login = (loginInfo) => async dispatch => {
         if (errorArray) {
             errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
         }
-        // dispatch(loginFailure(err));
     }
 }
 
@@ -35,13 +37,9 @@ export const loginSuccess = (token) => ({
     payload: token
 })
 
-export const loginFailure = (error) => ({
-    type: LOGIN_FAILURE,
-    payload: error
-})
-
 export const deleteUser = (option) => async dispatch => {
     try {
+        //if user has opted to delete their review
         if (option === true) {
             dispatch(deleteReview());
         }
@@ -77,7 +75,7 @@ export const getUser = () => async dispatch => {
 
 export const logout = () => dispatch => {
     dispatch(logoutUser());
-    console.log('initiating dispatch');
+    dispatch(setAlert("You've been logged out", 'success'))
 }
 
 export const logoutUser = () => ({
