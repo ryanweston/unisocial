@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, GET_USER, LOGOUT_USER, DELETE_USER } from './types';
+import { LOGIN_SUCCESS, GET_USER, LOGOUT_USER, DELETE_USER } from './types';
 import { deleteReview } from './dashboard';
 import { setAlert } from './alert';
 import axios from 'axios';
