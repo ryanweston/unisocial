@@ -86,7 +86,7 @@
       margin-top:10px;
       border: 2px solid #eee;
       border-radius: 10px;
-      font-family: urbane-rounded;
+      font-family: urbane-rounded, sans-serif;
       padding:10px;
       width:100%;
       -moz-appearence:none;
@@ -95,5 +95,5 @@
 
    select option {
       -moz-appearance:none;
-      font-family: urbane-rounded;
+      font-family: inherit!important;
    }
