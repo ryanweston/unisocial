@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import UniversityView from './UniversityView';
 import { connect } from 'react-redux';
-import EmojiAnimation from './EmojiAnimation';
-import SortDropdown from './SortDropdown';
+import EmojiAnimation from '../general/EmojiAnimation';
+import SortDropdown from '../general/SortDropdown';
 //Objects containing linked images for universities, 
 //and emojis representing datatypes
-import images from './images.js';
-import emojis from './emojis.js';
+import images from '../general/images.js';
+import emojis from '../general/emojis.js';
 
 
 

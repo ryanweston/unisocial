@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { postReview } from '../../actions/dashboard';
-import '../../styles/Reviews.css';
-import '../../styles/Buttons.css';
+import { postReview } from '../../../actions/dashboard';
+import '../../../styles/Reviews.css';
+import '../../../styles/Buttons.css';
 import { Redirect } from 'react-router-dom';
 
 const SubmitReview = ({ postReview, submission }) => {

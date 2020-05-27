@@ -1,11 +1,11 @@
 import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo } from '../../actions/dashboard';
-import { deleteUser } from '../../actions/login';
-import '../../styles/Reviews.css';
-import '../../styles/Buttons.css'
+import { getUserInfo } from '../../../actions/dashboard';
+import { deleteUser } from '../../../actions/login';
+import '../../../styles/Reviews.css';
+import '../../../styles/Buttons.css'
 import PropTypes from 'prop-types';
-import ViewReview from './DashReview';
+import DashReview from './DashReview';
 import { Redirect } from 'react-router-dom';
 
 const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
@@ -84,7 +84,7 @@ const Dashboard = ({ getUserInfo, user, auth, deleteUser }) => {
                         }}>Yes</button>
                         <button className="black delete" onClick={handleDelete}>No</button>
                     </div>))}
-                    <ViewReview review={user.review} />
+                    <DashReview review={user.review} />
                 </div>))}
                 <br />
             </div>))}

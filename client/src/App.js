@@ -1,19 +1,19 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HttpsRedirect from 'react-https-redirect';
-import Nav from './components/general/Nav';
-import Landpage from './components/general/Landpage';
+import Nav from './components/layout/Nav';
+import Landpage from './components/layout/Landpage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Dashboard from './components/dashboard/Dashboard';
+import Dashboard from './components/layout/dashboard/Dashboard';
 import Alert from './components/general/Alert';
-import SubmitReview from './components/dashboard/SubmitReview';
+import SubmitReview from './components/layout/dashboard/SubmitReview';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './store';
 import { fetchUni } from './actions/university';
 import { setHeader, getUser } from './actions/login';
-import './App.css';
+import './styles/App.css';
 
 const App = () => {
   //Runs university fetch on app initialisation

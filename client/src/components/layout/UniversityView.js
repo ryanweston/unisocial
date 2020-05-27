@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/Buttons.css';
 import '../../styles/Reviews.css';
-import emojis from './emojis.js';
+import Review from '../general/Review';
+
 
 const UniversityView = (props) => {
 
@@ -12,7 +13,7 @@ const UniversityView = (props) => {
         props.handleModalOpen(null);
     }
 
-    // TO DO: Shift scores into array to clean code up. Can't pass event through onLoad in react, so
+    // TO DO: Can't pass event through onLoad in react, so
     // due to time constraints long winded solution of using target value rounded was necessary.
 
     return (
@@ -30,20 +31,7 @@ const UniversityView = (props) => {
                 <div className="contentContainer">
                     <div className="scoresContainer frontpageScores">
                         {/* Loops & maps score values from object */}
-                        {
-                            Object.keys(props.details.scores).map(key => {
-                                let string = key;
-                                let labelKey = string.replace(/_/g, " ");
-                                const emoji = emojis.filter(emojis => emojis.type === key);
-
-                                //Checks against key being total, as total is displayed below in seperate code block
-                                if (key !== 'total') {
-                                    return <div className="item">
-                                        <label><span role="img" aria-label="sheep">{emoji[0].emoji}</span> {labelKey}</label>
-                                        <progress className="progress" target={"_" + props.details.scores[key].toFixed(0)} value={props.details.scores[key].toFixed(2)} max="5.00"> </progress>
-                                    </div>
-                                }
-                            })}
+                        <Review scores={props.details.scores}></Review>
                     </div>
 
                     <div className="total">

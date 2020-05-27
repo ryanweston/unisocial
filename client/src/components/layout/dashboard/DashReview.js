@@ -2,11 +2,11 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import '../../styles/Reviews.css'
-import Review from './Review';
-import { deleteReview } from '../../actions/dashboard';
+import '../../../styles/Reviews.css'
+import Review from '../../general/Review';
+import { deleteReview } from '../../../actions/dashboard';
 
-const ViewReview = (props) => {
+const DashReview = (props) => {
 
     //Hook that handles state changes to check stage of deletion process
     const [deleteCheck, deleteChange] = useState({
@@ -47,8 +47,8 @@ const ViewReview = (props) => {
     )
 }
 
-ViewReview.propTypes = {
+DashReview.propTypes = {
     deleteReview: PropTypes.func.isRequired
 }
 
-export default connect(null, { deleteReview })(ViewReview);
+export default connect(null, { deleteReview })(DashReview);
