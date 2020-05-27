@@ -12,8 +12,10 @@
 
 .item { 
     text-align:left;
-
-    padding:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 /* Quick fix for submit review button placement */
@@ -24,11 +26,11 @@
 }
 
 label { 
-    font-size:0.8em;
+    font-size:0.7em;
     font-weight:600;
     margin:0;
     float:none!important;
-    word-wrap: break-word;
+    text-transform: capitalize;
 }
 
 
@@ -74,7 +76,7 @@ progress {
     border-radius: 20px; 
     border:none;
     width: 50%;
-    height: 22px;
+    height: 20px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -82,7 +84,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-   background-color: #eeeeee;
+    background-color: #eeeeee;
     border-radius: 20px;
 }
 progress::-webkit-progress-value {
@@ -95,8 +97,10 @@ progress::-moz-progress-bar {
 }
 
 @media (min-width: 600px) {
+   .progress { height:22px;}
    .scoresContainer { float:right; width:80%;}
-   .label {font-size:0.9em;}
+   label {font-size:0.9em!important;}
+   .item { padding:10px;}
  }
 
 @media (min-width: 1000px) {

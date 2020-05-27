@@ -159,13 +159,17 @@ p {
   width:40%;
   border: 2px solid #eee;
   border-radius: 10px;
-  font-family: urbane-rounded;
+  font-family: urbane-rounded, sans-serif;
   margin-bottom:20px;
-  text-transform: capitalize;
+  text-transform: capitalize!important;
+}
+
+.sortDropdown option {
+  text-transform: capitalize!important;
 }
 
 /* Attempt at fixing capitalisation for cross-browser support */
-.sortDropdown::before {
+.sortDropdown option::before {
   content:'';
 }
 
