@@ -3,7 +3,10 @@ import {
     POST_BEGIN,
     POST_SUCCESS,
     POST_FAILURE,
-    DELETE_REVIEW
+    DELETE_REVIEW,
+    EDIT_BEGIN,
+    EDIT_SUCCESS,
+    CLEAR_SUBMISSION
 } from '../actions/types';
 
 const initialState = {
@@ -62,6 +65,29 @@ export default function (state = initialState, actions) {
                 submission: {
                     loading: false,
                     success: false,
+                }
+            }
+        case EDIT_BEGIN:
+            return {
+                ...state,
+                submission: {
+                    loading: true,
+                }
+            }
+        case EDIT_SUCCESS:
+            return {
+                ...state,
+                submission: {
+                    loading: false,
+                    success: true,
+                }
+            }
+        case CLEAR_SUBMISSION:
+            return {
+                ...state,
+                submission: {
+                    loading: false,
+                    success: null
                 }
             }
         default:

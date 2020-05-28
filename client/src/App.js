@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import Dashboard from './components/layout/dashboard/Dashboard';
 import Alert from './components/general/Alert';
 import SubmitReview from './components/layout/dashboard/SubmitReview';
+import EditReview from './components/layout/dashboard/EditReview';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './store';
@@ -27,7 +28,7 @@ const App = () => {
   }, []);
 
 
-
+  //HttpsRedirect forces redirect to SSL domain
   return (<HttpsRedirect>
     <Provider store={store}>
       <Router>
@@ -42,6 +43,7 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/submit" component={SubmitReview} />
+              <Route exact path="/edit" component={EditReview} />
             </Switch>
           </section>
         </Fragment>

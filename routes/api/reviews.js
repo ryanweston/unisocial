@@ -133,6 +133,80 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+// @route    PUT api/reviews
+// @desc     Update's the specific user's review
+// @access   Private
+router.put('/', auth, async (req, res) => {
+  try {
+    //Gets review from user id
+    const userReview = await Review.findOne({ user_id: req.user.id });
+
+    console.log(req.body.scores);
+
+    //Destructure request body
+    const {
+      internet,
+      happiness,
+      nightlife,
+      societies,
+      sports,
+      culture,
+      freedom_of_speech,
+      weather,
+      LGBTQ_friendly,
+      crime,
+      mental_health,
+      student_events,
+      nature,
+      diversity,
+      accomodation,
+      cost_of_living,
+    } = req.body.scores;
+
+
+    //Find by id and update all the relevant data sets
+    //TODO: Reduce amount of code required when adding a new scores option
+    //as well as option to not have to submit a value: "N/A"
+
+    //Will return null for values that are not present in request body
+    //action in client checks for null values and will reject to ensure 
+    //all options are filled.
+    await Review.findByIdAndUpdate(userReview.id,
+      {
+        'scores.internet': internet,
+        'scores.happiness': happiness,
+        'scores.nightlife': nightlife,
+        'scores.societies': societies,
+        'scores.sports': sports,
+        'scores.internet': internet,
+        'scores.culture': culture,
+        'scores.freedom_of_speech': freedom_of_speech,
+        'scores.weather': weather,
+        'scores.LGBTQ_friendly': LGBTQ_friendly,
+        'scores.crime': crime,
+        'scores.mental_health': mental_health,
+        'scores.student_events': student_events,
+        'scores.nature': nature,
+        'scores.diversity': diversity,
+        'scores.accomodation': accomodation,
+        'scores.cost_of_living': cost_of_living,
+      },
+      function (err, result) {
+        if (err) {
+          res.status(400).json({ msg: "Review edit failed" });
+        } else {
+          res.send(result.scores);
+        }
+      });
+
+
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
+})
+
+
 // @route    DELETE api/reviews
 // @desc     Delete's the specific user's review
 // @access   Private

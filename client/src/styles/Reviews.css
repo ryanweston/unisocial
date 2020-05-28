@@ -33,6 +33,19 @@ label {
     text-transform: capitalize;
 }
 
+.editNum {
+  opacity:0.3;
+  padding-left:5px;
+}
+
+
+progress[target=_0]::-webkit-progress-value {
+  background-color: #FF2626;
+}
+
+progress[target=_0]::-moz-progress-bar {
+  background-color: #FF2626;
+}
 
 progress[target=_1]::-webkit-progress-value {
     background-color: #FF2626;
@@ -43,11 +56,11 @@ progress[target=_1]::-moz-progress-bar {
   }
   
 progress[target=_2]::-webkit-progress-value {
-    background-color: #FF2626;
+    background-color:  #FFBC48;
   }
   
 progress[target=_2]::-moz-progress-bar {
-    background-color: #FF2626;
+    background-color:  #FFBC48;
   }
   
 progress[target=_3]::-webkit-progress-value {
@@ -141,29 +154,6 @@ progress::-moz-progress-bar {
     -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
   }
-  
-.green { 
-    -webkit-appearance: none;  /* Override default CSS styles */
-    -moz-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    background: #18C145;
-
-}
-  
-.orange{ 
-    -webkit-appearance: none;  /* Override default CSS styles */
-    -moz-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    background: #FFBC48;
-
-}
-  
-.red { 
-    -webkit-appearance: none;  /* Override default CSS styles */
-    -moz-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    background: #FF2626;
-}
 
 .submission input[type=range] { 
     float:right;
@@ -171,9 +161,40 @@ progress::-moz-progress-bar {
     border-radius: 10px;
 }
 
+input[target=_0] {
+  background-color: #FF2626;
+}
+
+
+
+.default[target=_1] {
+    background-color: #FF2626;
+  }
+  
+input[target=_2] {
+    background-color:  #FFBC48;
+  }
+  
+  
+  
+input[target=_3] {
+    background-color: #FFBC48;
+  }
+
+  
+input[target=_4] {
+    background: #18C145;
+  }
+
+  
+input[target=_5]{
+  background-color: #18C145;
+  }
+
 .submission input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 10px;
+    height: 15px;
+    opacity:0.7;
     width: 16px;
     border-radius: 30px;
     background: #ffffff;
