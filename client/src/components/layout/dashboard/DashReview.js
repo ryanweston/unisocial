@@ -27,20 +27,30 @@ const DashReview = (props) => {
             {(!props.review ? (<Link to="/submit">
                 <button className="black">Submit a review <i className="fas fa-long-arrow-alt-right"></i></button>
             </Link>) : (<div className="review-section">
+
                 <h1>Your Review</h1>
-                <Link to="/submit">
+
+                <Link to="/edit">
                     <button className="black dash edit"><i className="fas fa-edit"></i> Edit</button>
                 </Link>
+
                 <br />
+
                 <Link to='/dashboard'>
                     <button onClick={handleDelete} className="black delete dash"><i className="fas fa-trash-alt"></i></button>
                 </Link>
+
                 {(deleteCheck.delete === false ? (<Fragment></Fragment>) : (<div>
                     <p>Are you sure you want to delete?</p>
                     <button className="black delete" onClick={() => { handleDelete(); props.deleteReview(); }}>Yes</button>
                     <button className="black delete" onClick={handleDelete}>No</button>
                 </div>))}
-                <Review scores={props.review.scores} />
+
+                <div className="scoresContainer viewReview">
+                    {/* Loops & maps score values from object */}
+                    <Review scores={props.review.scores} />
+                </div>
+
 
             </div>))}
         </Fragment>
