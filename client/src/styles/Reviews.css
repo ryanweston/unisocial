@@ -158,12 +158,15 @@ progress::-moz-progress-bar {
 
 .default:focus {
   opacity:1;
+  border:none!important;
+  outline: 0;
   }
 
 .submission input[type=range] { 
     float:right;
     height:25px;
     border-radius: 10px;
+    border:none;
 }
 
 input[target=_0] {
