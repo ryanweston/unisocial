@@ -153,6 +153,11 @@ progress::-moz-progress-bar {
     -webkit-appearance: none;  /* Override default CSS styles */
     -moz-appearance: none;  /* Override default CSS styles */
     appearance: none;
+    opacity:0.5;
+  }
+
+.default:focus {
+  opacity:1;
   }
 
 .submission input[type=range] { 
