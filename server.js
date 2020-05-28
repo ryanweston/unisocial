@@ -18,7 +18,6 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/dashboard', require('./routes/api/dashboard'));
 app.use('/api/reviews', require('./routes/api/reviews'));
 app.use('/api/university', require('./routes/api/university'));
-app.use('/api/test', require('./routes/api/test'));
 
 
 // React serves static files post build. It is currently set to run build after being pushed to Heroku,
