@@ -15,7 +15,7 @@ export const register = (formData) => async dispatch => {
 
     try {
         const res = await axios.post('api/users', body, config);
-        console.log(res.data)
+        // console.log(res.data)
         dispatch(registerSuccess(res.data));
         dispatch(getUser(res.data));
         dispatch(setAlert("You're now logged in!", 'success'));

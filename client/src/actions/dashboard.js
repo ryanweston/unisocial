@@ -89,7 +89,7 @@ export const editReview = (scores) => async dispatch => {
         if (checkObject[key] === null) {
             status = "failure";
             dispatch(setAlert("Please fill in all values!", 'danger'));
-            console.log(checkObject[key]);
+            // console.log(checkObject[key]);
             //Breaks for loop early
             break;
         }
@@ -98,9 +98,9 @@ export const editReview = (scores) => async dispatch => {
     if (status !== "failure") {
         try {
             dispatch(editBegin());
-            console.log(body);
+            // console.log(body);
             const res = await axios.put('api/reviews', body, config);
-            console.log(res.data);
+            // console.log(res.data);
             dispatch(editSuccess(res.data));
             dispatch(setAlert("Review has been submitted!", 'success'));
             //Clears the submission success, allowing access to edit review soon after posting
@@ -135,6 +135,6 @@ export const deleteReview = () => async dispatch => {
         });
         dispatch(setAlert("Review deleted", 'success'));
     } catch (err) {
-        console.log(err.response.data.errors);
+        // console.log(err.response.data.errors);
     }
 }

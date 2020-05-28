@@ -12,10 +12,10 @@ export const login = (loginInfo) => async dispatch => {
     // console.log('Request made');
 
     try {
-        console.log('Login info before send' + loginInfo);
+        // console.log('Login info before send' + loginInfo);
         const res = await axios.post('/api/auth', loginInfo, config);
         const returned = res.data;
-        console.log("Check:" + returned);
+        // console.log("Check:" + returned);
 
         //Frontend check for captcha verification, if true, sets relevant authentication states and retrieves users information
         if (returned[1].success) {
@@ -25,7 +25,7 @@ export const login = (loginInfo) => async dispatch => {
         }
     } catch (err) {
         const errorArray = err.response.data.errors;
-        console.log(err.errors);
+        // console.log(err.errors);
         if (errorArray) {
             errorArray.forEach((alert) => dispatch(setAlert(alert.msg, 'danger')));
         }
