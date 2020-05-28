@@ -12,16 +12,16 @@ module.exports = function (req, res, next) {
 
   //Verify token
   try {
-    jwt.verify(token, config.get('jwtSecret'), (error, decoded) => {
+    jwt.verify(token, config.get('jwtSecret'), (error, decrypted) => {
       if (error) {
         return res.status(401).json({ msg: 'Token is not valid' });
       } else {
-        req.user = decoded.user;
+        req.user = decrypted.user;
         next();
       }
     });
   } catch (err) {
-    console.error('Middleware failure');
+    console.error('Middleware failed');
     return res.status(500).json({ msg: 'Server Error' });
   }
 };

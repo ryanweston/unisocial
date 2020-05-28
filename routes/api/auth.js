@@ -49,7 +49,6 @@ router.post(
 
 
     const { email, password, captcha } = req.body;
-    var captchaSuccess = false;
 
     try {
       //If response is empty, means captcha wasn't complete
