@@ -125,6 +125,7 @@ router.post('/', auth, async (req, res) => {
 // @access   Public
 router.get('/', async (req, res) => {
   try {
+    //Sorts by highest score
     const reviews = await University.find().sort({ "scores.total": -1 });
     return res.json({ reviews });
   } catch (err) {
@@ -212,13 +213,17 @@ router.put('/', auth, async (req, res) => {
 // @access   Private
 router.delete('/', auth, async (req, res) => {
   try {
-    console.log(req.user.id);
+    // console.log(req.user.id);
+
+    //Fetches relevant review by user ID
     const userReview = await Review.findOne({ user_id: req.user.id });
 
+    //If no review by user
     if (!userReview) {
       return res.status(400).json({ msg: 'You do not have a review to delete.' })
     }
 
+    //Deletes review by id
     await Review.findOneAndDelete(userReview.id)
 
     return res.json({ msg: 'Review deleted.' })
