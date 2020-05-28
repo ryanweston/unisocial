@@ -101,10 +101,11 @@ router.post(
       };
 
       //Generates token using secret key 
+      //Expiration set to one hour for deployment
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
