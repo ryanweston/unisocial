@@ -51,7 +51,7 @@ const Landpage = (props) => {
     const changeSort = (e) => sortSelect({ type: e.target.value, emoji: e.target.emoji });
 
 
-    console.log(modalInfo);
+    // console.log(modalInfo);
 
     //Functions that pass the fetched university data
     //into an array, allowing the data to be sorted with .sort
@@ -84,7 +84,7 @@ const Landpage = (props) => {
 
         universityChecker();
         universityCheck.sort(sortBy(sort.type));
-        console.log(universityCheck);
+        // console.log(universityCheck);
     }
 
     return (

@@ -27,7 +27,7 @@ const Login = ({ login, auth, loading }) => {
         e.preventDefault();
 
         const captcha = recaptchaRef.current.getValue();
-        console.log(captcha);
+        // console.log(captcha);
 
         const loginUser = {
             email,

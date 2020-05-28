@@ -12,7 +12,9 @@ export const fetchUni = dispatch => {
                 dispatch(fetchUniSuccess(res.data.reviews));
                 console.log('Successfully fetched reviews.');
             })
-            .catch(error => console.log(error));
+            .catch(
+                // error => console.log(error)
+            );
     };
 }
 

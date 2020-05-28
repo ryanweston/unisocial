@@ -13,6 +13,7 @@ const DashReview = (props) => {
         delete: false,
     });
 
+    //Even if value is yes or no to delete, modal disappears or appears based off of previous value
     const handleDelete = () => deleteChange(
         (prevState) => {
             return {

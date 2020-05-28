@@ -29,7 +29,6 @@ const SubmitReview = ({ postReview, submission }) => {
 
     const changeValue = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    //Sets value parameters for slider colour changes
 
     console.log(formData);
 

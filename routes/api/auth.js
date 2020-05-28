@@ -37,7 +37,6 @@ router.post(
   [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password is required').exists(),
-    // check('university', 'Please include your university').not().isEmpty(),
   ],
   async (req, res) => {
     //lists errors from validation paramater above

@@ -6,26 +6,6 @@ import React, { Fragment } from 'react';
 
 class UniversityList extends React.Component {
 
-    // state = {
-    //     loading: true,
-    //     options: [null],
-    //     selected: ''
-    // }
-
-    // componentDidMount function is called once after all the components and subcomponents have been rendered
-    // best to make api calls within this react function as given component will have alread been mounted
-    // and everything will be available to the DOM.
-    // async componentDidMount() {
-    //     const response = await axios.get('/api/university');
-    //     // Recieved errors in get reponse, had to convert to string to place in JS object array.
-    //     const string = JSON.stringify(response.data.list);
-    //     const uni = JSON.parse(string);
-    //     // Fills options with JSON request then sets loading to false which can be checked against
-    //     this.setState({ options: uni, loading: false });
-    //     console.log(this.state.options);
-    // }
-
-
     render() {
         return (
 

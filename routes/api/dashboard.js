@@ -17,6 +17,7 @@ router.get('/', auth, async (req, res) => {
     const uniName = await University.findById(userRequest.university).select('name');
 
     // console.log(uniName);
+
     // Finds the user's review for their university, simple findOne as user is only
     // permitted to one review
     let userReview = await Review.findOne({ user_id: req.user.id });

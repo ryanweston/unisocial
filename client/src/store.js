@@ -16,7 +16,7 @@ const store = createStore(
 
 
 //Check global state for sessions debugging
-console.log(store.getState());
+// console.log(store.getState());
 
 //Sets default for when application is first run to prevent errors
 let currentState = {

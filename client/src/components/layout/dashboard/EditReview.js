@@ -1,7 +1,6 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { editReview } from '../../../actions/dashboard';
-import { getUserInfo } from '../../../actions/dashboard';
 import '../../../styles/Reviews.css';
 import '../../../styles/Buttons.css';
 import { Redirect } from 'react-router-dom';
@@ -32,14 +31,6 @@ const EditReview = ({ editReview, submission, user, auth }) => {
         cost_of_living: user.review.scores.cost_of_living,
     });
 
-    useEffect(() => {
-        //Ensures getUser has been called first, setting loading to false to prevent race conditions
-        if (auth.loading === false) {
-            getUserInfo()
-        }
-    }, [getUserInfo, auth.loading]);
-
-
 
     const changeValue = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -59,16 +50,14 @@ const EditReview = ({ editReview, submission, user, auth }) => {
 
     console.log(formData);
 
+    //Runs editReview action on submittion
     const onSubmit = e => {
         e.preventDefault();
         const data = formData;
         editReview(data);
     }
 
-    // console.log(review.weather);
 
-
-    //TODO: Map data out from object, like previously achieved in dash review and university view.
     return (
         <Fragment>
             {(!auth.isAuthenticated ? (
@@ -87,8 +76,11 @@ const EditReview = ({ editReview, submission, user, auth }) => {
                                             {
                                                 // Loops & maps score values from object 
                                                 Object.keys(formData).map(key => {
+                                                    //Replaces underscores with spaces
                                                     let string = key;
                                                     let labelKey = string.replace(/_/g, " ");
+
+                                                    //Returns emoji from array that matches the key by type
                                                     const emoji = emojis.filter(emojis => emojis.type === key);
 
                                                     //Round value
@@ -128,4 +120,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo, editReview })(EditReview);
+export default connect(mapStateToProps, { editReview })(EditReview);
