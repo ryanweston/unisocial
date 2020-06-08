@@ -42,6 +42,30 @@ Initiate Express server.
 ```javascript
 > npm run server
 ```
+
+## Technologies
+
+- **MongoDB**
+- **NodeJS**
+    - Express
+    - Express Validator
+    - JWT Authentication
+    - Request
+    - RP (Request Promise)
+    - bcrypt
+    - Concurrently
+    - Nodemon (dev)
+    - Mongoose
+    - config 
+ - **React**
+ 	- Redux
+ 	- Redux Dev Tools (dev)
+ 	- Redux Thunk
+ 	- Axios
+ 	- UUID
+ 	- React Google Recaptcha
+ 	- HTTPS Redirect
+  
 ## License 
 
 Feel free to contribute fixes/updates/ideas. As long as it remains open-source, you can also clone and build upon the source code for private use or to build upon for a similar, review based, project/idea.  However, please don't republish the code and rebrand the product if it is in anyway similar to a university review system. Thank you!
