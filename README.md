@@ -1,8 +1,8 @@
+⚠️ This is an unmaintained university project
+
 # UNISOCIAL
 
 **What is UNISOCIAL?** This application is a platform for university students to share reviews on their university based on social factors, as a response to the limitations that other similar services offer. For example, being  more focused to academic, as opposed to social factors.
-
-Current production branch: <https://unisocial.uk>
 
 **You need a university email to register.** If you'd like to view the site from a registered user's perspective, e.g review submission, and you don't have access to a university email, please contact me. 
 
